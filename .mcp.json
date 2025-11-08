@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--caps=vision,pdf,testing",
+        "--output-dir=.playwright-outputs",
+        "--timeout-action=10000",
+        "--timeout-navigation=90000"
+      ],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "brave-search": {
+      "disabled": false,
+      "command": "npx",
+      "args": ["@brave/brave-search-mcp-server"],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "description": "Brave Search MCP Server - Web search, local search, images, videos, news, and AI-powered summaries"
+    },
+    "firecrawl": {
+      "disabled": false,
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      },
+      "description": "Firecrawl MCP Server - Advanced web scraping, crawling, and content extraction with caching"
+    },
+    "perplexity": {
+      "disabled": false,
+      "command": "npx",
+      "args": ["-y", "@perplexity-ai/mcp-server"],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",
+        "PERPLEXITY_TIMEOUT_MS": "600000"
+      },
+      "description": "Perplexity AI MCP Server - AI-powered search, reasoning, and research capabilities with Sonar models"
+    }
+  }
+}
