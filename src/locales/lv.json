@@ -82,5 +82,48 @@
     "dashboard_link": "Panelis",
     "user_profile_link": "Pārvaldīt savu kontu",
     "sign_out": "Iziet"
+  },
+  "validation": {
+    "name": {
+      "required": "Vārds ir obligāts",
+      "maxLength": "Vārds nedrīkst pārsniegt 100 rakstzīmes"
+    },
+    "email": {
+      "required": "E-pasts ir obligāts",
+      "invalid": "Lūdzu, ievadiet derīgu e-pasta adresi",
+      "maxLength": "E-pasts nedrīkst pārsniegt 255 rakstzīmes"
+    },
+    "phone": {
+      "required": "Telefona numurs ir obligāts",
+      "maxLength": "Telefona numurs nedrīkst pārsniegt 20 rakstzīmes"
+    },
+    "message": {
+      "required": "Ziņojums ir obligāts",
+      "maxLength": "Ziņojums nedrīkst pārsniegt 1000 rakstzīmes"
+    },
+    "locale": {
+      "invalid": "Nederīga valoda"
+    },
+    "serviceType": {
+      "invalid": "Lūdzu, izvēlieties pakalpojuma veidu"
+    },
+    "date": {
+      "required": "Datums ir obligāts",
+      "future": "Lūdzu, izvēlieties nākotnes datumu",
+      "businessDays": "Pieejams tikai pirmdienās līdz sestdienām"
+    },
+    "time": {
+      "required": "Laiks ir obligāts",
+      "businessHours": "Darba laiks: 9:00 - 20:00"
+    },
+    "vehicleInfo": {
+      "maxLength": "Transportlīdzekļa informācija nedrīkst pārsniegt 500 rakstzīmes"
+    },
+    "appointment": {
+      "conflict": "Šis laiks jau ir aizņemts"
+    },
+    "preferredTime": {
+      "invalid": "Lūdzu, izvēlieties vēlamo laiku"
+    }
   }
 }

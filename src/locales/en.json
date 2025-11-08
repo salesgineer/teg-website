@@ -82,5 +82,48 @@
     "dashboard_link": "Dashboard",
     "user_profile_link": "Manage your account",
     "sign_out": "Sign out"
+  },
+  "validation": {
+    "name": {
+      "required": "Name is required",
+      "maxLength": "Name must not exceed 100 characters"
+    },
+    "email": {
+      "required": "Email is required",
+      "invalid": "Please enter a valid email address",
+      "maxLength": "Email must not exceed 255 characters"
+    },
+    "phone": {
+      "required": "Phone number is required",
+      "maxLength": "Phone number must not exceed 20 characters"
+    },
+    "message": {
+      "required": "Message is required",
+      "maxLength": "Message must not exceed 1000 characters"
+    },
+    "locale": {
+      "invalid": "Invalid language"
+    },
+    "serviceType": {
+      "invalid": "Please select a service type"
+    },
+    "date": {
+      "required": "Date is required",
+      "future": "Please select a future date",
+      "businessDays": "Available Monday through Saturday only"
+    },
+    "time": {
+      "required": "Time is required",
+      "businessHours": "Business hours: 9:00 AM - 8:00 PM"
+    },
+    "vehicleInfo": {
+      "maxLength": "Vehicle information must not exceed 500 characters"
+    },
+    "appointment": {
+      "conflict": "This time slot is already booked"
+    },
+    "preferredTime": {
+      "invalid": "Please select a preferred time"
+    }
   }
 }
