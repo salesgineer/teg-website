@@ -33,6 +33,8 @@ export default antfu(
       '.claude/**/*',
       '.claude/commands/**/*.md',
       '.claude/skills/**/*',
+      'agent-os/**/*',
+      '**/*.md',
     ],
   },
   // --- Accessibility Rules ---

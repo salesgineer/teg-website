@@ -1,0 +1,432 @@
+/**
+ * TEG Website Copy Constants
+ *
+ * All copy extracted character-for-character from original teg.lv website (Latvian language)
+ * Source: Screenshots from agent-os/specs/2025-11-07-nextjs-project-setup/planning/visuals/TEMP -- TEG Screens/LV/
+ * Extraction Date: 2025-11-08
+ *
+ * CRITICAL: Do NOT modify any text without explicit approval. Character-for-character accuracy required.
+ */
+
+// ============================================================================
+// HOMEPAGE COPY
+// ============================================================================
+
+export const HOMEPAGE_COPY = {
+  hero: {
+    headline: "PĀRBAUDĪT PIRMS PĒRC!",
+    subheadline: "Transporta eksperti automašīnas kvalitāti atklāsim bez krāsas!",
+    ctaText: "Pasūtīt pārbaudi",
+    ctaHref: "/kontakti",
+  },
+
+  valueProposition: {
+    headline: "Pārbaudiet auto ātri un viegli. pasūtot savu izvēli!",
+    items: [
+      {
+        title: "Tu vēlies nopirkt auto",
+        description: "Zvani vai raksti mums un pasūti pārbaudi. Jautāt var visu, mums nav slepenu.",
+      },
+      {
+        title: "Mēs pārbaudām",
+        description: "Atbraucam pie mašīnas un pārbaudām. Ierodoties veicam detalizētu apsekošanu.",
+      },
+      {
+        title: "Nosūti ziņu un saņemot rezultātus",
+        description: "Pēc pārbaudes tu saņemsi detalizētu fotoprotātu par auto stāvokli un ieteikumu.",
+      },
+      {
+        title: "Izlem, vai pērk!",
+        description: "Pamatojoties uz profesionāļu ieteikumu izlemsi, vai šis ir tavs auto!",
+      },
+    ],
+  },
+
+  serviceCards: [
+    {
+      title: "Viens visaptverošs un skaidrs pārbandes pirma veiderice",
+      description: "Ja vēlies iegādāties lietotu auto, tad mēs tev piedāvājam mūsu pirmsieprieties pārbaudes pakolpojumu. Tas nozīmē, ka spēciālisti atlasīs auto vizuāli un ar atbilstošu tehnisko pārbaud un salīdzinās tā tehniskās īpašības ar zīmola normām. Pēc tehniskās pārbaudes saņemsi detalizētu ziņojumu par visu konstatēto.",
+      ctaText: "Uzzināt vairāk",
+      ctaHref: "/pakalpojumi",
+    },
+    {
+      title: "Uzpemam auto iegādāties īstenēgotājas tas vietam lielākam",
+      description: "Piedāvājam palīdzību personām automašīnas iegādes procesā. Mūsu pakalpojums apvieno ekspertu pārbaudi, juridisku un tehniskā konsultācijas, kā arī palīdzību iegādes un dokumentu noformēšana, vadot visu procesu no sākuma līdz beigām.",
+      ctaText: "Uzzināt vairāk",
+      ctaHref: "/auto-iegade",
+    },
+    {
+      title: "Snēdzām mūs Eiropā pārbaudām automātus ātram tūs vienas automatiskām",
+      description: "Piedāvājam automašīnu pārbaudes pakalpojumus visā Eiropā. Tādā veidā jums nav jāceļo uz citu valsti, lai pārbaudītu savs izvēlētos automašīnu. Mēs to izdarīsim jūsu vietā, nodrošinot profesionālu un rūpīgu pārbaudi ar pilnu dokumentāciju un ieteikumiem par automašīnas pirkumu.",
+      ctaText: "Uzzināt vairāk",
+      ctaHref: "/pakalpojumi",
+    },
+  ],
+
+  inspectionCategories: {
+    headline: "KO MĒS PĀRBAUDĪSIM?",
+    ctaText: "Pasūtīt pārbaudi",
+    ctaHref: "/kontakti",
+    categories: [
+      {
+        title: "Dzinējs",
+        items: [
+          "Dzinēja eļļas līmenis, krāsa, vāļums",
+          "Dzinēja vāku nenosēdumi, noplūdes",
+          "Berzes kontrole",
+          "Augstspiedības kontrole",
+          "Aizsardzes īspējamā aizcilīnošana",
+        ],
+      },
+      {
+        title: "Šasijas numurs",
+        items: [
+          "Pārbaude oriģinalitāte",
+          "Oriģināls visu būtītu, īdentitāt",
+          "VIN",
+          "Visi atdalīmi numuru, nopludēt",
+        ],
+      },
+      {
+        title: "Virsbūve un salons",
+        items: [
+          "Virsbūve un salons stāvoklis krāsas",
+          "Vietas neoriģinalitām tās krāsa",
+          "Krāsas oriģinalitāte pēc TA",
+          "Elektronika stāvoklis pēc VIN",
+          "Punktu automātiskt aizdedzīšana",
+        ],
+      },
+      {
+        title: "Tehniskais stāvoklis",
+        items: [
+          "Priekšnietes mehāniems",
+          "Piekares komplektāri",
+          "Bremzes skaņestēšana",
+        ],
+      },
+      {
+        title: "Balsošana",
+        items: [
+          "Starp vidējais",
+          "Bremsu disks, uzlīm skarauts",
+          "Ruiņu arī aizkustošas cilindrs",
+          "Bremzu atzvilšanas sisterus kontrole",
+        ],
+      },
+      {
+        title: "Elektrospēcības",
+        items: [
+          "Uzbūvētājas sistēmas pārbaude",
+          "Elektriķiem apkures pārbaude",
+          "Stāvokls pārslēgšāna punktēlēs",
+          "Elektru",
+        ],
+      },
+    ],
+  },
+
+  antiFraud: {
+    headline: "Negodīgo auto pārdevēju rīki.",
+    tactics: [
+      {
+        title: "Griezts motormēra rādījums",
+        description: "Pārdevēji greza motormēra rādījumu ar atpakaļ veizšanu kilometrāžas skaitītājus, lai automašīna šķistu mazāk ekspluatēta.",
+      },
+      {
+        title: "Krāsas brīdināto izmantoto",
+        description: "Auto tur novāļus bojājumus vai rūsu ar apkrāsošanu, neuzrādot bojājuma apjomu precīzu apzīmēšanu.",
+      },
+      {
+        title: "Bojātas detaļes",
+        description: "Glabā neziņotām dokumentētums automābas avāriju vai tehnisko problēmu detaļu, kas nav atjaunotas.",
+      },
+      {
+        title: "Īpašnieka viltojamie",
+        description: "Pardavēji var viltot vai slēpt īpašnieku vēstura, māskas bija īpašnieku problēmām vai juridisku šļūžibu",
+      },
+      {
+        title: "Sludinajuma nepatiēsuma",
+        description: "Reklamēt automašīnas ar paarmatītu vai nepareizinformāciju par tās tehniskā stāvokļa, aprēķina vai izilietošana",
+      },
+      {
+        title: "Dokuments viltojamie",
+        description: "Pārdevēji uzrād piedarbotun vai vildoctunu tekniska apskates, apdrošinājuma vai reģistrācijas dokumenti",
+      },
+    ],
+  },
+
+  serviceDetails: [
+    {
+      title: "Pakalpojumu izcenoujumi",
+      description: `Mēs veicam auto pārbaudi pirms to iegades.
+
+Mēs iebraucam, noskaidrojam transportlīdzekļa pārbaudi un darām visu, lai būtu jābūt informēti. Mūsu nolūkos ir izpētīt, izvērtēt visu to, pārbaudi auto objektu, identificēt problemātiskos aspektus, un izvērtēt mehāniskās detaļas izmaksas.
+
+Kāpēc mūsu klienti izvēlas tieši šo pakalpojumu? Jo tas ir ātri, efektīvi un precīzi! Bez dīkstāves auto dīleris nepalīdzēs tev ietaupīt naudu, mūsu specālisti palīdzēs izprast, ko tu mēnai pirkt.`,
+      ctaText: "Pasūtīt pārbaudi",
+      ctaHref: "/kontakti",
+      imagePosition: "left" as const,
+      backgroundColor: "white" as const,
+    },
+    {
+      title: "Auto meklējams, pārblude, piegāde",
+      description: `Palīgdījam esam palaizīgt atrast vēlamu automobili un to iegadāties.
+
+Procesā iekšejam transportā mēslēkšana, koordinēšana ar pārdevējiem, preču ekspertīze un pārvēst, kādos nosācijimas process dokumentu rezultēšana. Sākumā esais tiek pareiksmētas tevi klienta nepēcišōšās auto vēlams vien ekspertīm meklējuma eskoitas tirgus kopēs. Pēc auto izvelēšanās mēs veļčām detalizētu visu izmeklētu pārbaudi, kura jemss vērā tehniskos parametrus, ārējo stāvokļi, interjeru un daudz citus.
+
+Tālāc notiks sarunu procoss ar pārdevāju, līdz finansam, loģistiku dokumentu pārņemšanā.`,
+      ctaText: "Uzzināt vairāk",
+      ctaHref: "/auto-iegade",
+      imagePosition: "right" as const,
+      backgroundColor: "muted" as const,
+    },
+    {
+      title: "Izbraukuma autoserviss, palīdzība uz ceļa",
+      description: `Esam pieejami, lai palīdzētu automašīnas elektroniskā sistēmu diagnostika, sliekās uzlabošanu koriģēšana dažāda tehniča darbi vietniēs.`,
+      benefits: [
+        "Elektroniķīmiju lasīšāna / dzēšāna /",
+        "Atslēga dublikātu izgatalavošana",
+        "Akumulatora baterijas pārbaude izsniedzoties prōntētu izdruku",
+        "Spidžu un AKB nomaiņa, programmēšana",
+        "Bojāta nepa / Nāv rezerves riteņa",
+        "Repreciesums \"Piepūst\"",
+        "Rokas bremzes atbloķēšana",
+        "Tukša degvietas bāka",
+        "Elektro bloku kodēšāna / programmēšana",
+        "Durvju atvēršana,slēdzēņu nomaina,logu meh.mainas/remonts",
+        "Citi remontdarbi (bremzes,izinējs,salons)",
+        "u.c.",
+      ],
+      pricing: "SĀKOT NO 30 EUR*",
+      ctaText: "Pasūtīt pārbaudi",
+      ctaHref: "/kontakti",
+      imagePosition: "left" as const,
+      backgroundColor: "white" as const,
+    },
+  ],
+
+  instagram: {
+    handle: "teg.auto",
+    bio: "Tehniskā stāvokļa ekspertīze, jebkuras klases un vecuma transportlīdzekliem.",
+    profileUrl: "https://instagram.com/teg.auto",
+  },
+
+  darkFooterForm: {
+    headline: "Sazin atsaities",
+    fields: {
+      email: "E-pasts",
+      name: "Vārds",
+      message: "Jautājums vai vēlies",
+    },
+    submitText: "Nosūtīt",
+    introText: "Jautājiet mums par visu izmantodams šīs formas!",
+    additionalText: "Mēs ar prieku atbildēsim",
+  },
+} as const;
+
+// ============================================================================
+// ABOUT PAGE COPY
+// ============================================================================
+
+export const ABOUT_PAGE_COPY = {
+  headline: "Transporta ekspertu grupa – sava aroda profesionāļu grupa, kam auto ir sirdslieta.",
+  greeting: "Labdien!",
+  paragraphs: [
+    "Esam neatkarīgi, pieredzēs bagāti, entuziasma pilni autotransporta jomas eksperti. Specializējamies lietotu un jaunu transportlīdzekļu pārbaudē un piegādē, tāču priecāsimies arī palīdzēt tehniskās kibeles uz ceļa un citos auto jautājumos.",
+    "Profesionālā palīdzība lietotas un jaunas automašīnas izvēlē un iegādē visā Eiropā. Veicam izbraukuma tehniskā stāvokļa ekspertīzes, jebkuras klases un vecuma transportlīdzekliem.",
+    "Strādājam tikai klientu interesēs. Mūsu mērķis ir atklāt negodīgu auto tirgoņu \"nospiedumus\" ar korektiem odometra rādījumiem, nekvalitātivu remontu, slēptiem bojājumiem un pat viltotiem dokumentiem.",
+    "Kvalificēti profesionālo iekārtu izmantošana, sadarbība ar jomas ekspertiem un auto datubāzēm, mums ļauj sniegt kvalitatīvu, drošu un uzticamu pakalpojumu.",
+    "Transporta ekspertu grupa atradis jūsu vēlmēm un budžetam atbilstošu transportlīdzekli, iesakot un konsultējot par labāko. Mēs pārbaudīsim, lai tas būtu atbilstošā tehniskā stāvokļī. To visu paveiksim jums pat neizejot no mājas. Ja būs nepieciešams, palīdzēsim dokumentu noformēšanas brīdī.",
+  ],
+  closing: "Tiekamies ceļā!",
+} as const;
+
+// ============================================================================
+// CONTACT PAGE COPY
+// ============================================================================
+
+export const CONTACT_PAGE_COPY = {
+  whatsappCta: "Rakstiet mums Whatsapp",
+  headline: "Priecāsimies saņemt Jūsu ziņu.",
+  introText: "Patecamies Tev par izrādīto interesi, atbildēsim tiklīdz tas būs iespējams. Bet ja jautājums ir steidzams - rakstiet mums whatsapp vai zvaniet.",
+
+  contactInfo: {
+    phoneLabel: "Kontakttālrunis",
+    phone: "+371 25 201 710",
+    phoneHref: "tel:+37125201710",
+    hoursLabel: "Darba laiks",
+    hours: "Pr - Se 9:00 - 20:00",
+  },
+
+  socialMedia: {
+    title: "Mūs sociālajos tīklos",
+    instagram: {
+      handle: "teg.auto",
+      following: "--",
+      followers: "1067",
+      likes: "13.3K",
+      bio: "Tehniskā stāvokļa ekspertīze, jebkuras klases un vecuma transportlīdzekliem.",
+      url: "https://instagram.com/teg.auto",
+    },
+    facebook: {
+      url: "https://www.facebook.com/Transportaekspertugrupa",
+    },
+    tiktok: {
+      buttonText: "Open TikTok",
+      url: "https://tiktok.com/@teg.auto",
+      privacyText: "View Privacy Policy",
+    },
+  },
+
+  form: {
+    formNote: "Lauki, kas ir apzīmēti ar zvaigznīti (*) ir jāaizpilda obligāti. Paldies!",
+    fields: {
+      name: "Vārds",
+      email: "E-pasts",
+      message: "Jautājums mums",
+    },
+    requiredMarker: "*",
+    submitText: "Nosūtīt",
+  },
+
+  testimonials: {
+    title: "Ko saka mūsu klienti",
+    items: [
+      {
+        name: "Sergejs Trokmanis",
+        timeAgo: "about 4 years ago",
+        review: "Esmu ļoti apmierinats ar ekonomisko un labu automašīnu. Lielu paldies gribu pateikt Kristapam par tik kvalitatīvu un ātro darbu, kā lādī šis laika posma tomēr var atrast labu auto.",
+        platform: "facebook",
+      },
+      {
+        name: "Ieva Neimane",
+        timeAgo: "about 4 years ago",
+        review: "Ļoti atsaucīgs un lielsks serviss! Paldies! 🙌",
+        platform: "facebook",
+      },
+    ],
+  },
+} as const;
+
+// ============================================================================
+// SERVICES PAGE COPY
+// ============================================================================
+
+export const SERVICES_PAGE_COPY = {
+  hero: {
+    title: "AUTOSERVISS BRAUC PIE TEVIS",
+    subtitle: "Izbraukuma autoserviss, palīdzība uz ceļa",
+  },
+
+  services: [
+    "Elektrokļūmiju lasīšāna / dzēšāna /",
+    "Atslēgu dublikātu izgatalavošana",
+    "Akumulatora baterijas pārbaude izsniedzoties printētu izdruku",
+    "Spidžu un AKB nomaiņa, programmēšana",
+    "Bojāta nepa / Nav rezerves riteņa",
+    "Nepieciesams \"Piepūst\"",
+    "Rokas bremzes atbloķēšana",
+    "Tukša degvielas bāka",
+    "Elektro bloķu kodēšāna / programmēšana",
+    "Durvju atvēršana,slēdzēņu nomaina,logu meh.mainas/remonts",
+    "Citi remontdarbi (bremzes,dzinējs,salons)",
+    "u.c.",
+  ],
+
+  pricing: {
+    amount: "30 EUR",
+    prefix: "SĀKOT NO",
+    marker: "*",
+    full: "SĀKOT NO 30 EUR*",
+  },
+
+  disclaimer: {
+    main: "*Pakalpojuma izmaksas var atšķirties atkarībā no auto dzīsēķiera gadā, markas un modeļa un darbēta sarukžītības. Lai precīzitu Jums nodūkies jautājumus, būdu sazinieties ar mums.",
+    tax: "*Norādītas standarta cenas, bez PVN.",
+  },
+} as const;
+
+// ============================================================================
+// CAR PURCHASE PAGE COPY
+// ============================================================================
+
+export const CAR_PURCHASE_PAGE_COPY = {
+  galleryNote: "Extensive photo gallery showcasing comprehensive inspection process including engine diagnostics, body inspection, documentation verification, VIN checks, interior assessment, and mechanical component inspection.",
+
+  // Note: Specific service description text not fully visible in screenshot
+  // This will need to be populated from homepage service details or additional content
+} as const;
+
+// ============================================================================
+// NAVIGATION COPY
+// ============================================================================
+
+export const NAVIGATION_COPY = {
+  menuItems: [
+    { label: "Sākums", href: "/" },
+    { label: "Par mums", href: "/par-mums" },
+    { label: "Auto iegāde", href: "/auto-iegade" },
+    { label: "Serviss", href: "/serviss" },
+    { label: "Kontakti", href: "/kontakti" },
+  ],
+
+  phone: {
+    display: "Zvani mums + 371 25 201 710",
+    href: "tel:+37125201710",
+  },
+
+  languages: [
+    { code: "lv", label: "LAT" },
+    { code: "en", label: "ENG" },
+    { code: "ru", label: "RUS" },
+  ],
+} as const;
+
+// ============================================================================
+// FOOTER COPY
+// ============================================================================
+
+export const FOOTER_COPY = {
+  copyright: "© TEG 2023 + 371 25201710",
+  links: [
+    { label: "Sākdatnes", href: "#" },
+  ],
+} as const;
+
+// ============================================================================
+// COMMON/SHARED COPY
+// ============================================================================
+
+export const COMMON_COPY = {
+  cta: {
+    orderInspection: "Pasūtīt pārbaudi",
+    learnMore: "Uzzināt vairāk",
+    submit: "Nosūtīt",
+    contact: "Sazināties",
+  },
+
+  validation: {
+    required: "Šis lauks ir obligāts",
+    emailInvalid: "Lūdzu, ievadiet derīgu e-pasta adresi",
+    phoneInvalid: "Lūdzu, ievadiet derīgu tālruņa numuru",
+  },
+
+  notifications: {
+    success: "Ziņojums veiksmīgi nosūtīts!",
+    error: "Radās kļūda. Lūdzu, mēģiniet vēlreiz.",
+  },
+} as const;
+
+// ============================================================================
+// TYPE EXPORTS
+// ============================================================================
+
+export type HomepageCopy = typeof HOMEPAGE_COPY;
+export type AboutPageCopy = typeof ABOUT_PAGE_COPY;
+export type ContactPageCopy = typeof CONTACT_PAGE_COPY;
+export type ServicesPageCopy = typeof SERVICES_PAGE_COPY;
+export type CarPurchasePageCopy = typeof CAR_PURCHASE_PAGE_COPY;
+export type NavigationCopy = typeof NAVIGATION_COPY;
+export type FooterCopy = typeof FOOTER_COPY;
+export type CommonCopy = typeof COMMON_COPY;

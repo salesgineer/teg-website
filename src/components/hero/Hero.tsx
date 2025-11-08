@@ -14,6 +14,8 @@ type HeroProps = {
   };
   backgroundImage?: string;
   className?: string;
+  overlayOpacity?: 'light' | 'dark';
+  titleUppercase?: boolean;
 };
 
 export function Hero({
@@ -23,6 +25,8 @@ export function Hero({
   secondaryCta,
   backgroundImage = '/images/hero-car.jpg',
   className = '',
+  overlayOpacity = 'light',
+  titleUppercase = false,
 }: HeroProps) {
   return (
     <section
@@ -32,11 +36,11 @@ export function Hero({
       }}
     >
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className={`absolute inset-0 ${overlayOpacity === 'dark' ? 'bg-black/70' : 'bg-black/60'}`} />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8">
-        <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className={`mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl ${titleUppercase ? 'uppercase' : ''}`}>
           {title}
         </h1>
 

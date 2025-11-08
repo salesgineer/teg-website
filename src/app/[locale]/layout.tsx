@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Outfit } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
+import { Header } from '@/components/navigation/Header';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { Toaster } from '@/components/ui/sonner';
 import { routing } from '@/libs/I18nRouting';
@@ -84,6 +85,7 @@ export default async function RootLayout(props: {
         >
           <NextIntlClientProvider messages={messages}>
             <PostHogProvider>
+              <Header />
               {props.children}
             </PostHogProvider>
           </NextIntlClientProvider>

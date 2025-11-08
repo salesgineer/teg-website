@@ -1,0 +1,29 @@
+task_groups:
+  - name: Foundation - Content Extraction & Preparation
+    claude_code_subagent: research-coordinator
+    standards:
+      - all
+  - name: Component Development - Core UI Components
+    claude_code_subagent: web-dev-worker
+    standards:
+      - all
+  - name: Component Enhancement - Existing Component Updates
+    claude_code_subagent: web-dev-worker
+    standards:
+      - all
+  - name: Page Assembly - Homepage Integration
+    claude_code_subagent: web-dev-worker
+    standards:
+      - all
+  - name: Page Assembly - Service & Detail Pages
+    claude_code_subagent: web-dev-worker
+    standards:
+      - all
+  - name: Page Assembly - About & Contact Pages
+    claude_code_subagent: web-dev-worker
+    standards:
+      - all
+  - name: Quality Assurance & Testing
+    claude_code_subagent: implementation-verifier
+    standards:
+      - all

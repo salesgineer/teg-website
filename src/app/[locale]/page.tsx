@@ -150,7 +150,7 @@ export default function HomePage() {
             {HOMEPAGE_COPY.serviceDetails[2].benefits && (
               <ul className="space-y-2">
                 {HOMEPAGE_COPY.serviceDetails[2].benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-start">
+                  <li key={`benefit-${idx}`} className="flex items-start">
                     <CheckCircle2 className="mt-1 mr-2 h-5 w-5 shrink-0 text-primary" />
                     <span>{benefit}</span>
                   </li>

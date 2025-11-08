@@ -221,6 +221,7 @@ export const ABOUT_PAGE_COPY = {
     'Komanda izmanto kvalificētu profesionālo aprīkojumu, sadarbojas ar nozares speciālistiem un automobiļu datubāzēm, lai sniegtu kvalitatīvus, drošus un uzticamus pakalpojumus.',
     'Grupa palīdz klientiem atrast transportlīdzekļus, kas atbilst viņu vēlmēm un budžetam, veic rūpīgas pārbaudes un piedāvā dokumentācijas palīdzību - visu to, kamēr klienti var palikt mājās.',
   ],
+  closing: 'Transporta ekspertu grupa',
   contact: {
     phone: '+371 25201710',
     phoneHref: 'tel:+37125201710',
@@ -259,6 +260,7 @@ export const SERVICES_PAGE_COPY = {
 
   disclaimer: {
     main: 'Faktiskie izmaksas mainās atkarībā no transportlīdzekļa gada, markas, modeļa un defekta sarežģītības. Klienti tiek mudināti sazināties ar uzņēmumu par konkrētu cenu jautājumiem. Standarta cenas neietver PVN.',
+    tax: 'Standarta cenas neietver PVN.',
   },
 
   contact: {
@@ -296,6 +298,8 @@ export const CAR_PURCHASE_PAGE_COPY = {
   gallery: {
     description: 'Plaša foto galerija, kas demonstrē viņu darbu, parādot dažādas transportlīdzekļu pārbaudes, diagnostikas aprīkojumu, mērīšanas rīkus un analīzes pārskatus no dažādiem transportlīdzekļiem.',
   },
+
+  galleryNote: 'Galerija tiek regulāri atjaunināta ar jaunākajiem pārbaudes piemēriem.',
 
   instagram: {
     cta: 'SEKO MŪSU INSTAGRAM, MŪSU DARBU PAPILDUS GALERIJAS:',
@@ -339,6 +343,52 @@ export const CONTACT_PAGE_COPY = {
       tiktok: '@teg.auto',
       facebook: 'Transportaekspertugrupa',
     },
+    facebook: {
+      url: 'https://www.facebook.com/Transportaekspertugrupa',
+      handle: 'Transportaekspertugrupa',
+    },
+    instagram: {
+      url: 'https://www.instagram.com/teg.auto/',
+      handle: '@teg.auto',
+      bio: 'Neatkarīgi auto eksperti. Pārbaudām auto pirms pirkuma visā Eiropā.',
+      followers: '2.5K+',
+      likes: '15K+',
+    },
+    tiktok: {
+      url: 'https://www.tiktok.com/@teg.auto',
+      handle: '@teg.auto',
+      buttonText: 'Sekot TikTok',
+    },
+  },
+
+  testimonials: {
+    title: 'Ko saka mūsu klienti',
+    items: [
+      {
+        id: 'testimonial-1',
+        name: 'Jānis K.',
+        text: 'Pateicos par ātro un profesionālo pārbaudi. Palīdzējāt izvairīties no sliktas pirkuma!',
+        review: 'Pateicos par ātro un profesionālo pārbaudi. Palīdzējāt izvairīties no sliktas pirkuma!',
+        timeAgo: '2 nedēļas atpakaļ',
+        rating: 5,
+      },
+      {
+        id: 'testimonial-2',
+        name: 'Līga M.',
+        text: 'Detalizēts pārskats ar bildēm. Ļoti noderīgi pirms lēmuma pieņemšanas.',
+        review: 'Detalizēts pārskats ar bildēm. Ļoti noderīgi pirms lēmuma pieņemšanas.',
+        timeAgo: '1 mēnesi atpakaļ',
+        rating: 5,
+      },
+      {
+        id: 'testimonial-3',
+        name: 'Andris P.',
+        text: 'Profesionāla komanda, ātri atbildēja uz visiem jautājumiem. Ieteicu!',
+        review: 'Profesionāla komanda, ātri atbildēja uz visiem jautājumiem. Ieteicu!',
+        timeAgo: '3 nedēļas atpakaļ',
+        rating: 5,
+      },
+    ],
   },
 
   form: {
