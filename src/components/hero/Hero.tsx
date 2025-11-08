@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CoverageBadge } from './CoverageBadge';
-import { ElectricalParticles } from './ElectricalParticles';
 import { HeroEyebrow } from './HeroEyebrow';
 import { HeroMediaCard } from './HeroMediaCard';
 import { HeroStatsGrid } from './HeroStatsGrid';
@@ -114,7 +113,11 @@ export function Hero({
         <h1
           className={cn(
             'text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl',
-            'text-foreground dark:text-white',
+            'text-foreground',
+            'drop-shadow-[0_2px_12px_rgba(0,0,0,0.15)]',
+            'dark:text-white',
+            'dark:drop-shadow-[0_2px_16px_rgba(255,255,255,0.25)]',
+            'dark:[text-shadow:0_0_20px_rgba(255,255,255,0.3)]',
             titleUppercase && 'uppercase',
             isSplitLayout && 'text-left',
           )}
@@ -130,13 +133,17 @@ export function Hero({
       <h1
         className={cn(
           'mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl',
-          'text-foreground dark:text-white',
+          'text-foreground',
+          'drop-shadow-[0_2px_12px_rgba(0,0,0,0.15)]',
+          'dark:text-white',
+          'dark:drop-shadow-[0_2px_16px_rgba(255,255,255,0.25)]',
+          'dark:[text-shadow:0_0_20px_rgba(255,255,255,0.3)]',
           titleUppercase && 'uppercase',
           isSplitLayout && 'text-left',
         )}
       >
         {parts[0]}
-        <span className="text-primary">{highlightText}</span>
+        <span className="text-primary drop-shadow-[0_2px_12px_rgba(var(--primary),0.4)] dark:[text-shadow:0_0_20px_rgba(var(--primary),0.5)]">{highlightText}</span>
         {parts[1]}
       </h1>
     );
@@ -154,59 +161,20 @@ export function Hero({
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
-        {/* Theme-aware animated overlay */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Base gradient overlay - using theme colors for proper contrast */}
-          <div
-            className={cn(
-              'absolute inset-0 transition-colors duration-500',
-              'bg-gradient-to-br from-foreground/40 via-foreground/45 to-foreground/40',
-              'dark:from-background/90 dark:via-background/85 dark:to-background/90',
-            )}
-          />
-          {/* Animated gradient overlay - subtle primary color in light mode */}
-          <div
-            className={cn(
-              'absolute inset-0 animate-gradient-shift',
-              'opacity-20 dark:opacity-30',
-              'bg-gradient-to-br from-primary/12 via-primary/8 to-primary/12',
-              'dark:from-primary/22.5 dark:via-primary/15 dark:to-primary/22.5',
-            )}
-          />
-          {/* Shimmer effect - subtle light shimmer in light mode */}
-          <div
-            className={cn(
-              'absolute inset-0 animate-shimmer',
-              'bg-gradient-to-r from-transparent via-primary/4 to-transparent',
-              'dark:via-white/3.75',
-            )}
-          />
-          {/* Electrical particle effects */}
-          <ElectricalParticles className="absolute inset-0" />
-          {/* Additional subtle color accent - chart colors for vibrancy in light mode */}
-          <div
-            className={cn(
-              'absolute inset-0 animate-gradient-shift',
-              'opacity-10',
-              'bg-gradient-to-tl from-chart-2/8 via-transparent to-chart-4/6',
-              'dark:hidden',
-            )}
-            style={{
-              animationDuration: '20s',
-              animationDirection: 'reverse',
-            }}
-          />
-        </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8">
-          {renderTitle()}
+        <div className="relative z-10 container mx-auto px-4 py-32 text-center sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl space-y-8">
+            <div className="py-8">
+              {renderTitle()}
+            </div>
 
-          {subtitle && (
-            <p className="mx-auto mb-8 max-w-2xl text-lg text-foreground/90 sm:text-xl dark:text-gray-200">
-              {subtitle}
-            </p>
-          )}
+            {subtitle && (
+              <p className="mt-8 mb-8 text-xl font-medium tracking-wide text-foreground/95 sm:text-2xl md:text-3xl dark:text-gray-100">
+                {subtitle}
+              </p>
+            )}
+          </div>
 
           {/* Option B: Social Proof Elements */}
           {hasSocialProof && (
@@ -283,49 +251,6 @@ export function Hero({
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
-      {/* Theme-aware animated overlay */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Base gradient overlay - using theme colors for proper contrast */}
-        <div
-          className={cn(
-            'absolute inset-0 transition-colors duration-500',
-            'bg-gradient-to-br from-foreground/40 via-foreground/45 to-foreground/40',
-            'dark:from-background/90 dark:via-background/85 dark:to-background/90',
-          )}
-        />
-        {/* Animated gradient overlay - subtle primary color in light mode */}
-        <div
-          className={cn(
-            'absolute inset-0 animate-gradient-shift',
-            'opacity-20 dark:opacity-30',
-            'bg-gradient-to-br from-primary/12 via-primary/8 to-primary/12',
-            'dark:from-primary/22.5 dark:via-primary/15 dark:to-primary/22.5',
-          )}
-        />
-        {/* Shimmer effect - subtle light shimmer in light mode */}
-        <div
-          className={cn(
-            'absolute inset-0 animate-shimmer',
-            'bg-gradient-to-r from-transparent via-primary/4 to-transparent',
-            'dark:via-white/3.75',
-          )}
-        />
-        {/* Electrical particle effects */}
-        <ElectricalParticles className="absolute inset-0" />
-        {/* Additional subtle color accent - chart colors for vibrancy in light mode */}
-        <div
-          className={cn(
-            'absolute inset-0 animate-gradient-shift',
-            'opacity-10',
-            'bg-gradient-to-tl from-chart-2/8 via-transparent to-chart-4/6',
-            'dark:hidden',
-          )}
-          style={{
-            animationDuration: '20s',
-            animationDirection: 'reverse',
-          }}
-        />
-      </div>
 
       {/* Content - Split Layout */}
       <div className="relative z-10 container mx-auto px-4 py-[114px] sm:px-6 lg:px-8">
@@ -336,13 +261,13 @@ export function Hero({
             {eyebrow && <div className="mb-6"><HeroEyebrow text={eyebrow.text} showStar={eyebrow.showStar} /></div>}
 
             {/* Title with Highlight */}
-            <div className="mb-8 w-full text-center lg:text-left">
+            <div className="mb-12 w-full py-8 text-center lg:text-left">
               {renderTitle()}
             </div>
 
             {/* Subtitle */}
             {subtitle && (
-              <p className="mb-10 w-full max-w-[70%] text-center text-lg text-foreground/90 sm:text-xl lg:text-left dark:text-gray-200">
+              <p className="mb-10 w-full max-w-[70%] text-center text-xl font-medium tracking-wide text-foreground/95 sm:text-2xl md:text-3xl lg:text-left dark:text-gray-100">
                 {subtitle}
               </p>
             )}

@@ -3,7 +3,6 @@ import { Search, Shield, Wrench } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/hero/Hero';
 import { RoadsideAssistanceCTA } from '@/components/hero/RoadsideAssistanceCTA';
-import { RoadsideAssistanceCTATest } from '@/components/hero/RoadsideAssistanceCTATest';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { Separator } from '@/components/ui/separator';
 
@@ -62,12 +61,7 @@ export default async function Homepage(props: IIndexProps) {
         }}
       />
 
-      {/* TEST: Simple inline styles version */}
-      <div className="container mx-auto px-4 py-4 sm:px-6 lg:px-8">
-        <RoadsideAssistanceCTATest />
-      </div>
-
-      {/* TEST: Component version */}
+      {/* Roadside Assistance CTA */}
       <div className="container mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <RoadsideAssistanceCTA
           phone={roadsidePhone}

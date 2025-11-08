@@ -28,7 +28,7 @@ export default function HomePage() {
       {/* Section 1: Hero with Modern Split Layout */}
       <Hero
         layout="split"
-        backgroundImage="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&h=1080&fit=crop&q=80"
+        backgroundImage="/images/dmitry-timofeew-UU18rjWiQmo-unsplash.jpg"
         overlayOpacity="dark"
         titleUppercase={false}
         title={HOMEPAGE_COPY.hero.headline}
