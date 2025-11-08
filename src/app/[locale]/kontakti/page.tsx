@@ -182,21 +182,31 @@ export default function ContactPage() {
         <div className="mb-16">
           <InstagramFeedSection
             handle={CONTACT_PAGE_COPY.socialMedia.instagram.handle}
+            profileUrl={CONTACT_PAGE_COPY.socialMedia.instagram.url}
             posts={[
               {
-                imageUrl: '/images/instagram-placeholder-1.jpg',
-                caption: 'Auto inspection',
-                link: CONTACT_PAGE_COPY.socialMedia.instagram.url,
+                // TODO: Add actual image URL - Instagram requires API access to fetch images from post URLs
+                // To get image URL manually: Open the post URL below in browser → right-click image → "Copy image address"
+                imageUrl: 'https://picsum.photos/seed/instagram-post-1/400/400', // Replace with actual Instagram image URL
+                caption: 'Instagram post caption', // Update with actual caption
+                postUrl: 'https://www.instagram.com/teg.auto/p/DO6TgerCB28/',
+                authorName: 'teg.auto',
               },
               {
-                imageUrl: '/images/instagram-placeholder-2.jpg',
-                caption: 'Quality check',
-                link: CONTACT_PAGE_COPY.socialMedia.instagram.url,
+                // TODO: Add actual image URL - Instagram requires API access to fetch images from post URLs
+                // To get image URL manually: Open the post URL below in browser → right-click image → "Copy image address"
+                imageUrl: 'https://picsum.photos/seed/instagram-post-2/400/400', // Replace with actual Instagram image URL
+                caption: 'Instagram post caption', // Update with actual caption
+                postUrl: 'https://www.instagram.com/teg.auto/p/DM-FjY4CKw3/',
+                authorName: 'teg.auto',
               },
               {
-                imageUrl: '/images/instagram-placeholder-3.jpg',
-                caption: 'Professional service',
-                link: CONTACT_PAGE_COPY.socialMedia.instagram.url,
+                // TODO: Add actual image URL - Instagram requires API access to fetch images from post URLs
+                // To get image URL manually: Open the post URL below in browser → right-click image → "Copy image address"
+                imageUrl: 'https://picsum.photos/seed/instagram-reel/400/400', // Replace with actual Instagram image URL
+                caption: 'Instagram reel caption', // Update with actual caption
+                postUrl: 'https://www.instagram.com/teg.auto/reel/CuMFIhkuLDT/',
+                authorName: 'teg.auto',
               },
             ]}
           />

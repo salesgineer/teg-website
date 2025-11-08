@@ -17,8 +17,8 @@ describe('InstagramFeedSection', () => {
 
   it('renders custom posts when provided', async () => {
     const customPosts = [
-      { imageUrl: '/post1.jpg', caption: 'Post 1', link: 'https://test.com/1' },
-      { imageUrl: '/post2.jpg', caption: 'Post 2', link: 'https://test.com/2' },
+      { imageUrl: '/post1.jpg', caption: 'Post 1', postUrl: 'https://test.com/1' },
+      { imageUrl: '/post2.jpg', caption: 'Post 2', postUrl: 'https://test.com/2' },
     ];
     const screen = await render(<InstagramFeedSection handle="teg.auto" posts={customPosts} />);
 

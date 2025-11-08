@@ -49,7 +49,7 @@ export default function CarPurchasePage() {
       />
 
       {/* Service Description Section */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-6 text-center text-3xl font-bold md:text-4xl">
@@ -112,7 +112,7 @@ export default function CarPurchasePage() {
       </section>
 
       {/* Image Gallery Section */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">
             Mūsu pārbaudes process bildēs

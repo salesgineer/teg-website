@@ -29,7 +29,7 @@ export function ServiceDetailSection({
   ctaHref = '/kontakti',
   backgroundColor = 'white',
 }: ServiceDetailSectionProps) {
-  const bgClass = backgroundColor === 'muted' ? 'bg-muted' : 'bg-white';
+  const bgClass = backgroundColor === 'muted' ? 'bg-muted' : 'bg-background';
 
   return (
     <section className={`py-16 md:py-24 ${bgClass}`}>

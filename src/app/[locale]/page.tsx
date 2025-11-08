@@ -1,19 +1,21 @@
 import {
-  AlertCircle,
   Car,
-  CheckCircle2,
+  CarFront,
   ClipboardCheck,
+  Cog,
+  Droplets,
   FileText,
   Globe,
+  Hash,
   Search,
   Wrench,
+  Zap,
 } from 'lucide-react';
 import { AntiFraudSection } from '@/components/anti-fraud/AntiFraudSection';
 import { DarkFooterWithForm } from '@/components/footer/DarkFooterWithForm';
 import { Hero } from '@/components/hero/Hero';
 import { InspectionCategoriesGrid } from '@/components/inspection/InspectionCategoriesGrid';
 import { ServiceCard } from '@/components/services/ServiceCard';
-import { ServiceDetailSection } from '@/components/services/ServiceDetailSection';
 import { InstagramFeedSection } from '@/components/social/InstagramFeedSection';
 import { ValuePropositionGrid } from '@/components/value-proposition/ValuePropositionGrid';
 import { HOMEPAGE_COPY } from '@/lib/constants/copy';
@@ -21,7 +23,7 @@ import { HOMEPAGE_COPY } from '@/lib/constants/copy';
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      {/* Section 1: Hero with Dark Overlay */}
+      {/* Section 1: Hero with Dark Overlay - Option B: Social Proof Hero */}
       <Hero
         backgroundImage="/images/hero-car.jpg"
         overlayOpacity="dark"
@@ -32,10 +34,90 @@ export default function HomePage() {
           text: HOMEPAGE_COPY.hero.ctaText,
           href: HOMEPAGE_COPY.hero.ctaHref,
         }}
+        // Option B: Social Proof Elements
+        testimonials={{
+          overallRating: HOMEPAGE_COPY.testimonials.overallRating,
+          reviewCount: HOMEPAGE_COPY.testimonials.reviewCount,
+          featuredTestimonial: HOMEPAGE_COPY.testimonials.featured,
+        }}
+        coverageBadge={{
+          text: 'Pieejami visā Eiropā',
+        }}
+        phoneNumber={{
+          display: '+371 25 201 710',
+          href: 'tel:+37125201710',
+          whatsapp: {
+            href: 'https://wa.me/37125201710',
+            text: 'WhatsApp',
+          },
+        }}
         className="min-h-screen"
       />
 
-      {/* Section 2: Value Proposition Grid (4 columns) */}
+      {/* Section 2: Three Service Cards (Photo Backgrounds) */}
+      <section className="bg-background py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start">
+            {/* Left: Auto meklēšana un piegāde */}
+            <ServiceCard
+              icon={Wrench}
+              title={HOMEPAGE_COPY.serviceCards[1].title}
+              description={HOMEPAGE_COPY.serviceCards[1].description}
+              price="No €350"
+              features={[
+                'Auto meklēšana pēc jūsu prasībām',
+                'Pilna tehniskā pārbaude',
+                'Piegāde līdz durvīm',
+                'Dokumentu noformēšanas palīdzība',
+                'Sarunu process ar pārdevēju',
+                'Viss, kamēr tu vari palikt mājās',
+              ]}
+              ctaText={HOMEPAGE_COPY.serviceCards[1].ctaText}
+              ctaHref={HOMEPAGE_COPY.serviceCards[1].ctaHref}
+              backgroundImage="/images/service-purchase.jpg"
+            />
+            {/* Middle: Pamatpārbaude (Most Popular) */}
+            <ServiceCard
+              icon={Car}
+              title={HOMEPAGE_COPY.serviceCards[0].title}
+              description={HOMEPAGE_COPY.serviceCards[0].description}
+              price="No €100"
+              variant="featured"
+              features={[
+                'Dzinēja diagnostika ar profesionālu aprīkojumu',
+                'VIN vēstures pārbaude vairākās datubāzēs',
+                'Virsbūves un krāsojuma inspekcija',
+                'Detalizēts pārskats ar fotogrāfijām',
+                'Ekspertu atzinums par auto stāvokli',
+                'Pārbaude visā Eiropā',
+              ]}
+              ctaText={HOMEPAGE_COPY.serviceCards[0].ctaText}
+              ctaHref={HOMEPAGE_COPY.serviceCards[0].ctaHref}
+              backgroundImage="/images/service-inspection.jpg"
+            />
+            {/* Right: Mobilais serviss */}
+            <ServiceCard
+              icon={Globe}
+              title={HOMEPAGE_COPY.serviceCards[2].title}
+              description={HOMEPAGE_COPY.serviceCards[2].description}
+              price="No €30"
+              features={[
+                'Kļūdu diagnostika un dzēšana',
+                'Akumulatora testēšana un maiņa',
+                'ECU programmēšana un kodēšana',
+                'Atslēgu izgatavošana un remonts',
+                'Palīdzība pie riepas punktēšanas',
+                'Bremžu un dzinēja remonti uz vietas',
+              ]}
+              ctaText={HOMEPAGE_COPY.serviceCards[2].ctaText}
+              ctaHref={HOMEPAGE_COPY.serviceCards[2].ctaHref}
+              backgroundImage="/images/service-europe.jpg"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Value Proposition Grid (How it works) */}
       <ValuePropositionGrid
         headline={HOMEPAGE_COPY.valueProposition.headline}
         items={[
@@ -57,49 +139,26 @@ export default function HomePage() {
         ]}
       />
 
-      {/* Section 3: Three Service Cards (Photo Backgrounds) */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <ServiceCard
-              icon={Car}
-              title={HOMEPAGE_COPY.serviceCards[0].title}
-              description={HOMEPAGE_COPY.serviceCards[0].description}
-              price="No €100"
-              ctaText={HOMEPAGE_COPY.serviceCards[0].ctaText}
-              ctaHref={HOMEPAGE_COPY.serviceCards[0].ctaHref}
-              backgroundImage="/images/service-inspection.jpg"
-            />
-            <ServiceCard
-              icon={Wrench}
-              title={HOMEPAGE_COPY.serviceCards[1].title}
-              description={HOMEPAGE_COPY.serviceCards[1].description}
-              price="No €350"
-              ctaText={HOMEPAGE_COPY.serviceCards[1].ctaText}
-              ctaHref={HOMEPAGE_COPY.serviceCards[1].ctaHref}
-              backgroundImage="/images/service-purchase.jpg"
-            />
-            <ServiceCard
-              icon={Globe}
-              title={HOMEPAGE_COPY.serviceCards[2].title}
-              description={HOMEPAGE_COPY.serviceCards[2].description}
-              price="Visa Eiropa"
-              ctaText={HOMEPAGE_COPY.serviceCards[2].ctaText}
-              ctaHref={HOMEPAGE_COPY.serviceCards[2].ctaHref}
-              backgroundImage="/images/service-europe.jpg"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* Section 4: Inspection Categories Grid (6 boxes + CTA) */}
       <InspectionCategoriesGrid
         headline={HOMEPAGE_COPY.inspectionCategories.headline}
-        categories={HOMEPAGE_COPY.inspectionCategories.categories.map(category => ({
-          icon: <CheckCircle2 className="h-8 w-8 text-primary" />,
-          title: category.title,
-          items: [...category.items],
-        }))}
+        categories={HOMEPAGE_COPY.inspectionCategories.categories.map((category, index) => {
+          // Map each category to an appropriate icon
+          const iconMap = [
+            <Cog className="h-10 w-10 text-primary" key="engine" />, // Dzinējs (Engine)
+            <Hash className="h-10 w-10 text-primary" key="vin" />, // Šasijas numurs (VIN)
+            <CarFront className="h-10 w-10 text-primary" key="body" />, // Virsbūve un salons (Body)
+            <Droplets className="h-10 w-10 text-primary" key="fluids" />, // Tehniskie šķidrumi (Fluids)
+            <Car className="h-10 w-10 text-primary" key="suspension" />, // Balstiekārta (Suspension)
+            <Zap className="h-10 w-10 text-primary" key="electrical" />, // Elektroapgāde (Electrical)
+          ];
+          return {
+            icon: iconMap[index],
+            title: category.title,
+            description: category.description,
+            items: [...category.items],
+          };
+        })}
         ctaText={HOMEPAGE_COPY.inspectionCategories.ctaText}
         ctaHref={HOMEPAGE_COPY.inspectionCategories.ctaHref}
       />
@@ -107,75 +166,42 @@ export default function HomePage() {
       {/* Section 5: Anti-Fraud Educational Section (6 tactics, alternating bg) */}
       <AntiFraudSection
         headline={HOMEPAGE_COPY.antiFraud.headline}
-        tactics={HOMEPAGE_COPY.antiFraud.tactics.map(tactic => ({
-          icon: <AlertCircle className="h-12 w-12 text-destructive" />,
-          title: tactic.title,
-          description: tactic.description,
-        }))}
+        tactics={HOMEPAGE_COPY.antiFraud.tactics}
       />
 
-      {/* Section 6: Service Detail 1 - Pre-Purchase Inspection (Image Left, White BG) */}
-      <ServiceDetailSection
-        image="/images/inspection-detail.jpg"
-        imageAlt="Pre-purchase car inspection service"
-        imagePosition="left"
-        title={HOMEPAGE_COPY.serviceDetails[0].title}
-        description={HOMEPAGE_COPY.serviceDetails[0].description}
-        ctaText={HOMEPAGE_COPY.serviceDetails[0].ctaText}
-        ctaHref={HOMEPAGE_COPY.serviceDetails[0].ctaHref}
-        backgroundColor="white"
-      />
-
-      {/* Section 7: Service Detail 2 - Car Search & Delivery (Image Right, Gray BG) */}
-      <ServiceDetailSection
-        image="/images/car-search-detail.jpg"
-        imageAlt="Car search and delivery service"
-        imagePosition="right"
-        title={HOMEPAGE_COPY.serviceDetails[1].title}
-        description={HOMEPAGE_COPY.serviceDetails[1].description}
-        ctaText={HOMEPAGE_COPY.serviceDetails[1].ctaText}
-        ctaHref={HOMEPAGE_COPY.serviceDetails[1].ctaHref}
-        backgroundColor="muted"
-      />
-
-      {/* Section 8: Service Detail 3 - Mobile Roadside Service (Image Left, White BG) */}
-      <ServiceDetailSection
-        image="/images/roadside-service-detail.jpg"
-        imageAlt="Mobile roadside service"
-        imagePosition="left"
-        title={HOMEPAGE_COPY.serviceDetails[2].title}
-        description={(
-          <>
-            <p className="mb-4">{HOMEPAGE_COPY.serviceDetails[2].description}</p>
-            {HOMEPAGE_COPY.serviceDetails[2].benefits && (
-              <ul className="space-y-2">
-                {HOMEPAGE_COPY.serviceDetails[2].benefits.map((benefit, idx) => (
-                  <li key={`benefit-${idx}`} className="flex items-start">
-                    <CheckCircle2 className="mt-1 mr-2 h-5 w-5 shrink-0 text-primary" />
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {HOMEPAGE_COPY.serviceDetails[2].pricing && (
-              <p className="mt-6 text-4xl font-bold text-primary md:text-5xl">
-                {HOMEPAGE_COPY.serviceDetails[2].pricing}
-              </p>
-            )}
-          </>
-        )}
-        ctaText={HOMEPAGE_COPY.serviceDetails[2].ctaText}
-        ctaHref={HOMEPAGE_COPY.serviceDetails[2].ctaHref}
-        backgroundColor="white"
-      />
-
-      {/* Section 9: Instagram Feed Integration */}
+      {/* Section 6: Instagram Feed Integration */}
       <InstagramFeedSection
         handle={HOMEPAGE_COPY.instagram.handle}
         profileUrl={HOMEPAGE_COPY.instagram.profileUrl}
+        posts={[
+          {
+            // TODO: Add actual image URL - Instagram requires API access to fetch images from post URLs
+            // To get image URL manually: Open the post URL below in browser → right-click image → "Copy image address"
+            imageUrl: 'https://picsum.photos/seed/instagram-post-1/400/400', // Replace with actual Instagram image URL
+            caption: 'Instagram post caption', // Update with actual caption
+            postUrl: 'https://www.instagram.com/teg.auto/p/DO6TgerCB28/',
+            authorName: 'teg.auto',
+          },
+          {
+            // TODO: Add actual image URL - Instagram requires API access to fetch images from post URLs
+            // To get image URL manually: Open the post URL below in browser → right-click image → "Copy image address"
+            imageUrl: 'https://picsum.photos/seed/instagram-post-2/400/400', // Replace with actual Instagram image URL
+            caption: 'Instagram post caption', // Update with actual caption
+            postUrl: 'https://www.instagram.com/teg.auto/p/DM-FjY4CKw3/',
+            authorName: 'teg.auto',
+          },
+          {
+            // TODO: Add actual image URL - Instagram requires API access to fetch images from post URLs
+            // To get image URL manually: Open the post URL below in browser → right-click image → "Copy image address"
+            imageUrl: 'https://picsum.photos/seed/instagram-reel/400/400', // Replace with actual Instagram image URL
+            caption: 'Instagram reel caption', // Update with actual caption
+            postUrl: 'https://www.instagram.com/teg.auto/reel/CuMFIhkuLDT/',
+            authorName: 'teg.auto',
+          },
+        ]}
       />
 
-      {/* Section 10: Dark Footer with Form */}
+      {/* Section 7: Dark Footer with Form */}
       <DarkFooterWithForm
         headline={HOMEPAGE_COPY.darkFooterForm.headline}
         introText={HOMEPAGE_COPY.darkFooterForm.introText}

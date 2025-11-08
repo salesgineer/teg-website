@@ -25,16 +25,16 @@ export const HOMEPAGE_COPY = {
     headline: 'KĀ TAS STRĀDĀ?',
     items: [
       {
-        title: 'Klients atrod vēlamo transportlīdzekli',
-        description: 'Tu izvēlies auto, kas tev interesē, un sazinies ar mums.',
+        title: 'Tu atrodi vēlamo auto',
+        description: 'Tu izvēlies transportlīdzekli, kas tev interesē, un vienkārši sazinies ar mums. Nav nepieciešams nekur braukt.',
       },
       {
-        title: 'Eksperts pārbauda un dokumentē auto',
-        description: 'Mēs atbraucam un veicam detalizētu tehnisko pārbaudi ar profesionālu aprīkojumu.',
+        title: 'Mēs pārbaudām un dokumentējam',
+        description: 'Mūsu eksperts atbrauc uz auto atrašanās vietu un veic detalizētu tehnisko pārbaudi ar profesionālu aprīkojumu. Tu vari palikt mājās.',
       },
       {
-        title: 'Klients saņem vispusīgu informāciju pirms pirkuma lēmuma',
-        description: 'Tu saņem pilnu ziņojumu ar fotogrāfijām un ekspertu atzinumu par auto stāvokli.',
+        title: 'Tu saņem pilnu informāciju',
+        description: 'Tu saņem detalizētu ziņojumu ar fotogrāfijām un ekspertu atzinumu par auto stāvokli. Tagad tu vari pieņemt informētu lēmumu.',
       },
     ],
   },
@@ -70,46 +70,64 @@ export const HOMEPAGE_COPY = {
     categories: [
       {
         title: 'Dzinējs',
+        description: 'Dzinēja vizuāla apskate un datoru diagnostika, lai identificētu eļļas noplūžas, trokšņus, sensoru un sprauslu darbības nepilnības.',
         items: [
-          'Vizuāla apskate',
-          'Datoru diagnostika',
-          'Sensoru testēšana',
+          'Datordiagnostika ar profesionālu aprīkojumu visu dzinēja parametru novērtēšanai',
+          'Visu elektrobloku skenēšana, lai identificētu kļūdu kodus un sistēmu stāvokli',
+          'Sprauslu darbības un efektivitātes pārbaude degvielas iesmidzināšanas sistēmā',
+          'Sensoru darbības un reakcijas pārbaude visās dzinēja sistēmās',
+          'Hybrid elektromotora un baterijas pārbaude elektrisko komponentu stāvokļa novērtēšanai',
         ],
       },
       {
         title: 'Šasijas numurs',
+        description: 'Šasijas numura pārbaude vairākās starptautiskās un vietējās datu bāzēs, lai identificētu transportlīdzekļa vēsturi.',
         items: [
-          'Verifikācija vairākās datubāzēs',
+          'CarVertical/AutoDna starptautiskās datu bāzes pārbaude par negadījumiem, nobraukumu un īpašnieku vēsturi',
+          'Dīler centru un ražotāju datu bāzēs glabātā servisa vēsture un garantijas informācija',
+          'LTAB apdrošināšanas prasību un negadījumu vēstures pārbaude',
+          'CSDD oficiālā reģistrācijas un tehniskās pārbaudes vēsture',
+          'Izsoles ieraksti, lai identificētu iespējamo negadījumu vai remonta vēsturi',
         ],
       },
       {
-        title: 'Virsbūve un interjers',
+        title: 'Virsbūve un salons',
+        description: 'Virsbūves un salona elementu vispusīga pārbaude, lai novērtētu transportlīdzekļa stāvokli un identificētu iespējamos bojājumus vai remontus.',
         items: [
-          'Krāsas biezuma mērīšana',
-          'Apdares stāvoklis',
-          'Stiklu pārbaude',
+          'Krāsas biezuma mērīšana, virsbūves un salona elementu pārbaude, lai atklātu remonta vai CSN pēdas un novērtētu auto stāvokli',
+          'Salona elementu, aprīkojuma un drošības jostu stāvokļa un funkcionalitātes pārbaude',
+          'Stiklojuma un ārējās optikas atbilstības pārbaude normatīvajiem standartiem',
+          'Komplektācijas atbilstības VIN numuram pārbaude, lai identificētu iespējamas izmaiņas',
         ],
       },
       {
         title: 'Tehniskie šķidrumi',
+        description: 'Tehnisko šķidrumu kvalitātes un līmeņu pārbaude, lai novērtētu transportlīdzekļa apkopes stāvokli un drošību.',
         items: [
-          'Bremžu šķidruma kvalitāte',
-          'Šķidrumu līmeņu pārbaude',
+          'Bremžu eļļas kvalitātes un līmeņa pārbaude bremžu sistēmas drošībai',
+          'Dzinēja eļļas kvalitātes un līmeņa novērtējums dzinēja aizsardzībai',
+          'Dzesēšanas šķidruma kvalitātes un līmeņa pārbaude optimālai dzesēšanai',
+          'Transmisijas eļļas kvalitātes un līmeņa pārbaude pārnesumkārbas darbībai',
+          'Stūres pastiprinātāja eļļas līmeņa pārbaude stūres sistēmas funkcionalitātei',
         ],
       },
       {
         title: 'Balstiekārta',
+        description: 'Balstiekārtas, bremžu sistēmas un riepu stāvokļa novērtējums ar testa braucienu un vizuālu apskati.',
         items: [
-          'Testa brauciens',
-          'Riepu protektora dziļums',
-          'Bremžu stāvokļa novērtējums',
+          'Riepu protektora atlikuma mērīšana un nodiluma vienmērīguma novērtējums',
+          'Bremžu disku un uzliku stāvokļa pārbaude, lai novērtētu nodilumu un efektivitāti',
+          'Stūres un amortizācijas sistēmas stāvokļa novērtējums ar testa braucienu',
+          'Balstiekārtas komponentu un savienojumu pārbaude drošībai un komfortam',
         ],
       },
       {
-        title: 'Elektriskās sistēmas',
+        title: 'Elektroapgāde',
+        description: 'Elektroapgādes sistēmas, akumulatora un lādēšanas mehānismu pārbaude, lai nodrošinātu drošu un uzticamu darbību.',
         items: [
-          'Akumulatora stāvoklis',
-          'Uzlādes sistēmas verifikācija',
+          'Akumulatora baterijas stāvokļa un uzlādes līmeņa novērtējums',
+          'Lādēšanas sistēmas un ģeneratora darbības efektivitātes pārbaude',
+          'Startera sistēmas un elektroinstalācijas stāvokļa pārbaude',
         ],
       },
     ],
@@ -119,24 +137,28 @@ export const HOMEPAGE_COPY = {
     headline: 'KRĀPNIEKU PAŅĒMIENI:',
     tactics: [
       {
-        title: 'Odométra verifikācija',
-        description: 'Lai atklātu nobraukuma viltošanu',
+        title: 'Patiesā nobraukuma koriģēšana',
+        description: 'Mainot odometra rādījumu, pārdevējs negodīgi palielina automašīnas vērtību, bet samazina tās mezglu ekspluatācijas mūžu.',
       },
       {
-        title: 'Slēptu negadījumu bojājumu identificēšana',
-        description: 'Ar sliktu remontu',
+        title: 'Slēptas negadījumu pēdas',
+        description: 'Lielākoties, remonts veikts nekvalitatīvi, šādi auto nav droši un ekspluatācijā var radīt lielas problēmas.',
       },
       {
-        title: 'Atspējotu drošības sistēmu noteikšana',
-        description: 'Pārbaude, vai visas drošības sistēmas darbojas pareizi',
+        title: 'Bojātas drošību sistēmas',
+        description: 'Drošības sistēmu remonts ir ļoti dārgs. Retais pēc negadījumiem šo sistēmu atjauno, tā vietā programmē un "prasmīgi" paslēpj tās nepilnības, auto padarot nedrošu.',
       },
       {
-        title: 'Slēptu dzinēja defektu atklāšana',
-        description: 'Detalizēta dzinēja diagnostika',
+        title: 'Dzinēja kļūmju slēpšana',
+        description: 'Vairums slēptos defektus var konstatēt tikai ar atbilstošas diagnostikas izmantošanu.',
       },
       {
-        title: 'Viltotu dokumentu un servisa vēstures pārbaude',
-        description: 'Dokumentācijas verifikācija',
+        title: 'Patiesais gads un komplektācija',
+        description: 'Norādot nepatiesu automašīnas ražošanas gadu un komplektāciju, lielisks veids kā pievilināt nezinošu pircēju.',
+      },
+      {
+        title: 'Servisa grāmata un dokumenti',
+        description: 'Fiktīvi aizpildīta servisa grāmata, neatbilstoši pārdošanas un importa dokumenti.',
       },
     ],
   },
@@ -169,6 +191,34 @@ export const HOMEPAGE_COPY = {
     handle: 'teg.auto',
     bio: 'Tehniskā stāvokļa ekspertīze, jebkuras klases un vecuma transportlīdzekliem.',
     profileUrl: 'https://instagram.com/teg.auto',
+  },
+
+  testimonials: {
+    overallRating: 4.8,
+    reviewCount: 200,
+    featured: {
+      quote: 'Pateicos par ātro un profesionālo pārbaudi. Palīdzējāt izvairīties no sliktas pirkuma!',
+      author: 'Jānis K.',
+      rating: 5,
+    },
+    // Placeholder testimonials - replace with actual Google reviews
+    placeholders: [
+      {
+        quote: 'Detalizēts pārskats ar bildēm. Ļoti noderīgi pirms lēmuma pieņemšanas.',
+        author: 'Līga M.',
+        rating: 5,
+      },
+      {
+        quote: 'Profesionāla komanda, ātri atbildēja uz visiem jautājumiem. Ieteicu!',
+        author: 'Andris P.',
+        rating: 5,
+      },
+      {
+        quote: 'Pārbaude bija ļoti rūpīga, saņēmu pilnu informāciju par auto stāvokli.',
+        author: 'Māris L.',
+        rating: 5,
+      },
+    ],
   },
 
   serviceDetails: [

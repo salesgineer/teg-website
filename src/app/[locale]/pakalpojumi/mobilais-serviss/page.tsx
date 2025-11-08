@@ -21,7 +21,7 @@ export default function MobileRoadServicePage() {
       />
 
       {/* Services List Section */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             {/* Services Grid */}
