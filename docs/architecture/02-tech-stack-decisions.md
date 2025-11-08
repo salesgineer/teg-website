@@ -22,7 +22,7 @@ This strategic approach ensures we start with proven patterns while removing unn
 
 **Decision:** KEEP
 
-**Version:** 16.0+
+**Version:** 16.0.1 (exact: ^16.0.1)
 
 **Rationale:**
 - Latest stable version with all modern features
@@ -99,7 +99,7 @@ This strategic approach ensures we start with proven patterns while removing unn
 
 **Decision:** KEEP
 
-**Version:** 4.x
+**Version:** 4.1.16 (exact: ^4.1.16)
 
 **Rationale:**
 - Rapid UI development without writing CSS
@@ -466,6 +466,247 @@ await resend.emails.send({
 
 ---
 
+## Social Media Integration
+
+### Instagram API Integration
+
+**Decision:** ADD (new)
+
+**Version:** Graph API v18.0+
+
+**Purpose:** Display live social proof and user-generated content from Instagram feed on hero section
+
+**Rationale for Integration:**
+- Social proof increases conversion rates (customers see real testimonials/results)
+- Live Instagram feed demonstrates active business presence
+- User-generated content (customer reviews with photos) builds trust
+- Reduces content creation overhead (leverage customer posts)
+- Automotive services benefit from before/after visual proof
+- Mobile-first users expect social integration
+- Display carousel on hero section as trust signal
+
+**Instagram Graph API Details:**
+
+1. **Authentication Strategy:**
+   - Use Business Account access token (long-lived, 60 days)
+   - Store refresh token securely in Supabase
+   - Implement token refresh 14 days before expiry
+   - OAuth 2.0 flow only needed during initial setup
+
+2. **Access Token Management:**
+   ```typescript
+   // Store in environment variables
+   INSTAGRAM_BUSINESS_ACCOUNT_ID=123456789
+   INSTAGRAM_ACCESS_TOKEN=ig_business_...
+   INSTAGRAM_GRAPH_API_VERSION=v18.0
+   ```
+
+3. **Feed Display Features:**
+   - Carousel component displaying last 6-8 Instagram posts
+   - Placed on hero section (above fold) for maximum visibility
+   - Show: image, caption excerpt, engagement count, link to Instagram
+   - Responsive design (full-width desktop, horizontal scroll mobile)
+   - Loading state with skeleton placeholders
+   - Error fallback (display static message if API unavailable)
+   - Click opens Instagram post in new tab
+
+4. **Data Fetched per Post:**
+   - `id` - Post ID (for direct links)
+   - `caption` - Post description
+   - `media_type` - IMAGE, VIDEO, CAROUSEL_ALBUM
+   - `media_url` - Image/video thumbnail URL
+   - `timestamp` - Post date
+   - `like_count` - Engagement metric
+   - `comments_count` - Engagement metric
+   - `permalink` - Direct link to post on Instagram
+
+5. **Rate Limits and Caching Strategy:**
+   - **API Rate Limit:** 200 calls/hour (sufficient for our use case)
+   - **Caching:** Cache feed data for 4 hours in Supabase
+     - Reduces API calls (max 6 calls/day = well below limits)
+     - Faster page loads (no API latency)
+     - Graceful degradation if Instagram API down
+   - **Cache Table:**
+     ```sql
+     CREATE TABLE instagram_feed_cache (
+       id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+       posts JSONB NOT NULL,
+       cached_at TIMESTAMP DEFAULT NOW(),
+       expires_at TIMESTAMP DEFAULT NOW() + INTERVAL '4 hours'
+     );
+     ```
+   - **Refresh Flow:**
+     - Page load checks cache freshness
+     - If stale (>4 hours), trigger background fetch
+     - Update cache while serving cached data to user
+     - Never block user experience for API latency
+
+6. **Implementation Location:**
+   - Component: `src/components/hero/InstagramFeedCarousel.tsx`
+   - API Route: `src/app/api/instagram/feed.ts` (fetch & cache)
+   - Call during build (ISR) + on-demand revalidation every 4 hours
+
+7. **Error Handling:**
+   ```typescript
+   - Network error: Show cached version or placeholder
+   - Invalid token: Log to Sentry, continue serving site
+   - Rate limited: Wait and retry with exponential backoff
+   - Missing posts: Show "Follow us on Instagram" CTA instead
+   ```
+
+8. **Security Considerations:**
+   - Access token stored in `.env.local` (not committed to git)
+   - Only fetch public posts (use public_content permission)
+   - Sanitize captions (prevent XSS from user text)
+   - No user data collected beyond post metadata
+   - GDPR compliant (no tracking, public data only)
+
+9. **Mobile Optimization:**
+   - Horizontal scroll on mobile (Embla Carousel)
+   - Touch-friendly navigation
+   - Images lazy-loaded with Next.js Image component
+   - Responsive typography for captions
+
+10. **Monitoring:**
+    - Log successful cache hits/misses to PostHog
+    - Track Instagram API errors to Sentry
+    - Monitor engagement metrics (click-through to Instagram)
+    - Alert if feed unavailable for >24 hours
+
+**Integration Code Example:**
+
+```typescript
+// src/app/api/instagram/feed.ts
+import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
+
+const INSTAGRAM_GRAPH_API = 'https://graph.instagram.com/v18.0';
+const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours
+
+export async function GET() {
+  try {
+    // Check cache
+    const { data: cached } = await supabase
+      .from('instagram_feed_cache')
+      .select('posts, cached_at')
+      .single()
+      .order('cached_at', { ascending: false });
+
+    if (cached && Date.now() - new Date(cached.cached_at).getTime() < CACHE_DURATION) {
+      return NextResponse.json(cached.posts);
+    }
+
+    // Fetch fresh data
+    const response = await fetch(
+      `${INSTAGRAM_GRAPH_API}/${process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media?fields=id,caption,media_type,media_url,timestamp,like_count,comments_count&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`
+    );
+
+    const data = await response.json();
+    const posts = data.data.slice(0, 8); // Limit to 8 posts
+
+    // Update cache
+    await supabase.from('instagram_feed_cache').delete().neq('id', 'null');
+    await supabase.from('instagram_feed_cache').insert({ posts });
+
+    return NextResponse.json(posts);
+  } catch (error) {
+    console.error('Instagram feed fetch failed:', error);
+    return NextResponse.json({ error: 'Failed to fetch feed' }, { status: 500 });
+  }
+}
+```
+
+**Frontend Component Example:**
+
+```typescript
+// src/components/hero/InstagramFeedCarousel.tsx
+'use client';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Embla from 'embla-carousel-react';
+import AutoPlay from 'embla-carousel-autoplay';
+
+interface InstagramPost {
+  id: string;
+  caption: string;
+  media_url: string;
+  timestamp: string;
+  like_count: number;
+}
+
+export function InstagramFeedCarousel() {
+  const [posts, setPosts] = useState<InstagramPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/instagram/feed')
+      .then(res => res.json())
+      .then(data => {
+        setPosts(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Failed to load Instagram feed:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <InstagramFeedSkeleton />;
+  if (!posts.length) return <InstagramCTA />;
+
+  return (
+    <div className="w-full overflow-hidden rounded-lg">
+      <Embla plugins={[AutoPlay({ delay: 5000 })]}>
+        {posts.map(post => (
+          <div key={post.id} className="flex-shrink-0 w-full md:w-1/3">
+            <a
+              href={`https://instagram.com/p/${post.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+            >
+              <Image
+                src={post.media_url}
+                alt={post.caption}
+                width={500}
+                height={500}
+                className="w-full h-auto group-hover:opacity-80 transition"
+              />
+              <div className="p-4 bg-white group-hover:bg-gray-50">
+                <p className="text-sm text-gray-600 line-clamp-2">{post.caption}</p>
+                <p className="text-xs text-gray-400 mt-2">
+                  {post.like_count} likes
+                </p>
+              </div>
+            </a>
+          </div>
+        ))}
+      </Embla>
+    </div>
+  );
+}
+```
+
+**Setup Instructions:**
+
+1. Create Instagram Business Account (if not exists)
+2. Navigate to Facebook Developers Console
+3. Create new app (App Type: Business)
+4. Add Instagram Graph API product
+5. Generate long-lived access token (4-month validity)
+6. Add token to `.env.local`
+7. Create Supabase cache table
+8. Deploy and test carousel on staging
+
+**Timeline:**
+- Setup: 1-2 hours
+- Testing: 1 hour
+- Deployment: 0.5 hours
+- **Total effort: ~2.5 hours**
+
+---
+
 ## Calendar Integration
 
 ### Google Calendar API
@@ -549,7 +790,7 @@ Sentry.init({
 
 **Decision:** KEEP
 
-**Version:** Latest
+**Version:** Latest (1.284.0)
 
 **Purpose:** Product analytics, user behavior tracking, session replay
 
@@ -560,6 +801,7 @@ Sentry.init({
 - GDPR compliant (important for EU/Latvia)
 - Better privacy story than Google Analytics
 - Heatmaps and conversion funnels
+- No consent popup required for analytics-only
 
 **Comparison: PostHog vs Google Analytics**
 
@@ -578,15 +820,28 @@ import posthog from 'posthog-js';
 
 posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
   api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  capture_pageview: true,
+  capture_pageleave: true,
+  session_recording: {
+    sample_rate: 0.5, // Record 50% of sessions to save quota
+  }
 });
 ```
 
 **Metrics to Track:**
-- Page views
-- Form submissions
-- Language selection
-- Service page engagement
-- Conversion funnel (view → contact → follow-up)
+- Page views (including language variants)
+- Form submissions (contact, appointment, service request)
+- Language selection (track user language preference patterns)
+- Service page engagement (time on page, scroll depth)
+- Conversion funnel (view service → click CTA → submit form → confirmation)
+- Instagram carousel interactions (click to view post, view full feed)
+- Mobile vs desktop experience differences
+- Error tracking (form validation errors, API failures)
+
+**Cohort Analysis:**
+- Users who visited Instagram feed vs without
+- Repeat visitors vs first-time
+- Mobile-first audience segment
 
 ---
 
