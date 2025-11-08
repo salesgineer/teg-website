@@ -57,6 +57,15 @@
 - `web-dev-worker`: Implementation
 - `text-writer`: Documentation
 - `parallel-bash-executor`: Testing
+- **Agent-OS Coordinators (Spec-Driven Workflow):**
+  - `spec-initializer`: Initialize spec folder with raw idea
+  - `product-planner`: Create product documentation (mission, roadmap)
+  - `spec-shaper`: Gather requirements through targeted questions
+  - `spec-writer`: Create detailed specification documents
+  - `task-list-creator`: Generate detailed tasks list from specs
+  - `implementer`: Execute feature implementation from tasks.md
+  - `implementation-verifier`: Verify end-to-end implementation
+  - `spec-verifier`: Verify spec and tasks list
 - Spawn executor sub-subagents, aggregate results
 - Minimal direct execution
 
@@ -88,10 +97,97 @@ Main → coordinator subagent (objective)
 
 **ALL MCP MUST GO:** Main → Coordinator → Executor
 
-- **Sanity**: Main → `web-dev-worker` → `general-purpose` (executes mcp__sanity__*)
+- **Sanity**: Main → `web-dev-worker` or `implementer` → `general-purpose` (executes mcp__sanity__*)
   - Auth required via `/mcp` → Sanity MCP if blocked
 - **Chrome DevTools**: Main → `research-coordinator` → `general-purpose` (mcp__chrome-devtools__*)
 - **Context7**: Main → `research-coordinator` → `general-purpose` (mcp__context7__*)
+- **Implementer MCP**: Main → `implementer` → `general-purpose` (all MCP tools available for feature implementation)
+
+---
+
+## 🏗️ AGENT-OS WORKFLOW (SPEC-DRIVEN DEVELOPMENT)
+
+**WHEN TO USE:** Complex features, new products, uncertain requirements, multi-phase development.
+
+**GOLDEN RULE:** Idea → Spec → Tasks → Implement → Verify (Main → Agent-OS Coordinator → general-purpose executors)
+
+### Standard Spec-Driven Workflow
+
+**Phase 1: SPECIFICATION (Gather & Document)**
+```
+Main → spec-initializer subagent
+  ├─ general-purpose (create spec folder structure) &
+  └─ Coordinator spawns next phase
+
+Main → product-planner subagent
+  ├─ general-purpose (write mission, goals, roadmap) &
+  └─ Returns product docs
+
+Main → spec-shaper subagent
+  ├─ Uses AskUserQuestion for targeted clarification (max 5 questions) &
+  ├─ general-purpose (document findings) &
+  └─ Returns gathered requirements
+
+Main → spec-writer subagent
+  ├─ general-purpose (create spec.md with detailed specifications) &
+  └─ Returns full specification document
+
+Main → spec-verifier subagent
+  ├─ general-purpose (review spec and requirements) &
+  └─ Returns verification report
+```
+
+**Phase 2: PLANNING (Convert to Tasks)**
+```
+Main → task-list-creator subagent
+  ├─ general-purpose (read spec.md and create tasks.md) &
+  └─ Returns dependency-ordered task list
+```
+
+**Phase 3: IMPLEMENTATION (Execute Tasks)**
+```
+Main → implementer subagent
+  ├─ general-purpose (execute tasks from tasks.md, use all MCP tools) &
+  ├─ general-purpose (file operations, code generation) &
+  ├─ general-purpose (MCP operations: Sanity, Context7, etc.) &
+  └─ Returns implementation results
+
+Main → implementation-verifier subagent
+  ├─ general-purpose (verify all tasks completed, test features) &
+  └─ Returns verification report
+```
+
+### File Structure Created
+
+```
+agent-os/specs/{YYYY-MM-DD-feature-name}/
+├── spec.md                          # Detailed specification
+├── planning/
+│   ├── requirements.md              # Gathered requirements
+│   ├── product-docs.md              # Mission, goals, roadmap
+│   ├── tasks.md                     # Dependency-ordered task list
+│   └── visuals/                     # Diagrams, mockups, etc.
+└── implementation/
+    ├── progress.md                  # Implementation tracking
+    └── results.md                   # Verification & completion
+```
+
+### When to Use Spec-Driven vs Direct Implementation
+
+**USE SPEC-DRIVEN (Agent-OS) WHEN:**
+- New feature is complex or uncertain scope
+- Requirements need clarification (use spec-shaper)
+- Multiple phases or dependencies involved
+- Team coordination needed
+- Product needs documentation
+- High-risk or high-impact features
+
+**USE DIRECT IMPLEMENTATION WHEN:**
+- Bug fix with clear root cause
+- Simple feature with obvious requirements
+- Urgent fix needed immediately
+- Adding to existing, well-documented codebase
+- Single file or localized change
 
 ---
 

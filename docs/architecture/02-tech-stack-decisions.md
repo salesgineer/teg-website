@@ -123,6 +123,53 @@ components/          # Reusable component library
 
 ---
 
+## Design System
+
+### shadcn/ui Theme: Supabase (tweakcn)
+
+**Decision:** CONFIRMED (Final Choice)
+
+**Theme Package:** Supabase (via tweakcn - community theme repository)
+
+**Installation:**
+```bash
+pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/supabase.json
+```
+
+**Theme Characteristics:**
+- Modern, clean aesthetic aligned with contemporary SaaS products
+- Professional color palette optimized for technical interfaces
+- Excellent contrast and accessibility (WCAG 2.1 AA compliant)
+- Well-suited for automotive services platform
+
+**Typography Configuration:**
+- **Font Family:** Outfit (sans-serif)
+- **Letter Spacing:** tracking-normal (default)
+- **Font Sizes:** Scale from sm to 4xl for clear hierarchy
+- **Line Height:** Consistent throughout for readability
+
+**Color Palette:**
+See [spec.md](../spec.md) for complete color scheme documentation including:
+- Primary brand colors
+- Secondary accents
+- Semantic colors (success, warning, error, info)
+- Neutral grays for backgrounds and borders
+
+**Component Library:**
+- Built on shadcn/ui (Radix UI + Tailwind CSS)
+- Unstyled by default, fully customizable
+- Supabase theme provides pre-configured styles
+- All components accessible out-of-the-box
+
+**Rationale:**
+- Resolves conflict between CLAUDE.md (Northern Lights) and confirmed spec (Supabase)
+- Supabase theme provides professional, modern design
+- tweakcn community theme ensures quality and maintainability
+- Perfect visual fit for automotive inspection/services business
+- Reduces design-to-code time with pre-built component styles
+
+---
+
 ## Multi-Language Support
 
 ### next-intl

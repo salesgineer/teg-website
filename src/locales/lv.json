@@ -1,0 +1,86 @@
+{
+  "RootLayout": {
+    "home_link": "Sākums",
+    "about_link": "Par mums",
+    "counter_link": "Skaitītājs",
+    "portfolio_link": "Portfelis",
+    "contact_link": "Kontakti",
+    "sign_in_link": "Ieiet",
+    "sign_up_link": "Reģistrēties"
+  },
+  "BaseTemplate": {
+    "description": "TEG - Transporta Ekspertu Grupa",
+    "made_with": "Izveidots ar <author></author>."
+  },
+  "Index": {
+    "meta_title": "TEG - Transporta Ekspertu Grupa",
+    "meta_description": "TEG (Transporta Ekspertu Grupa) ir neatkarīga automobiļu speciālistu grupa, kas apkalpo klientus visā Eiropā.",
+    "welcome_title": "Laipni lūdzam TEG",
+    "welcome_description": "TEG (Transporta Ekspertu Grupa) ir neatkarīga automobiļu speciālistu grupa, kas apkalpo klientus visā Eiropā.",
+    "services_title": "Mūsu pakalpojumi",
+    "service_pre_purchase": "Automašīnas pārbaude pirms pirkuma",
+    "service_pre_purchase_desc": "(sākot no €100) - Dzinēja diagnostika, VIN vēsture, virsbūves un krāsas pārbaude",
+    "service_car_search": "Automašīnas meklēšana un piegāde",
+    "service_car_search_desc": "(sākot no €350) - Transportlīdzekļa meklēšana, pārbaude un piegāde",
+    "service_mobile": "Mobilais ceļu palīdzības serviss",
+    "service_mobile_desc": "(sākot no €30) - Diagnostika vietā, akumulatora testēšana un remonts",
+    "contact_us": "Sazināties ar mums",
+    "sponsors_title": "Sponsori"
+  },
+  "Counter": {
+    "meta_title": "Skaitītājs",
+    "meta_description": "DB operācijas piemērs",
+    "security_powered_by": "Drošība, botu noteikšana un ierobežošana nodrošināta ar"
+  },
+  "CounterForm": {
+    "presentation": "Skaitītājs tiek saglabāts datubāzē un palielināts par jūsu norādīto vērtību.",
+    "label_increment": "Palielināt par",
+    "button_increment": "Palielināt",
+    "error_increment_range": "Vērtībai jābūt no 1 līdz 3"
+  },
+  "CurrentCount": {
+    "count": "Skaits: {count}"
+  },
+  "About": {
+    "meta_title": "Par mums",
+    "meta_description": "Informācija par mums",
+    "about_paragraph": "Laipni lūdzam mūsu sadaļā Par mums! Mēs esam aizrautīgu cilvēku komanda, kas veltījusi sevi izcilu programmatūras produktu radīšanai.",
+    "translation_powered_by": "Tulkošana nodrošināta ar"
+  },
+  "Portfolio": {
+    "meta_title": "Portfelis",
+    "meta_description": "Laipni lūdzam manā portfeļa lapā!",
+    "presentation": "Laipni lūdzam manā portfeļa lapā! Šeit atradīsiet rūpīgi atlasītu manu darbu un sasniegumu kolekciju. Caur šo portfeli es cenšos demonstrēt savu ekspertīzi, radošumu un vērtību, ko varu sniegt jūsu projektiem.",
+    "portfolio_name": "Portfelis {name}",
+    "error_reporting_powered_by": "Kļūdu ziņošana nodrošināta ar",
+    "coverage_powered_by": "Koda pārklājums nodrošināts ar"
+  },
+  "PortfolioSlug": {
+    "meta_title": "Portfelis {slug}",
+    "meta_description": "Portfelis {slug} apraksts",
+    "header": "Portfelis {slug}",
+    "content": "Izveidots reklāmas materiālu un zīmola elementu kopums korporatīvam pasākumam. Radīta vizuāli vienota tēma, ietverot logotipu, plakātus, bannerus un digitālos aktīvus. Integrēta klienta zīmola identitāte, vienlaikus papildinot to ar mūsdienīgu un inovatīvu pieeju.",
+    "code_review_powered_by": "Koda pārskats nodrošināts ar"
+  },
+  "SignIn": {
+    "meta_title": "Ieiet",
+    "meta_description": "Vienkārši ieejiet savā kontā ar mūsu ērto pieteikšanās procesu."
+  },
+  "SignUp": {
+    "meta_title": "Reģistrēties",
+    "meta_description": "Bez piepūles izveidojiet kontu, izmantojot mūsu intuitīvo reģistrācijas procesu."
+  },
+  "Dashboard": {
+    "meta_title": "Panelis",
+    "hello_message": "Sveiki {email}!",
+    "alternative_message": "Nepieciešamas papildu iespējas? Vairāku nomnieku atbalsts un komandas, lomas un atļaujas, Shadcn UI, pilnīga tipu drošība ar oRPC, Stripe maksājumi, gaišais/tumšais režīms. Izmēģiniet <url></url>."
+  },
+  "UserProfile": {
+    "meta_title": "Lietotāja profils"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "Panelis",
+    "user_profile_link": "Pārvaldīt savu kontu",
+    "sign_out": "Iziet"
+  }
+}

@@ -6,7 +6,7 @@ Complete planning and architecture documentation for TEG (Transporta Ekspertu Gr
 
 This directory contains comprehensive documentation of all architectural decisions, technology selections, and implementation strategies for the TEG website migration from deprecated Frontity framework to modern Next.js stack.
 
-**Project Status:** Planning phase complete, ready for implementation
+**Project Status:** Planning phase complete, theme finalized, ready for implementation
 
 ## Quick Navigation
 
@@ -48,6 +48,7 @@ This directory contains comprehensive documentation of all architectural decisio
 | **Frontend Framework** | Next.js 16 (App Router) + React 19 | KEEP |
 | **Language** | TypeScript 5.9+ (strict mode) | KEEP |
 | **Styling** | TailwindCSS 4 | KEEP |
+| **Design System** | shadcn/ui + Supabase Theme (tweakcn) | CONFIRMED |
 | **Internationalization** | next-intl (lv, en, ru) | KEEP + CONFIGURE |
 | **Form Management** | react-hook-form + Zod | KEEP |
 | **Database** | Supabase PostgreSQL | CHANGE |
