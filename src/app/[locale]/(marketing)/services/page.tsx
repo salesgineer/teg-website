@@ -50,7 +50,7 @@ export default async function ServicesPage(props: Props) {
             icon={Wrench}
             title={t('service_mobile')}
             description={t('service_mobile_desc')}
-            price={locale === 'lv' ? 'SĀKOT NO €30' : locale === 'ru' ? 'ОТ €30' : 'FROM €30'}
+            price={locale === 'lv' ? 'SĀKOT NO €50' : locale === 'ru' ? 'ОТ €50' : 'FROM €50'}
             features={locale === 'lv' ? ['Diagnostika', 'Remonts', 'Ātra reakcija'] : locale === 'ru' ? ['Диагностика', 'Ремонт', 'Быстро'] : ['Diagnostics', 'Repairs', 'Fast']}
             ctaText={locale === 'lv' ? 'Rezervēt' : locale === 'ru' ? 'Заказать' : 'Book Now'}
             ctaHref={`/${locale}/appointments`}

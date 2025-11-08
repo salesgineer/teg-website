@@ -75,13 +75,10 @@ export default async function RootLayout(props: {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning className={outfit.variable}>
+    <html lang={locale} suppressHydrationWarning className={`${outfit.variable} dark`}>
       <body className="font-sans">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
             <PostHogProvider>

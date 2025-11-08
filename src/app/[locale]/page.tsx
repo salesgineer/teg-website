@@ -1,19 +1,21 @@
 import {
-  Car,
-  CarFront,
-  ClipboardCheck,
-  Cog,
-  Droplets,
-  FileText,
-  Globe,
-  Hash,
-  Search,
-  Wrench,
-  Zap,
-} from 'lucide-react';
+  BeakerIcon,
+  BoltIcon,
+  CheckCircleIcon,
+  ClipboardDocumentCheckIcon,
+  Cog6ToothIcon,
+  DocumentTextIcon,
+  GlobeAltIcon,
+  HashtagIcon,
+  MagnifyingGlassIcon,
+  RectangleStackIcon,
+  WrenchScrewdriverIcon,
+} from '@heroicons/react/24/outline';
+import { Car } from 'lucide-react';
 import { AntiFraudSection } from '@/components/anti-fraud/AntiFraudSection';
 import { DarkFooterWithForm } from '@/components/footer/DarkFooterWithForm';
 import { Hero } from '@/components/hero/Hero';
+import { ScrollableTestimonials } from '@/components/hero/ScrollableTestimonials';
 import { InspectionCategoriesGrid } from '@/components/inspection/InspectionCategoriesGrid';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { InstagramFeedSection } from '@/components/social/InstagramFeedSection';
@@ -23,59 +25,191 @@ import { HOMEPAGE_COPY } from '@/lib/constants/copy';
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      {/* Section 1: Hero with Dark Overlay - Option B: Social Proof Hero */}
+      {/* Section 1: Hero with Modern Split Layout */}
       <Hero
-        backgroundImage="/images/hero-car.jpg"
+        layout="split"
+        backgroundImage="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&h=1080&fit=crop&q=80"
         overlayOpacity="dark"
-        titleUppercase={true}
+        titleUppercase={false}
         title={HOMEPAGE_COPY.hero.headline}
         subtitle={HOMEPAGE_COPY.hero.subheadline}
+        highlightText="pirms pērc"
+        eyebrow={{
+          text: 'Neatkarīgi auto eksperti',
+          showStar: true,
+        }}
+        stats={[
+          {
+            value: 'Neatkarīgi no dīleriem',
+            label: 'Objektīva patiesība',
+            icon: CheckCircleIcon,
+          },
+          {
+            value: 'Detalizēti pārskati',
+            label: '100+ fotogrāfijas',
+            icon: DocumentTextIcon,
+          },
+          {
+            value: 'Visā Eiropā',
+            label: 'Nav nepieciešams ceļot',
+            icon: GlobeAltIcon,
+          },
+        ]}
+        mediaCard={{
+          image: {
+            src: 'https://images.unsplash.com/photo-1585062168782-0459bfd34a0c?w=800&h=600&fit=crop&q=80',
+            alt: 'Red BMW E30 car inspection in garage - automotive inspection service',
+          },
+        }}
         primaryCta={{
           text: HOMEPAGE_COPY.hero.ctaText,
           href: HOMEPAGE_COPY.hero.ctaHref,
         }}
-        // Option B: Social Proof Elements
-        testimonials={{
-          overallRating: HOMEPAGE_COPY.testimonials.overallRating,
-          reviewCount: HOMEPAGE_COPY.testimonials.reviewCount,
-          featuredTestimonial: HOMEPAGE_COPY.testimonials.featured,
-        }}
-        coverageBadge={{
-          text: 'Pieejami visā Eiropā',
-        }}
-        phoneNumber={{
-          display: '+371 25 201 710',
-          href: 'tel:+37125201710',
-          whatsapp: {
-            href: 'https://wa.me/37125201710',
-            text: 'WhatsApp',
+        roadsideAssistance={{
+          phone: {
+            display: '+371 25 201 710',
+            href: 'tel:+37125201710',
           },
+          locale: 'lv',
         }}
         className="min-h-screen"
       />
 
-      {/* Section 2: Three Service Cards (Photo Backgrounds) */}
-      <section className="bg-background py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start">
-            {/* Left: Auto meklēšana un piegāde */}
-            <ServiceCard
-              icon={Wrench}
-              title={HOMEPAGE_COPY.serviceCards[1].title}
-              description={HOMEPAGE_COPY.serviceCards[1].description}
-              price="No €350"
-              features={[
-                'Auto meklēšana pēc jūsu prasībām',
-                'Pilna tehniskā pārbaude',
-                'Piegāde līdz durvīm',
-                'Dokumentu noformēšanas palīdzība',
-                'Sarunu process ar pārdevēju',
-                'Viss, kamēr tu vari palikt mājās',
-              ]}
-              ctaText={HOMEPAGE_COPY.serviceCards[1].ctaText}
-              ctaHref={HOMEPAGE_COPY.serviceCards[1].ctaHref}
-              backgroundImage="/images/service-purchase.jpg"
+      {/* Section 2: Scrollable Testimonials */}
+      <section className="relative bg-background/95 py-8 backdrop-blur-sm md:py-12">
+        {/* Decorative Wave Transition */}
+        <div className="pointer-events-none absolute -top-16 right-0 left-0 h-16 overflow-hidden">
+          <svg
+            className="h-full w-full"
+            viewBox="0 0 1440 64"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,64 L0,32 Q180,16 360,24 T720,28 T1080,24 T1440,28 L1440,64 Z"
+              fill="currentColor"
+              className="text-background/95"
             />
+          </svg>
+        </div>
+
+        {/* Gradient fade for extra smoothness */}
+        <div className="pointer-events-none absolute -top-20 right-0 left-0 h-20 bg-gradient-to-b from-transparent via-background/30 to-background/95" />
+
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-3 text-center text-2xl font-bold text-foreground md:text-3xl">
+            {HOMEPAGE_COPY.testimonials.headline}
+          </h2>
+          <p className="mb-8 text-center text-muted-foreground md:text-lg">
+            {HOMEPAGE_COPY.testimonials.subheadline}
+          </p>
+          <ScrollableTestimonials
+            testimonials={[
+              {
+                id: '1',
+                quote: 'Profesionāla un detalizēta pārbaude. Palīdzēja izvairīties no slikta pirkuma. Ļoti ieteicu!',
+                author: 'Jānis Bērziņš',
+                rating: 5,
+                location: 'Rīga, Latvija',
+              },
+              {
+                id: '2',
+                quote: 'Ātra reakcija un detalizēts ziņojums ar fotogrāfijām. Palīdzēja pieņemt pareizo lēmumu.',
+                author: 'Anna Kalniņa',
+                rating: 5,
+                location: 'Liepāja, Latvija',
+              },
+              {
+                id: '3',
+                quote: 'Eksperti atklāja vairākas slēptas problēmas, kuras pārdevējs nebija minējis. Liels paldies!',
+                author: 'Pēteris Ozols',
+                rating: 5,
+                location: 'Daugavpils, Latvija',
+              },
+              {
+                id: '4',
+                quote: 'Mobilais serviss ieradās ļoti ātri un atrisināja problēmu uz vietas. Ļoti apmierināts ar pakalpojumu.',
+                author: 'Māris Liepiņš',
+                rating: 5,
+                location: 'Jūrmala, Latvija',
+              },
+              {
+                id: '5',
+                quote: 'Palīdzēja atrast ideālo auto pēc manām prasībām. Visu procesu organizēja profesionāli.',
+                author: 'Līga Zariņa',
+                rating: 5,
+                location: 'Valmiera, Latvija',
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Section 3: Three Service Cards (Photo Backgrounds) */}
+      <section className="relative bg-gradient-to-b from-background via-muted/15 to-background py-16 md:py-24">
+        {/* Decorative Wave Transition */}
+        <div className="pointer-events-none absolute -top-16 right-0 left-0 h-16 overflow-hidden">
+          <svg
+            className="h-full w-full"
+            viewBox="0 0 1440 64"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,64 L0,32 Q180,16 360,24 T720,28 T1080,24 T1440,28 L1440,64 Z"
+              fill="currentColor"
+              className="text-background"
+            />
+          </svg>
+        </div>
+
+        {/* Gradient fade for extra smoothness */}
+        <div className="pointer-events-none absolute -top-20 right-0 left-0 h-20 bg-gradient-to-b from-transparent via-background/30 to-background" />
+
+        <div className="relative z-10 container mx-auto px-4">
+          {/* Section Headline and Subheadline */}
+          <div className="mb-12 text-center">
+            <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">
+              {HOMEPAGE_COPY.services.headline}
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl">
+              {HOMEPAGE_COPY.services.subheadline}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 pb-8 md:grid-cols-3 md:items-stretch">
+            {/* Left: Auto meklēšana un piegāde */}
+            <div className="relative flex flex-col">
+              <ServiceCard
+                icon={MagnifyingGlassIcon}
+                title={HOMEPAGE_COPY.serviceCards[1].title}
+                description={HOMEPAGE_COPY.serviceCards[1].description}
+                price="No €350"
+                showEuropeBadge={true}
+                features={[
+                  'Auto meklēšana pēc jūsu prasībām un budžeta visā Eiropā',
+                  'Pilna tehniskā pārbaude ar profesionālu aprīkojumu',
+                  'Dzinēja diagnostika un VIN vēstures pārbaude vairākās datubāzēs',
+                  'Virsbūves, krāsojuma un salona elementu inspekcija',
+                  'Detalizēts pārskats ar fotogrāfijām un ekspertu atzinumu',
+                  'Piegāde līdz durvīm uz jūsu norādīto adresi',
+                  'Dokumentu noformēšanas palīdzība un pārbaude',
+                  'Sarunu process ar pārdevēju un cenu sarunas',
+                  'Dīler centru un ražotāju datu bāzēs glabātā servisa vēsture',
+                  'Negadījumu un remonta vēstures pārbaude',
+                  'Komplektācijas atbilstības VIN numuram pārbaude',
+                  'Viss, kamēr tu vari palikt mājās - pilns serviss no A līdz Z',
+                ]}
+                ctaText={HOMEPAGE_COPY.serviceCards[1].ctaText}
+                ctaHref={HOMEPAGE_COPY.serviceCards[1].ctaHref}
+                backgroundImage="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop&q=80"
+              />
+              <p className="absolute right-0 -bottom-6 left-0 mt-2 text-center text-xs text-muted-foreground">
+                * Serviss pieejams visās Eiropas valstīs. Detalizētāka informācija pēc pieprasījuma.
+              </p>
+            </div>
             {/* Middle: Pamatpārbaude (Most Popular) */}
             <ServiceCard
               icon={Car}
@@ -87,31 +221,31 @@ export default function HomePage() {
                 'Dzinēja diagnostika ar profesionālu aprīkojumu',
                 'VIN vēstures pārbaude vairākās datubāzēs',
                 'Virsbūves un krāsojuma inspekcija',
-                'Detalizēts pārskats ar fotogrāfijām',
-                'Ekspertu atzinums par auto stāvokli',
-                'Pārbaude visā Eiropā',
+                'Elektrobloku skenēšana un kļūdu kodu lasīšana',
+                'Krāsas biezuma mērīšana un remonta pēdu identificēšana',
+                'Salona elementu un drošības jostu pārbaude',
+                'Tehnisko šķidrumu kvalitātes un līmeņa novērtējums',
+                'Riepu protektora un nodiluma pārbaude',
+                'Balstiekārtas un bremžu sistēmas novērtējums',
+                'Akumulatora un elektroapgādes sistēmas pārbaude',
+                'Testa brauciens un funkcionalitātes verifikācija',
+                'Detalizēts pārskats ar fotogrāfijām un ekspertu atzinumu',
               ]}
               ctaText={HOMEPAGE_COPY.serviceCards[0].ctaText}
               ctaHref={HOMEPAGE_COPY.serviceCards[0].ctaHref}
-              backgroundImage="/images/service-inspection.jpg"
+              backgroundImage="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&h=600&fit=crop&q=80"
             />
             {/* Right: Mobilais serviss */}
             <ServiceCard
-              icon={Globe}
+              icon={WrenchScrewdriverIcon}
               title={HOMEPAGE_COPY.serviceCards[2].title}
               description={HOMEPAGE_COPY.serviceCards[2].description}
-              price="No €30"
-              features={[
-                'Kļūdu diagnostika un dzēšana',
-                'Akumulatora testēšana un maiņa',
-                'ECU programmēšana un kodēšana',
-                'Atslēgu izgatavošana un remonts',
-                'Palīdzība pie riepas punktēšanas',
-                'Bremžu un dzinēja remonti uz vietas',
-              ]}
+              price="No €50"
+              showLatviaBadge={true}
+              features={HOMEPAGE_COPY.serviceDetails[2].benefits ? [...HOMEPAGE_COPY.serviceDetails[2].benefits] : []}
               ctaText={HOMEPAGE_COPY.serviceCards[2].ctaText}
               ctaHref={HOMEPAGE_COPY.serviceCards[2].ctaHref}
-              backgroundImage="/images/service-europe.jpg"
+              backgroundImage="https://images.unsplash.com/photo-1493238792000-8113da705763?w=800&h=600&fit=crop&q=80"
             />
           </div>
         </div>
@@ -122,17 +256,17 @@ export default function HomePage() {
         headline={HOMEPAGE_COPY.valueProposition.headline}
         items={[
           {
-            icon: <Search className="h-12 w-12 text-primary" />,
+            icon: <MagnifyingGlassIcon className="h-12 w-12 text-primary" />,
             title: HOMEPAGE_COPY.valueProposition.items[0].title,
             description: HOMEPAGE_COPY.valueProposition.items[0].description,
           },
           {
-            icon: <ClipboardCheck className="h-12 w-12 text-primary" />,
+            icon: <ClipboardDocumentCheckIcon className="h-12 w-12 text-primary" />,
             title: HOMEPAGE_COPY.valueProposition.items[1].title,
             description: HOMEPAGE_COPY.valueProposition.items[1].description,
           },
           {
-            icon: <FileText className="h-12 w-12 text-primary" />,
+            icon: <DocumentTextIcon className="h-12 w-12 text-primary" />,
             title: HOMEPAGE_COPY.valueProposition.items[2].title,
             description: HOMEPAGE_COPY.valueProposition.items[2].description,
           },
@@ -145,12 +279,12 @@ export default function HomePage() {
         categories={HOMEPAGE_COPY.inspectionCategories.categories.map((category, index) => {
           // Map each category to an appropriate icon
           const iconMap = [
-            <Cog className="h-10 w-10 text-primary" key="engine" />, // Dzinējs (Engine)
-            <Hash className="h-10 w-10 text-primary" key="vin" />, // Šasijas numurs (VIN)
-            <CarFront className="h-10 w-10 text-primary" key="body" />, // Virsbūve un salons (Body)
-            <Droplets className="h-10 w-10 text-primary" key="fluids" />, // Tehniskie šķidrumi (Fluids)
+            <Cog6ToothIcon className="h-10 w-10 text-primary" key="engine" />, // Dzinējs (Engine)
+            <HashtagIcon className="h-10 w-10 text-primary" key="vin" />, // Šasijas numurs (VIN)
+            <RectangleStackIcon className="h-10 w-10 text-primary" key="body" />, // Virsbūve un salons (Body)
+            <BeakerIcon className="h-10 w-10 text-primary" key="fluids" />, // Tehniskie šķidrumi (Fluids)
             <Car className="h-10 w-10 text-primary" key="suspension" />, // Balstiekārta (Suspension)
-            <Zap className="h-10 w-10 text-primary" key="electrical" />, // Elektroapgāde (Electrical)
+            <BoltIcon className="h-10 w-10 text-primary" key="electrical" />, // Elektroapgāde (Electrical)
           ];
           return {
             icon: iconMap[index],

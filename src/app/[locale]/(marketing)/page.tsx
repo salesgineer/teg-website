@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Search, Shield, Wrench } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/hero/Hero';
+import { RoadsideAssistanceCTA } from '@/components/hero/RoadsideAssistanceCTA';
+import { RoadsideAssistanceCTATest } from '@/components/hero/RoadsideAssistanceCTATest';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { Separator } from '@/components/ui/separator';
 
@@ -39,6 +41,12 @@ export default async function Homepage(props: IIndexProps) {
   const bookCta = locale === 'lv' ? 'Rezervēt pārbaudi' : locale === 'ru' ? 'Заказать проверку' : 'Book Inspection';
   const contactCta = locale === 'lv' ? 'Sazināties' : locale === 'ru' ? 'Связаться' : 'Contact Us';
 
+  // Phone number for roadside assistance
+  const roadsidePhone = {
+    display: '+371 25 201 710',
+    href: 'tel:+37125201710',
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -47,7 +55,25 @@ export default async function Homepage(props: IIndexProps) {
         subtitle={heroSubtitle}
         primaryCta={{ text: bookCta, href: `/${locale}/appointments` }}
         secondaryCta={{ text: contactCta, href: `/${locale}/contact` }}
+        layout="split"
+        roadsideAssistance={{
+          phone: roadsidePhone,
+          locale: locale as 'lv' | 'en' | 'ru',
+        }}
       />
+
+      {/* TEST: Simple inline styles version */}
+      <div className="container mx-auto px-4 py-4 sm:px-6 lg:px-8">
+        <RoadsideAssistanceCTATest />
+      </div>
+
+      {/* TEST: Component version */}
+      <div className="container mx-auto px-4 py-4 sm:px-6 lg:px-8">
+        <RoadsideAssistanceCTA
+          phone={roadsidePhone}
+          locale={locale as 'lv' | 'en' | 'ru'}
+        />
+      </div>
 
       {/* Services Section */}
       <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
@@ -96,7 +122,7 @@ export default async function Homepage(props: IIndexProps) {
             icon={Wrench}
             title={t('service_mobile')}
             description={t('service_mobile_desc')}
-            price={locale === 'lv' ? 'SĀKOT NO €30' : locale === 'ru' ? 'ОТ €30' : 'FROM €30'}
+            price={locale === 'lv' ? 'SĀKOT NO €50' : locale === 'ru' ? 'ОТ €50' : 'FROM €50'}
             features={
               locale === 'lv'
                 ? ['Diagnostika vietā', 'Akumulatora tests', 'Remonts', 'Ātra reakcija']

@@ -38,7 +38,7 @@ export default function CarPurchasePage() {
     <main>
       {/* Hero Section */}
       <Hero
-        backgroundImage="/images/hero/car-purchase.jpg"
+        backgroundImage="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1920&h=1080&fit=crop&q=80"
         overlayOpacity="dark"
         title="Auto meklēšana, pārbaude, piegāde"
         subtitle="Palīdzēšana esam palaizīgt atrast vēlamu automobili un to iegadāties"

@@ -1,14 +1,15 @@
 'use client';
 
-import { AlertTriangle, ShieldCheck } from 'lucide-react';
 import {
-  CalendarBlank,
+  AlertCircle,
+  AlertTriangle,
+  Calendar,
+  Cog,
   FileText,
   Gauge,
-  Gear,
-  ShieldWarning,
-  WarningCircle,
-} from 'phosphor-react';
+  ShieldAlert,
+  ShieldCheck,
+} from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
@@ -27,20 +28,20 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
   const getTacticIcon = (index: number) => {
     const iconProps = {
       className: 'h-24 w-24 text-destructive/40',
-      weight: 'duotone' as const,
+      strokeWidth: 1.5,
     };
 
     switch (index) {
       case 0:
         return <Gauge {...iconProps} key="gauge" />; // Odometer correction
       case 1:
-        return <WarningCircle {...iconProps} key="crash" />; // Hidden accident traces
+        return <AlertCircle {...iconProps} key="crash" />; // Hidden accident traces
       case 2:
-        return <ShieldWarning {...iconProps} key="shield" />; // Damaged safety systems
+        return <ShieldAlert {...iconProps} key="shield" />; // Damaged safety systems
       case 3:
-        return <Gear {...iconProps} key="engine" />; // Engine defect hiding
+        return <Cog {...iconProps} key="engine" />; // Engine defect hiding
       case 4:
-        return <CalendarBlank {...iconProps} key="calendar" />; // True year and equipment
+        return <Calendar {...iconProps} key="calendar" />; // True year and equipment
       case 5:
         return <FileText {...iconProps} key="file" />; // Service book and documents
       default:

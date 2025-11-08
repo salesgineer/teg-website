@@ -80,7 +80,6 @@
 - `task-planner`: Strategy, planning
 - `web-dev-worker`: Implementation
 - `text-writer`: Documentation
-- `parallel-bash-executor`: Testing
 - **Agent-OS Coordinators (Spec-Driven Workflow):**
   - `spec-initializer`: Initialize spec folder with raw idea
   - `product-planner`: Create product documentation (mission, roadmap)
@@ -95,8 +94,7 @@
 
 **TIER 3 - EXECUTOR SUB-SUBAGENTS (Operational):**
 - `Explore`: File/pattern search
-- `general-purpose`: File ops, MCP commands
-- `parallel-bash-executor`: Bash operations
+- `general-purpose`: File ops, MCP commands, Bash operations
 - Execute ALL actual work
 
 ### Context Budget
@@ -238,8 +236,7 @@ Main → task-planner subagent
 Main spawns parallel coordinators:
 ├─ web-dev-worker (UI) → general-purpose sub-subagents &
 ├─ web-dev-worker (API) → general-purpose sub-subagents &
-├─ text-writer (docs) → general-purpose sub-subagents &
-└─ parallel-bash-executor (tests) → executor sub-subagents &
+└─ text-writer (docs) → general-purpose sub-subagents &
 wait → Main synthesizes results (500 tokens total)
 ```
 

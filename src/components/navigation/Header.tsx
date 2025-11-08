@@ -4,7 +4,6 @@ import { Phone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { MobileNav } from './MobileNav';
 
 export function Header() {
@@ -65,9 +64,6 @@ export function Header() {
 
           {/* Language Switcher */}
           <LocaleSwitcher />
-
-          {/* Theme Toggle */}
-          <ThemeToggle />
 
           {/* Mobile Navigation */}
           <MobileNav />

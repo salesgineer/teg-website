@@ -13,7 +13,7 @@ import { ContactForm } from '@/components/forms/ContactForm';
 import { InstagramFeedSection } from '@/components/social/InstagramFeedSection';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { CONTACT_PAGE_COPY } from '@/lib/constants/copy';
+import { CONTACT_PAGE_COPY, HOMEPAGE_COPY } from '@/lib/constants/copy';
 
 export default function ContactPage() {
   const whatsappNumber = '37125201710';
@@ -215,11 +215,11 @@ export default function ContactPage() {
         {/* Customer Testimonials Section */}
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-8 text-center text-2xl font-bold">
-            {CONTACT_PAGE_COPY.testimonials.title}
+            {HOMEPAGE_COPY.testimonials.title}
           </h2>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {CONTACT_PAGE_COPY.testimonials.items.map(testimonial => (
+            {HOMEPAGE_COPY.testimonials.items.map(testimonial => (
               <Card key={testimonial.id} className="p-6">
                 {/* Facebook Header */}
                 <div className="mb-4 flex items-center gap-3">

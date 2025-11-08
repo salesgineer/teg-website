@@ -39,6 +39,16 @@ export const HOMEPAGE_COPY = {
     ],
   },
 
+  services: {
+    headline: 'MŪSU PAKALPOJUMI',
+    subheadline: 'Neatkarīgi eksperti, kas palīdz izvairīties no slikta pirkuma. Profesionāli auto ekspertu pakalpojumi visā Eiropā.',
+  },
+
+  testimonialsSection: {
+    headline: 'ATSAUKSMES',
+    subheadline: 'Apskati, ko mūsu klienti par mums saka:',
+  },
+
   serviceCards: [
     {
       title: 'Pamatpārbaude',
@@ -57,7 +67,7 @@ export const HOMEPAGE_COPY = {
     {
       title: 'Mobilais serviss',
       description: 'Palīdzība uz ceļa - kļūdu diagnostika, akumulatora pārbaude, motora iedarbināšana, ECU programmēšana un atslēgu remonts.',
-      price: 'No €30',
+      price: 'No €50',
       ctaText: 'Izsaukt speciālistu',
       ctaHref: '/kontakti',
     },
@@ -194,6 +204,9 @@ export const HOMEPAGE_COPY = {
   },
 
   testimonials: {
+    headline: 'ATSAUKSMES',
+    subheadline: 'Apskati, ko mūsu klienti par mums saka:',
+    title: 'Ko saka mūsu klienti',
     overallRating: 4.8,
     reviewCount: 200,
     featured: {
@@ -219,6 +232,32 @@ export const HOMEPAGE_COPY = {
         rating: 5,
       },
     ],
+    items: [
+      {
+        id: 'testimonial-1',
+        name: 'Jānis K.',
+        text: 'Pateicos par ātro un profesionālo pārbaudi. Palīdzējāt izvairīties no sliktas pirkuma!',
+        review: 'Pateicos par ātro un profesionālo pārbaudi. Palīdzējāt izvairīties no sliktas pirkuma!',
+        timeAgo: '2 nedēļas atpakaļ',
+        rating: 5,
+      },
+      {
+        id: 'testimonial-2',
+        name: 'Līga M.',
+        text: 'Detalizēts pārskats ar bildēm. Ļoti noderīgi pirms lēmuma pieņemšanas.',
+        review: 'Detalizēts pārskats ar bildēm. Ļoti noderīgi pirms lēmuma pieņemšanas.',
+        timeAgo: '1 mēnesi atpakaļ',
+        rating: 5,
+      },
+      {
+        id: 'testimonial-3',
+        name: 'Andris P.',
+        text: 'Profesionāla komanda, ātri atbildēja uz visiem jautājumiem. Ieteicu!',
+        review: 'Profesionāla komanda, ātri atbildēja uz visiem jautājumiem. Ieteicu!',
+        timeAgo: '3 nedēļas atpakaļ',
+        rating: 5,
+      },
+    ],
   },
 
   serviceDetails: [
@@ -238,14 +277,22 @@ export const HOMEPAGE_COPY = {
       title: 'Mobilais serviss - palīdzība uz ceļa',
       description: 'Autoserviss brauc pie tevis. Diagnostika, remonti, programmēšana - viss uz vietas.',
       benefits: [
-        'Kļūdu diagnostika un dzēšana',
-        'Akumulatora testēšana un maiņa',
-        'ECU programmēšana un kodēšana',
-        'Atslēgu izgatavošana un slēdzeņu remonts',
-        'Palīdzība pie riepas punktēšanas',
-        'Bremžu un dzinēja remonti',
+        // Most common issues (top priority)
+        'Bojāta riepa / Nav rezerves riteņa / Palīdzība pie riepas punktēšanas',
+        'Nepieciešams "Piepīpēt" (akumulatora uzlāde)',
+        'Tukša degvielas bāka',
+        'Durvju atvēršana / Atslēgu izgatavošana un dublikātu izgatavošana',
+        'Rokas bremzes atbloķēšana',
+        // Diagnostic and electrical services
+        'Kļūdu diagnostika un dzēšana / Elektrokļūmju lasīšana',
+        'Akumulatora testēšana, pārbaude ar printētu izdruku un maiņa',
+        'ECU un elektro bloku programmēšana / kodēšana',
+        'Spuldžu nomaiņa un programmēšana',
+        // Repairs and maintenance
+        'Slēdzeņu nomaiņa / Logu mehānismu maiņa un remonts',
+        'Bremžu, dzinēja un salonu remonti uz vietas',
       ],
-      pricing: 'No €30',
+      pricing: 'No €50',
       ctaText: 'Izsaukt speciālistu',
       ctaHref: '/kontakti',
     },
@@ -303,9 +350,9 @@ export const SERVICES_PAGE_COPY = {
   ],
 
   pricing: {
-    amount: '30 EUR',
+    amount: '50 EUR',
     prefix: 'SĀKOT NO',
-    full: 'SĀKOT NO 30 EUR',
+    full: 'SĀKOT NO 50 EUR',
   },
 
   disclaimer: {
@@ -409,36 +456,6 @@ export const CONTACT_PAGE_COPY = {
       handle: '@teg.auto',
       buttonText: 'Sekot TikTok',
     },
-  },
-
-  testimonials: {
-    title: 'Ko saka mūsu klienti',
-    items: [
-      {
-        id: 'testimonial-1',
-        name: 'Jānis K.',
-        text: 'Pateicos par ātro un profesionālo pārbaudi. Palīdzējāt izvairīties no sliktas pirkuma!',
-        review: 'Pateicos par ātro un profesionālo pārbaudi. Palīdzējāt izvairīties no sliktas pirkuma!',
-        timeAgo: '2 nedēļas atpakaļ',
-        rating: 5,
-      },
-      {
-        id: 'testimonial-2',
-        name: 'Līga M.',
-        text: 'Detalizēts pārskats ar bildēm. Ļoti noderīgi pirms lēmuma pieņemšanas.',
-        review: 'Detalizēts pārskats ar bildēm. Ļoti noderīgi pirms lēmuma pieņemšanas.',
-        timeAgo: '1 mēnesi atpakaļ',
-        rating: 5,
-      },
-      {
-        id: 'testimonial-3',
-        name: 'Andris P.',
-        text: 'Profesionāla komanda, ātri atbildēja uz visiem jautājumiem. Ieteicu!',
-        review: 'Profesionāla komanda, ātri atbildēja uz visiem jautājumiem. Ieteicu!',
-        timeAgo: '3 nedēļas atpakaļ',
-        rating: 5,
-      },
-    ],
   },
 
   form: {

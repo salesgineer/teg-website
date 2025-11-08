@@ -10,7 +10,7 @@ export default function MobileRoadServicePage() {
     <main>
       {/* Hero Section */}
       <Hero
-        backgroundImage="/images/hero/mobile-service.jpg"
+        backgroundImage="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1920&h=1080&fit=crop&q=80"
         overlayOpacity="dark"
         title={SERVICES_PAGE_COPY.hero.title}
         subtitle={SERVICES_PAGE_COPY.hero.subtitle}

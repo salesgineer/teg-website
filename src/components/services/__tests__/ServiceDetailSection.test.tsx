@@ -34,10 +34,10 @@ describe('ServiceDetailSection', () => {
     const screen = await render(
       <ServiceDetailSection
         {...defaultProps}
-        pricing="SĀKOT NO 30 EUR"
+        pricing="SĀKOT NO 50 EUR"
       />,
     );
 
-    await expect.element(screen.getByText('SĀKOT NO 30 EUR')).toBeInTheDocument();
+    await expect.element(screen.getByText('SĀKOT NO 50 EUR')).toBeInTheDocument();
   });
 });

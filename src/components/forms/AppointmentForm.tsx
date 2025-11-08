@@ -73,7 +73,7 @@ export function AppointmentForm({ locale }: AppointmentFormProps) {
   const serviceOptions = {
     'pre-purchase': { lv: 'Pārbaude pirms pirkuma (€100+)', en: 'Pre-Purchase Inspection (€100+)', ru: 'Проверка перед покупкой (€100+)' },
     'car-search': { lv: 'Auto meklēšana un piegāde (€350+)', en: 'Car Search & Delivery (€350+)', ru: 'Поиск и доставка автомобиля (€350+)' },
-    'mobile-service': { lv: 'Mobilais serviss (€30+)', en: 'Mobile Roadside Service (€30+)', ru: 'Мобильная служба (€30+)' },
+    'mobile-service': { lv: 'Mobilais serviss (€50+)', en: 'Mobile Roadside Service (€50+)', ru: 'Мобильная служба (€50+)' },
   };
 
   return (

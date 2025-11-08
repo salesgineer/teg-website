@@ -138,7 +138,7 @@ export function generateLocalBusinessSchema(locale: LocaleType) {
       'addressCountry': 'LV',
     },
     'url': `https://teg.lv/${locale}`,
-    'priceRange': '€30 - €350',
+    'priceRange': '€50 - €350',
     'openingHoursSpecification': [
       {
         '@type': 'OpeningHoursSpecification',
