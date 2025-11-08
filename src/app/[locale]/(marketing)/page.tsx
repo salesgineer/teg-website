@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { Search, Shield, Wrench } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
+import { Hero } from '@/components/hero/Hero';
+import { ServiceCard } from '@/components/services/ServiceCard';
+import { Separator } from '@/components/ui/separator';
 
 type IIndexProps = {
   params: Promise<{ locale: string }>;
@@ -8,10 +11,7 @@ type IIndexProps = {
 
 export async function generateMetadata(props: IIndexProps): Promise<Metadata> {
   const { locale } = await props.params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'Index',
-  });
+  const t = await getTranslations({ locale, namespace: 'Index' });
 
   return {
     title: t('meta_title'),
@@ -19,58 +19,146 @@ export async function generateMetadata(props: IIndexProps): Promise<Metadata> {
   };
 }
 
-export default async function Index(props: IIndexProps) {
+export default async function Homepage(props: IIndexProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const t = await getTranslations({
-    locale,
-    namespace: 'Index',
-  });
+  const t = await getTranslations({ locale, namespace: 'Index' });
+
+  const heroTitle = locale === 'lv'
+    ? 'Pārbaudi, pirms pērc!'
+    : locale === 'ru'
+      ? 'Проверь перед покупкой!'
+      : 'Check Before You Buy!';
+
+  const heroSubtitle = locale === 'lv'
+    ? 'Detalizēta transportlīdzekļa tehniskā stāvokļa pārbaude pirms tā iegādes visā Eiropā'
+    : locale === 'ru'
+      ? 'Детальная проверка технического состояния транспортного средства перед покупкой по всей Европе'
+      : 'Detailed vehicle technical inspection before purchase across all of Europe';
+
+  const bookCta = locale === 'lv' ? 'Rezervēt pārbaudi' : locale === 'ru' ? 'Заказать проверку' : 'Book Inspection';
+  const contactCta = locale === 'lv' ? 'Sazināties' : locale === 'ru' ? 'Связаться' : 'Contact Us';
 
   return (
     <>
-      <h1 className="mt-5 text-3xl font-bold">
-        {t('welcome_title', { defaultValue: 'Welcome to TEG' })}
-      </h1>
-      <p className="mt-3 text-base">
-        {t('welcome_description', {
-          defaultValue: 'TEG (Transporta Ekspertu Grupa) is an independent group of automotive professionals serving customers across Europe.',
-        })}
-      </p>
-      <h2 className="mt-5 text-2xl font-bold">
-        {t('services_title', { defaultValue: 'Our Services' })}
-      </h2>
-      <ul className="mt-3 text-base">
-        <li>
-          <Link href={`/${locale}/services/pre-purchase-inspection`} className="font-bold text-blue-700 hover:border-b-2 hover:border-blue-700">
-            {t('service_pre_purchase', { defaultValue: 'Pre-Purchase Car Inspection' })}
-          </Link>
-          {' '}
-          {t('service_pre_purchase_desc', { defaultValue: '(from €100) - Engine diagnostics, VIN history, body/paint inspection' })}
-        </li>
-        <li>
-          <Link href={`/${locale}/services/car-search-delivery`} className="font-bold text-blue-700 hover:border-b-2 hover:border-blue-700">
-            {t('service_car_search', { defaultValue: 'Car Search & Delivery' })}
-          </Link>
-          {' '}
-          {t('service_car_search_desc', { defaultValue: '(from €350) - Vehicle sourcing, inspection, and delivery' })}
-        </li>
-        <li>
-          <Link href={`/${locale}/services/mobile-roadside`} className="font-bold text-blue-700 hover:border-b-2 hover:border-blue-700">
-            {t('service_mobile', { defaultValue: 'Mobile Roadside Service' })}
-          </Link>
-          {' '}
-          {t('service_mobile_desc', { defaultValue: '(from €30) - On-location diagnostics, battery testing, and repairs' })}
-        </li>
-      </ul>
-      <div className="mt-5">
-        <Link
-          href={`/${locale}/contact`}
-          className="inline-block rounded-md bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800"
-        >
-          {t('contact_us', { defaultValue: 'Contact Us' })}
-        </Link>
-      </div>
+      {/* Hero Section */}
+      <Hero
+        title={heroTitle}
+        subtitle={heroSubtitle}
+        primaryCta={{ text: bookCta, href: `/${locale}/appointments` }}
+        secondaryCta={{ text: contactCta, href: `/${locale}/contact` }}
+      />
+
+      {/* Services Section */}
+      <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <h2 className="mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl">
+          {t('services_title')}
+        </h2>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {/* Pre-Purchase Inspection */}
+          <ServiceCard
+            icon={Shield}
+            title={t('service_pre_purchase')}
+            description={t('service_pre_purchase_desc')}
+            price={locale === 'lv' ? 'SĀKOT NO €100' : locale === 'ru' ? 'ОТ €100' : 'FROM €100'}
+            features={
+              locale === 'lv'
+                ? ['Dzinēja diagnostika', 'VIN vēsture', 'Krāsas pārbaude', 'Detalizēts atskaite']
+                : locale === 'ru'
+                  ? ['Диагностика двигателя', 'История VIN', 'Проверка краски', 'Детальный отчет']
+                  : ['Engine diagnostics', 'VIN history', 'Paint inspection', 'Detailed report']
+            }
+            ctaText={locale === 'lv' ? 'Uzzināt vairāk' : locale === 'ru' ? 'Узнать больше' : 'Learn More'}
+            ctaHref={`/${locale}/services`}
+            variant="featured"
+          />
+
+          {/* Car Search & Delivery */}
+          <ServiceCard
+            icon={Search}
+            title={t('service_car_search')}
+            description={t('service_car_search_desc')}
+            price={locale === 'lv' ? 'SĀKOT NO €350' : locale === 'ru' ? 'ОТ €350' : 'FROM €350'}
+            features={
+              locale === 'lv'
+                ? ['Transportlīdzekļa meklēšana', 'Pilna pārbaude', 'Piegāde', 'Dokumentu palīdzība']
+                : locale === 'ru'
+                  ? ['Поиск автомобиля', 'Полная проверка', 'Доставка', 'Помощь с документами']
+                  : ['Vehicle sourcing', 'Full inspection', 'Delivery', 'Documentation help']
+            }
+            ctaText={locale === 'lv' ? 'Uzzināt vairāk' : locale === 'ru' ? 'Узнать больше' : 'Learn More'}
+            ctaHref={`/${locale}/services`}
+          />
+
+          {/* Mobile Roadside Service */}
+          <ServiceCard
+            icon={Wrench}
+            title={t('service_mobile')}
+            description={t('service_mobile_desc')}
+            price={locale === 'lv' ? 'SĀKOT NO €30' : locale === 'ru' ? 'ОТ €30' : 'FROM €30'}
+            features={
+              locale === 'lv'
+                ? ['Diagnostika vietā', 'Akumulatora tests', 'Remonts', 'Ātra reakcija']
+                : locale === 'ru'
+                  ? ['Диагностика на месте', 'Тест батареи', 'Ремонт', 'Быстрая реакция']
+                  : ['On-location diagnostics', 'Battery testing', 'Repairs', 'Fast response']
+            }
+            ctaText={locale === 'lv' ? 'Uzzināt vairāk' : locale === 'ru' ? 'Узнать больше' : 'Learn More'}
+            ctaHref={`/${locale}/services`}
+          />
+        </div>
+      </section>
+
+      <Separator className="container mx-auto" />
+
+      {/* Fraud Prevention Section */}
+      <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
+            {locale === 'lv' ? 'KRĀPNIEKU PAŅĒMIENI' : locale === 'ru' ? 'МОШЕННИЧЕСКИЕ СХЕМЫ' : 'FRAUD PROTECTION'}
+          </h2>
+          <p className="mb-8 text-lg text-muted-foreground">
+            {locale === 'lv'
+              ? 'Mēs aizsargājam jūs no negodīgiem pārdevējiem un slēptiem defektiem'
+              : locale === 'ru'
+                ? 'Мы защищаем вас от нечестных продавцов и скрытых дефектов'
+                : 'We protect you from dishonest sellers and hidden defects'}
+          </p>
+          <ul className="space-y-3 text-left">
+            <li className="flex items-start">
+              <span className="mr-2 text-primary">✓</span>
+              <span>
+                {locale === 'lv'
+                  ? 'Odometra verifikācija, lai atklātu nobraukuma viltošanu'
+                  : locale === 'ru'
+                    ? 'Проверка одометра для выявления подделки пробега'
+                    : 'Odometer verification to detect mileage fraud'}
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-2 text-primary">✓</span>
+              <span>
+                {locale === 'lv'
+                  ? 'Slēptu negadījumu bojājumu identificēšana'
+                  : locale === 'ru'
+                    ? 'Выявление скрытых повреждений от аварий'
+                    : 'Hidden accident damage identification'}
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-2 text-primary">✓</span>
+              <span>
+                {locale === 'lv'
+                  ? 'Viltotu dokumentu pārbaude'
+                  : locale === 'ru'
+                    ? 'Проверка поддельных документов'
+                    : 'Counterfeit document verification'}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
     </>
   );
-};
+}

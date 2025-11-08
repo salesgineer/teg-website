@@ -1,0 +1,31 @@
+
+> teg-website@ dev /home/fivefingerdisco/Projects/TEG_001
+> run-p dev:*
+
+
+> teg-website@ dev:spotlight /home/fivefingerdisco/Projects/TEG_001
+> npx @spotlightjs/spotlight
+
+
+> teg-website@ dev:next /home/fivefingerdisco/Projects/TEG_001
+> next dev
+
+ ⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.0.106:3001
+   - Environments: .env
+   - Experiments (use with caution):
+     · clientTraceMetadata
+     ✓ turbopackFileSystemCacheForDev
+
+ ✓ Starting...
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+ ✓ Ready in 2.8s
+🔎 [Spotlight] Spotlight by Sentry - v4.5.0
+🔎 [Spotlight] Sidecar is already running on port 8969
+✦Aj WARN Arcjet will use 127.0.0.1 when missing public IP address in development mode
+ GET /lv 200 in 4.1s (compile: 3.4s, proxy.ts: 257ms, render: 503ms)
+ GET /lv 200 in 128ms (compile: 43ms, proxy.ts: 5ms, render: 81ms)
+ GET /en 200 in 109ms (compile: 33ms, proxy.ts: 3ms, render: 72ms)
+[?25h

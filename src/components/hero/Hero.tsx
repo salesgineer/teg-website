@@ -1,0 +1,67 @@
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+
+type HeroProps = {
+  title: string;
+  subtitle?: string;
+  primaryCta?: {
+    text: string;
+    href: string;
+  };
+  secondaryCta?: {
+    text: string;
+    href: string;
+  };
+  backgroundImage?: string;
+  className?: string;
+};
+
+export function Hero({
+  title,
+  subtitle,
+  primaryCta,
+  secondaryCta,
+  backgroundImage = '/images/hero-car.jpg',
+  className = '',
+}: HeroProps) {
+  return (
+    <section
+      className={`relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-cover bg-center ${className}`}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    >
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8">
+        <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          {title}
+        </h1>
+
+        {subtitle && (
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-200 sm:text-xl">
+            {subtitle}
+          </p>
+        )}
+
+        {(primaryCta || secondaryCta) && (
+          <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+            {primaryCta && (
+              <Button asChild size="lg" className="w-full sm:w-auto">
+                <Link href={primaryCta.href}>{primaryCta.text}</Link>
+              </Button>
+            )}
+
+            {secondaryCta && (
+              <Button asChild size="lg" variant="outline" className="w-full border-white bg-white/10 text-white hover:bg-white/20 sm:w-auto">
+                <Link href={secondaryCta.href}>{secondaryCta.text}</Link>
+              </Button>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}

@@ -1,50 +1,19 @@
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
-import { LocaleSwitcher } from '@/components/LocaleSwitcher';
-import { BaseTemplate } from '@/templates/BaseTemplate';
+import { setRequestLocale } from 'next-intl/server';
+import { Footer } from '@/components/navigation/Footer';
+import { Header } from '@/components/navigation/Header';
 
-export default async function Layout(props: {
+export default async function MarketingLayout(props: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const t = await getTranslations({
-    locale,
-    namespace: 'RootLayout',
-  });
 
   return (
-    <BaseTemplate
-      leftNav={(
-        <>
-          <li>
-            <Link
-              href="/"
-              className="border-none text-gray-700 hover:text-gray-900"
-            >
-              {t('home_link')}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact/"
-              className="border-none text-gray-700 hover:text-gray-900"
-            >
-              {t('contact_link')}
-            </Link>
-          </li>
-        </>
-      )}
-      rightNav={(
-        <>
-          <li>
-            <LocaleSwitcher />
-          </li>
-        </>
-      )}
-    >
-      <div className="py-5 text-xl [&_p]:my-6">{props.children}</div>
-    </BaseTemplate>
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-grow">{props.children}</main>
+      <Footer />
+    </div>
   );
 }

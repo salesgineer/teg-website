@@ -70,20 +70,12 @@ export const AppointmentFormSchema = z
       ),
 
     vehicle_info: z
-      .string()
-      .max(500, 'validation.vehicleInfo.maxLength')
-      .trim()
-      .optional()
-      .nullable()
-      .transform(val => val || null),
+      .union([z.string().max(500, 'validation.vehicleInfo.maxLength').trim(), z.null()])
+      .default(null),
 
     message: z
-      .string()
-      .max(1000, 'validation.message.maxLength')
-      .trim()
-      .optional()
-      .nullable()
-      .transform(val => val || null),
+      .union([z.string().max(1000, 'validation.message.maxLength').trim(), z.null()])
+      .default(null),
 
     locale: z.enum(['lv', 'en', 'ru']).catch('lv'),
   })

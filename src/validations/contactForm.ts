@@ -24,12 +24,8 @@ export const ContactFormSchema = z.object({
     .trim(),
 
   phone: z
-    .string()
-    .max(20, 'validation.phone.maxLength')
-    .trim()
-    .optional()
-    .nullable()
-    .transform(val => val || null), // Convert empty string to null
+    .union([z.string().max(20, 'validation.phone.maxLength').trim(), z.null()])
+    .default(null), // Optional phone field
 
   message: z
     .string()

@@ -83,6 +83,24 @@
     "user_profile_link": "Pārvaldīt savu kontu",
     "sign_out": "Iziet"
   },
+  "navigation": {
+    "home": "Sākums",
+    "services": "Pakalpojumi",
+    "about": "Par mums",
+    "contact": "Kontakti",
+    "appointments": "Pieraksts",
+    "businessHours": "Darba laiks",
+    "hours": "P-S, 9:00 - 20:00"
+  },
+  "footer": {
+    "description": "Transporta Ekspertu Grupa - neatkarīgi auto eksperti visā Eiropā",
+    "contact": "Kontakti",
+    "businessHours": "Darba laiks",
+    "hours": "Pirmdiena - Sestdiena, 9:00 - 20:00",
+    "followUs": "Sekojiet mums",
+    "rights": "Visas tiesības aizsargātas",
+    "privacy": "Privātuma politika"
+  },
   "validation": {
     "name": {
       "required": "Vārds ir obligāts",

@@ -1,0 +1,410 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TEG Application Log Schema",
+  "description": "LLM-friendly structured logging schema for Next.js 16 + Supabase + Vercel deployment. Optimized for AI debugging (Claude) and centralized log aggregation (Logflare).",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "level",
+    "severity_number",
+    "message",
+    "service_name",
+    "environment",
+    "attributes"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp with millisecond precision",
+      "example": "2025-11-08T12:33:45.123Z"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"],
+      "description": "Human-readable log level (uppercase)"
+    },
+    "severity_number": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 24,
+      "description": "OpenTelemetry severity number (TRACE=1, DEBUG=5, INFO=9, WARN=13, ERROR=17, FATAL=21)",
+      "example": 9
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Concise human-readable description of the event",
+      "example": "Appointment booking created successfully"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Name of the service/application generating the log",
+      "example": "teg-app"
+    },
+    "version": {
+      "type": "string",
+      "description": "Application version (Git commit SHA or semantic version)",
+      "example": "abc123def456"
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["development", "preview", "production"],
+      "description": "Deployment environment (matches VERCEL_ENV)"
+    },
+    "trace_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$",
+      "description": "OpenTelemetry trace ID (32-character hex string for correlating events across services)",
+      "example": "abc123def456789012345678901234ab"
+    },
+    "span_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{16}$",
+      "description": "OpenTelemetry span ID (16-character hex string for specific operation)",
+      "example": "1234567890abcdef"
+    },
+    "parent_span_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{16}$",
+      "description": "Parent span ID for nested operations",
+      "example": "fedcba0987654321"
+    },
+    "request_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for HTTP request (UUID v4)",
+      "example": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Authenticated user ID or 'anonymous' for unauthenticated requests",
+      "example": "user-12345"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Session identifier for tracking multi-step user workflows",
+      "example": "session-67890"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Event-specific structured metadata (key-value pairs)",
+      "properties": {
+        "operation": {
+          "type": "string",
+          "description": "Operation or action being performed",
+          "example": "submit_booking"
+        },
+        "locale": {
+          "type": "string",
+          "enum": ["lv", "en", "ru"],
+          "description": "User's current locale (TEG supports Latvian, English, Russian)"
+        },
+        "feature": {
+          "type": "string",
+          "description": "Application feature or module",
+          "example": "appointment_booking"
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total operation duration in milliseconds"
+        },
+        "database_query_duration_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Database query latency in milliseconds"
+        },
+        "external_api_duration_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "External API call latency in milliseconds"
+        },
+        "cache_hit": {
+          "type": "boolean",
+          "description": "Whether operation used cached data"
+        },
+        "retry_attempt": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Retry attempt number (0 = first attempt)"
+        }
+      },
+      "additionalProperties": true
+    },
+    "exception": {
+      "type": ["object", "null"],
+      "description": "Structured exception information (null if no error)",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Exception class name",
+          "example": "SupabaseDatabaseError"
+        },
+        "message": {
+          "type": "string",
+          "description": "Exception error message",
+          "example": "Connection timeout after 30 seconds"
+        },
+        "stacktrace": {
+          "type": "array",
+          "description": "Structured stack trace (array of frames)",
+          "items": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string",
+                "description": "File path",
+                "example": "lib/supabase/client.ts"
+              },
+              "line": {
+                "type": "integer",
+                "description": "Line number",
+                "example": 127
+              },
+              "function": {
+                "type": "string",
+                "description": "Function name",
+                "example": "executeQuery"
+              },
+              "module": {
+                "type": "string",
+                "description": "Module or package name",
+                "example": "@/lib/supabase"
+              }
+            }
+          }
+        },
+        "cause_chain": {
+          "type": "array",
+          "description": "Chain of causal exceptions",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "NetworkTimeoutError"
+              },
+              "message": {
+                "type": "string",
+                "example": "Socket timeout"
+              }
+            }
+          }
+        },
+        "context": {
+          "type": "object",
+          "description": "Additional error context",
+          "additionalProperties": true
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "description": "Resource metadata (OpenTelemetry convention)",
+      "properties": {
+        "service": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "teg-app"
+            },
+            "version": {
+              "type": "string",
+              "example": "1.0.0"
+            },
+            "instance_id": {
+              "type": "string",
+              "description": "Vercel deployment ID or function instance",
+              "example": "dpl_abc123def456"
+            }
+          }
+        },
+        "deployment": {
+          "type": "object",
+          "properties": {
+            "environment": {
+              "type": "string",
+              "example": "production"
+            },
+            "region": {
+              "type": "string",
+              "description": "Vercel deployment region",
+              "example": "fra1"
+            }
+          }
+        }
+      }
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Log schema version (semantic versioning)",
+      "example": "1.0.0"
+    },
+    "schema_namespace": {
+      "type": "string",
+      "description": "Schema namespace for versioning compatibility",
+      "example": "com.teg.appointment-service"
+    }
+  },
+  "examples": [
+    {
+      "description": "Example 1: Successful appointment booking",
+      "value": {
+        "timestamp": "2025-11-08T12:33:45.123Z",
+        "level": "INFO",
+        "severity_number": 9,
+        "message": "Appointment booking created successfully",
+        "service_name": "teg-app",
+        "version": "abc123def456",
+        "environment": "production",
+        "trace_id": "abc123def456789012345678901234ab",
+        "span_id": "1234567890abcdef",
+        "request_id": "550e8400-e29b-41d4-a716-446655440000",
+        "user_id": "user-12345",
+        "session_id": "session-67890",
+        "attributes": {
+          "operation": "submit_booking_complete",
+          "locale": "lv",
+          "feature": "appointment_booking",
+          "duration_ms": 1250,
+          "database_query_duration_ms": 450,
+          "external_api_duration_ms": 600,
+          "cache_hit": false,
+          "appointment_id": "appt-789",
+          "service_type": "inspection",
+          "appointment_date": "2025-11-15",
+          "appointment_time": "14:00",
+          "steps_completed": ["validation", "db_insert", "email_send", "calendar_sync"]
+        },
+        "exception": null,
+        "resource": {
+          "service": {
+            "name": "teg-app",
+            "version": "1.0.0",
+            "instance_id": "dpl_abc123def456"
+          },
+          "deployment": {
+            "environment": "production",
+            "region": "fra1"
+          }
+        },
+        "schema_version": "1.0.0",
+        "schema_namespace": "com.teg.appointment-service"
+      }
+    },
+    {
+      "description": "Example 2: Database connection error",
+      "value": {
+        "timestamp": "2025-11-08T12:35:22.789Z",
+        "level": "ERROR",
+        "severity_number": 17,
+        "message": "Database connection failed",
+        "service_name": "teg-app",
+        "version": "abc123def456",
+        "environment": "production",
+        "trace_id": "def456abc789012345678901234567cd",
+        "span_id": "fedcba0987654321",
+        "request_id": "660f9511-f39c-52e5-b827-557766551111",
+        "user_id": "user-99999",
+        "session_id": "session-11111",
+        "attributes": {
+          "operation": "db_connection_failed",
+          "locale": "en",
+          "feature": "appointment_booking",
+          "duration_ms": 30000,
+          "connection_pool": "primary",
+          "retry_attempt": 2,
+          "database_error_code": "CONNECTION_TIMEOUT"
+        },
+        "exception": {
+          "type": "SupabaseDatabaseError",
+          "message": "Connection timeout after 30 seconds",
+          "stacktrace": [
+            {
+              "file": "lib/supabase/client.ts",
+              "line": 127,
+              "function": "executeQuery",
+              "module": "@/lib/supabase"
+            },
+            {
+              "file": "app/api/appointments/route.ts",
+              "line": 45,
+              "function": "POST",
+              "module": "@/app/api/appointments"
+            }
+          ],
+          "cause_chain": [
+            {
+              "type": "NetworkTimeoutError",
+              "message": "Socket timeout connecting to database"
+            }
+          ],
+          "context": {
+            "query_hash": "abc123def456",
+            "connection_attempts": 3,
+            "last_successful_connection": "2025-11-08T12:30:00.000Z"
+          }
+        },
+        "resource": {
+          "service": {
+            "name": "teg-app",
+            "version": "1.0.0",
+            "instance_id": "dpl_def456abc789"
+          },
+          "deployment": {
+            "environment": "production",
+            "region": "fra1"
+          }
+        },
+        "schema_version": "1.0.0",
+        "schema_namespace": "com.teg.appointment-service"
+      }
+    },
+    {
+      "description": "Example 3: Form validation failure (PII-safe)",
+      "value": {
+        "timestamp": "2025-11-08T12:38:10.456Z",
+        "level": "WARN",
+        "severity_number": 13,
+        "message": "Contact form validation failed",
+        "service_name": "teg-app",
+        "version": "abc123def456",
+        "environment": "production",
+        "trace_id": "789abc012345678901234567890defef",
+        "span_id": "0987654321fedcba",
+        "request_id": "770fabc2-g49d-63f6-c938-668877662222",
+        "user_id": "anonymous",
+        "session_id": "session-22222",
+        "attributes": {
+          "operation": "contact_validation_failed",
+          "locale": "ru",
+          "feature": "contact_form",
+          "validation_errors": ["email", "phone"],
+          "field_count": 5,
+          "validation_errors_detail": {
+            "email": "INVALID_FORMAT",
+            "phone": "REQUIRED"
+          }
+        },
+        "exception": null,
+        "resource": {
+          "service": {
+            "name": "teg-app",
+            "version": "1.0.0",
+            "instance_id": "dpl_789abc012345"
+          },
+          "deployment": {
+            "environment": "production",
+            "region": "fra1"
+          }
+        },
+        "schema_version": "1.0.0",
+        "schema_namespace": "com.teg.appointment-service"
+      }
+    }
+  ]
+}

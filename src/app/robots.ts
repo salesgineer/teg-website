@@ -1,13 +1,16 @@
 import type { MetadataRoute } from 'next';
-import { getBaseUrl } from '@/utils/Helpers';
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://teg.lv';
+
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/dashboard',
-    },
-    sitemap: `${getBaseUrl()}/sitemap.xml`,
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/dashboard/'],
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

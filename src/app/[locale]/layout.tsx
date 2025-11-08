@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Outfit } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
@@ -14,6 +14,15 @@ const outfit = Outfit({
   variable: '--font-sans',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#3ECF8E' },
+    { media: '(prefers-color-scheme: dark)', color: '#3ECF8E' },
+  ],
+};
 
 export const metadata: Metadata = {
   icons: [
@@ -38,6 +47,12 @@ export const metadata: Metadata = {
       url: '/favicon.ico',
     },
   ],
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'TEG',
+  },
 };
 
 export function generateStaticParams() {
@@ -56,6 +71,8 @@ export default async function RootLayout(props: {
 
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   return (
     <html lang={locale} suppressHydrationWarning className={outfit.variable}>
       <body className="font-sans">
@@ -65,7 +82,7 @@ export default async function RootLayout(props: {
           enableSystem
           disableTransitionOnChange
         >
-          <NextIntlClientProvider>
+          <NextIntlClientProvider messages={messages}>
             <PostHogProvider>
               {props.children}
             </PostHogProvider>

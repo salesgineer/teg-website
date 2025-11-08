@@ -61,3 +61,7 @@ build-archive.log
 /playwright-report/
 /playwright/.cache/
 /.playwright-outputs/
+
+# obsidian vault symlink (external to project)
+/obsidian_notes
+.log

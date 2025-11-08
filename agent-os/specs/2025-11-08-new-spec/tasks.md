@@ -488,27 +488,27 @@
 **Dependencies:** Task Group 1.1
 **Duration:** 1.5 hours (Day 3 Morning - Part 1)
 
-- [ ] 4.1.1 Create Resend account (0.25h)
+- [x] 4.1.1 Create Resend account (0.25h)
   - Sign up at resend.com
   - Verify domain teg.lv
   - Add DNS records (SPF, DKIM, DMARC)
 
-- [ ] 4.1.2 Install Resend + React Email (0.25h)
+- [x] 4.1.2 Install Resend + React Email (0.25h)
   - Install: `pnpm add resend react-email @react-email/components`
   - Add `RESEND_API_KEY` to .env
   - Update Env.ts validation
 
-- [ ] 4.1.3 Create email templates directory (0.25h)
+- [x] 4.1.3 Create email templates directory (0.25h)
   - Create `src/emails/` folder structure
   - Setup base email layout component
   - Configure React Email dev mode: `pnpm email dev`
 
-- [ ] 4.1.4 Test email sending (0.25h)
+- [x] 4.1.4 Test email sending (0.25h)
   - Create test API route
   - Send test email to verify configuration
   - Check Resend dashboard for delivery logs
 
-- [ ] 4.1.5 Configure rate limiting for emails (0.5h)
+- [x] 4.1.5 Configure rate limiting for emails (0.5h)
   - Add Arcjet email rate limit: 10 emails/hour per sender
   - Prevent email abuse/spam
   - Log failed email attempts to Sentry
@@ -525,21 +525,21 @@
 **Dependencies:** Task Group 4.1
 **Duration:** 2.5 hours (Day 3 Morning - Part 2)
 
-- [ ] 4.2.1 Contact form confirmation template (1h)
+- [x] 4.2.1 Contact form confirmation template (1h)
   - Create `src/emails/ContactConfirmation.tsx`
   - Accept locale prop for translations
   - Include: customer name, copy of message, TEG contact info
   - Create lv/en/ru subject line translations
   - Supabase theme branding (green accents, Outfit font)
 
-- [ ] 4.2.2 Appointment confirmation template (1h)
+- [x] 4.2.2 Appointment confirmation template (1h)
   - Create `src/emails/AppointmentConfirmation.tsx`
   - Include: service type, date/time, vehicle info
   - Attach .ics calendar file
   - Add cancellation/rescheduling instructions
   - Translate for lv/en/ru
 
-- [ ] 4.2.3 Service request confirmation template (0.5h)
+- [x] 4.2.3 Service request confirmation template (0.5h)
   - Create `src/emails/ServiceRequestConfirmation.tsx`
   - Include: service type, preferred time, urgency
   - Simple acknowledgment message
@@ -561,23 +561,23 @@
 **Dependencies:** Task Group 3.2, 3.4, 3.5, 4.2
 **Duration:** 2 hours (Day 3 Afternoon - Part 1)
 
-- [ ] 4.3.1 Create POST endpoint (0.5h)
+- [x] 4.3.1 Create POST endpoint (0.5h)
   - Create `src/app/api/contact/route.ts`
   - Accept locale parameter from request
   - Parse and validate request body with Zod schema
 
-- [ ] 4.3.2 Implement database insert (0.5h)
+- [x] 4.3.2 Implement database insert (0.5h)
   - Insert validated data to `contact_submissions` table
   - Handle database errors (duplicate emails, constraint violations)
   - Return proper error responses with status codes
 
-- [ ] 4.3.3 Send confirmation email (0.5h)
+- [x] 4.3.3 Send confirmation email (0.5h)
   - Render ContactConfirmation template with user's locale
   - Send via Resend API
   - Handle email delivery failures gracefully
   - Log errors to Sentry
 
-- [ ] 4.3.4 Add comprehensive error handling (0.5h)
+- [x] 4.3.4 Add comprehensive error handling (0.5h)
   - Validation errors: 400 Bad Request
   - Rate limiting: 429 Too Many Requests
   - Database errors: 500 Internal Server Error
@@ -597,23 +597,23 @@
 **Dependencies:** Task Group 3.2, 3.4, 3.5, 4.2
 **Duration:** 1.5 hours (Day 3 Afternoon - Part 2)
 
-- [ ] 4.4.1 Create POST endpoint (0.25h)
+- [x] 4.4.1 Create POST endpoint (0.25h)
   - Create `src/app/api/appointments/route.ts`
   - Validate service type, date/time, vehicle info
 
-- [ ] 4.4.2 Google Calendar integration (0.5h)
+- [x] 4.4.2 Google Calendar integration (0.5h)
   - Install: `pnpm add googleapis`
   - Add `GOOGLE_CALENDAR_API_KEY` and `GOOGLE_CALENDAR_ID` to .env
   - Create calendar event with customer details
   - Store `google_calendar_event_id` in database
 
-- [ ] 4.4.3 Send appointment confirmation (0.5h)
+- [x] 4.4.3 Send appointment confirmation (0.5h)
   - Generate .ics calendar file
   - Render AppointmentConfirmation email template
   - Attach calendar invite
   - Send via Resend
 
-- [ ] 4.4.4 Error handling & validation (0.25h)
+- [x] 4.4.4 Error handling & validation (0.25h)
   - Check date/time availability (no double-booking)
   - Validate business hours (Mon-Sat, 9am-8pm)
   - Handle Google Calendar API failures gracefully
@@ -631,11 +631,11 @@
 **Dependencies:** Task Group 3.2, 3.4, 3.5, 4.2
 **Duration:** 0.5 hours (Day 3 Afternoon - Part 3)
 
-- [ ] 4.5.1 Create POST endpoint (0.25h)
+- [x] 4.5.1 Create POST endpoint (0.25h)
   - Create `src/app/api/service-requests/route.ts`
   - Minimal validation (name, phone, service type, preferred time)
 
-- [ ] 4.5.2 Send instant notification (0.25h)
+- [x] 4.5.2 Send instant notification (0.25h)
   - Send confirmation to customer
   - Send notification to TEG team email
   - Mark urgent requests with priority flag

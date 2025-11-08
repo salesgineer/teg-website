@@ -12,6 +12,30 @@
 7. Do not use websearch. Use context7, Firecrawl, Github MCP, gemini, perplexity MCP.
 8. Do not restart dev-server unless specifically requested.
 9. Use sequential-thinking MCP proactively for difficult problems.
+10. **AUTO-LOAD CONTEXT:** At the start of EVERY new session, automatically load and read ALL files from `.claude/rules/` directory to understand developer context, preferences, and session-persistent rules.
+
+---
+
+## 📚 SESSION INITIALIZATION (AUTOMATIC)
+
+**CRITICAL:** At the start of EVERY new conversation session, you MUST:
+
+1. **Auto-load developer context files:**
+   - Read ALL files in `/home/fivefingerdisco/Projects/TEG_001/.claude/rules/`
+   - Currently includes: `me.md` (developer context, experience level, AI workflow)
+   - These files contain session-persistent context about the developer
+
+2. **Apply context immediately:**
+   - Understand developer's experience level (beginner, vibe coding approach)
+   - Apply communication style guidelines (educational, thorough, patient)
+   - Follow collaboration patterns defined in rules files
+
+3. **CLAUDE.md remains supreme:**
+   - This file (CLAUDE.md) defines workflow and technical directives
+   - `.claude/rules/*` files define WHO the developer is and HOW to work with them
+   - Both are mandatory context for every session
+
+**WHY:** These files ensure consistent LLM behavior across sessions, preserving developer preferences, experience level context, and collaboration guidelines without manual re-explanation.
 
 ---
 
@@ -97,8 +121,6 @@ Main → coordinator subagent (objective)
 
 **ALL MCP MUST GO:** Main → Coordinator → Executor
 
-- **Sanity**: Main → `web-dev-worker` or `implementer` → `general-purpose` (executes mcp__sanity__*)
-  - Auth required via `/mcp` → Sanity MCP if blocked
 - **Chrome DevTools**: Main → `research-coordinator` → `general-purpose` (mcp__chrome-devtools__*)
 - **Context7**: Main → `research-coordinator` → `general-purpose` (mcp__context7__*)
 - **Implementer MCP**: Main → `implementer` → `general-purpose` (all MCP tools available for feature implementation)
@@ -149,7 +171,7 @@ Main → task-list-creator subagent
 Main → implementer subagent
   ├─ general-purpose (execute tasks from tasks.md, use all MCP tools) &
   ├─ general-purpose (file operations, code generation) &
-  ├─ general-purpose (MCP operations: Sanity, Context7, etc.) &
+  ├─ general-purpose (MCP operations: Context7, etc.) &
   └─ Returns implementation results
 
 Main → implementation-verifier subagent
@@ -388,9 +410,8 @@ The website needs to support three main services:
 - TailwindCSS 3.4+
 
 **Backend/Services:**
-- Sanity CMS (content management)
 - Supabase (database & authentication)
-- SendGrid (email notifications)
+- Resend (email notifications)
 
 **Additional:**
 - next-intl (i18n/localization)
@@ -421,7 +442,6 @@ src/
 │   ├── forms/                 # Form components
 │   └── features/              # Feature-specific components
 ├── lib/
-│   ├── sanity/                # CMS integration
 │   ├── supabase/              # Database client
 │   └── validations/           # Form schemas (Zod)
 └── middleware.ts              # i18n & auth
@@ -462,7 +482,7 @@ src/
 ### Technical Standards
 
 - **Forms:** Use Zod for validation, implement proper CSRF protection, rate limiting
-- **Images:** Leverage Next.js Image component with Sanity's image pipeline
+- **Images:** Leverage Next.js Image component for optimized images
 - **SEO:** Implement structured data for automotive services (JSON-LD)
 - **Performance:** Target Core Web Vitals - LCP <2.5s, FID <100ms, CLS <0.1
 - **Security:** Follow OWASP guidelines, implement rate limiting on forms
@@ -481,11 +501,12 @@ When working on this project, always reference:
 
 ## 🎯 CRITICAL REMINDERS
 
-1. **ALWAYS use 3-tier nested delegation:** Main → Coordinator → Executor
-2. **NEVER execute directly** from Main agent (except 4 allowed tools)
-3. **VERIFY before fixing:** Reproduce issue, test hypotheses, avoid false positives
-4. **Use correct tool binaries:** `fd`, `rg`, `lsd`, `bat`, `just`, `sd`, `xh`, `uv`
-5. **Parallel execution:** Use `& ... & wait` for independent commands
-6. **MCP operations:** MUST go through nested delegation (Main → Coordinator → Executor)
-7. **Context preservation is paramount:** 20x efficiency gain with nested delegation
-8. **TEG-specific:** This is a complete redesign from legacy Frontity stack - plan accordingly
+1. **AUTO-LOAD context files:** Read ALL files from `.claude/rules/` at session start (contains developer context)
+2. **ALWAYS use 3-tier nested delegation:** Main → Coordinator → Executor
+3. **NEVER execute directly** from Main agent (except 4 allowed tools)
+4. **VERIFY before fixing:** Reproduce issue, test hypotheses, avoid false positives
+5. **Use correct tool binaries:** `fd`, `rg`, `lsd`, `bat`, `just`, `sd`, `xh`, `uv`
+6. **Parallel execution:** Use `& ... & wait` for independent commands
+7. **MCP operations:** MUST go through nested delegation (Main → Coordinator → Executor)
+8. **Context preservation is paramount:** 20x efficiency gain with nested delegation
+9. **TEG-specific:** This is a complete redesign from legacy Frontity stack - plan accordingly

@@ -30,6 +30,9 @@ export default antfu(
     ignores: [
       'migrations/**/*',
       'docs/**/*.md',
+      '.claude/**/*',
+      '.claude/commands/**/*.md',
+      '.claude/skills/**/*',
     ],
   },
   // --- Accessibility Rules ---

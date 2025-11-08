@@ -83,6 +83,24 @@
     "user_profile_link": "Manage your account",
     "sign_out": "Sign out"
   },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "appointments": "Appointments",
+    "businessHours": "Business Hours",
+    "hours": "Mon-Sat, 9:00 AM - 8:00 PM"
+  },
+  "footer": {
+    "description": "Transport Experts Group - independent automotive experts across Europe",
+    "contact": "Contact",
+    "businessHours": "Business Hours",
+    "hours": "Monday - Saturday, 9:00 AM - 8:00 PM",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy"
+  },
   "validation": {
     "name": {
       "required": "Name is required",

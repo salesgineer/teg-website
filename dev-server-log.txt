@@ -1,0 +1,26 @@
+
+> teg-website@ dev /home/fivefingerdisco/Projects/TEG_001
+> run-p dev:*
+
+
+> teg-website@ dev:spotlight /home/fivefingerdisco/Projects/TEG_001
+> npx @spotlightjs/spotlight
+
+
+> teg-website@ dev:next /home/fivefingerdisco/Projects/TEG_001
+> next dev
+
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.106:3000
+   - Environments: .env
+   - Experiments (use with caution):
+     · clientTraceMetadata
+     ✓ turbopackFileSystemCacheForDev
+
+ ✓ Starting...
+ ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+ ✓ Ready in 2.7s
+🔎 [Spotlight] Spotlight by Sentry - v4.5.0
+🔎 [Spotlight] Sidecar is already running on port 8969
+ ELIFECYCLE  Command failed.
