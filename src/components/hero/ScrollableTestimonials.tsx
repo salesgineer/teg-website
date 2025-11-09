@@ -120,7 +120,10 @@ export function ScrollableTestimonials({
                     </div>
 
                     {/* Quote */}
-                    <p className="mb-4 flex-grow text-sm leading-relaxed text-foreground/90">
+                    <p
+                      className="mb-4 flex-grow text-sm leading-relaxed"
+                      style={{ color: 'oklch(0.85 0 0)' }}
+                    >
                       "
                       {testimonial.quote}
                       "
@@ -130,7 +133,7 @@ export function ScrollableTestimonials({
                     <div className="mt-auto border-t border-border/30 pt-4">
                       <p className="font-semibold text-foreground">{testimonial.author}</p>
                       {testimonial.location && (
-                        <p className="text-xs text-foreground/70 dark:text-gray-400">{testimonial.location}</p>
+                        <p className="text-xs" style={{ color: 'oklch(0.75 0 0)' }}>{testimonial.location}</p>
                       )}
                     </div>
                   </CardContent>

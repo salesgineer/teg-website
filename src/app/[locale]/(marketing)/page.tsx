@@ -220,7 +220,7 @@ export default async function Homepage(props: IIndexProps) {
           <h2 className="mb-3 text-center text-2xl font-bold text-foreground md:text-3xl">
             {locale === 'lv' ? HOMEPAGE_COPY.testimonials.headline : locale === 'ru' ? 'ОТЗЫВЫ' : 'TESTIMONIALS'}
           </h2>
-          <p className="mb-8 text-center text-muted-foreground md:text-lg">
+          <p className="mb-8 text-center md:text-lg" style={{ color: 'oklch(0.85 0 0)' }}>
             {locale === 'lv' ? HOMEPAGE_COPY.testimonials.subheadline : locale === 'ru' ? 'Посмотрите, что говорят наши клиенты:' : 'See what our clients say about us:'}
           </p>
           <ScrollableTestimonials testimonials={testimonials} />
@@ -255,7 +255,7 @@ export default async function Homepage(props: IIndexProps) {
             <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">
               {locale === 'lv' ? HOMEPAGE_COPY.services.headline : locale === 'ru' ? 'НАШИ УСЛУГИ' : t('services_title')}
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl">
+            <p className="mx-auto max-w-2xl text-lg md:text-xl" style={{ color: 'oklch(0.85 0 0)' }}>
               {locale === 'lv' ? HOMEPAGE_COPY.services.subheadline : locale === 'ru' ? 'Независимые эксперты, помогающие избежать плохой покупки. Профессиональные услуги автоэкспертов по всей Европе.' : 'Independent experts helping you avoid bad purchases. Professional automotive expert services across Europe.'}
             </p>
           </div>
