@@ -61,7 +61,7 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
             <h2 className="mb-4 text-3xl font-bold text-destructive md:text-4xl">
               {headline}
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-lg text-foreground/80 dark:text-gray-300">
               Šie ir visbiežāk sastopamie krāpnieku paņēmieni, ar kuriem jūs varat saskarties, pērkot lietotu auto.
               {' '}
               <span className="font-semibold text-foreground">
@@ -114,7 +114,7 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
               </CardHeader>
               <CardContent>
                 <div className="relative min-h-[100px]">
-                  <p className="relative z-10 pr-16 text-sm leading-relaxed text-muted-foreground">
+                  <p className="relative z-10 pr-16 text-sm leading-relaxed text-foreground/80 dark:text-gray-300">
                     {tactic.description}
                   </p>
                   {/* Unique icon positioned diagonally opposite to AlertTriangle - behind text */}

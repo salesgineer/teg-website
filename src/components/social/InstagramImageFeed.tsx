@@ -54,7 +54,7 @@ export function InstagramImageFeed({ posts }: InstagramImageFeedProps) {
               </div>
               {post.caption && (
                 <div className="p-4">
-                  <p className="line-clamp-2 text-sm text-muted-foreground">
+                  <p className="line-clamp-2 text-sm text-foreground/80 dark:text-gray-300">
                     {post.caption}
                   </p>
                 </div>

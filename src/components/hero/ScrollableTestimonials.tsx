@@ -130,7 +130,7 @@ export function ScrollableTestimonials({
                     <div className="mt-auto border-t border-border/30 pt-4">
                       <p className="font-semibold text-foreground">{testimonial.author}</p>
                       {testimonial.location && (
-                        <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+                        <p className="text-xs text-foreground/70 dark:text-gray-400">{testimonial.location}</p>
                       )}
                     </div>
                   </CardContent>

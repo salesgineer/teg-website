@@ -44,7 +44,7 @@ export function InspectionCategoriesGrid({
                 )}
                 <CardTitle className="text-xl">{category.title}</CardTitle>
                 {category.description && (
-                  <p className="mt-2 text-sm text-muted-foreground">{category.description}</p>
+                  <p className="mt-2 text-sm text-foreground/80 dark:text-gray-300">{category.description}</p>
                 )}
               </CardHeader>
               <CardContent>
@@ -52,7 +52,7 @@ export function InspectionCategoriesGrid({
                   {category.items.map((item, itemIndex) => (
                     <li key={`item-${item.substring(0, 20)}-${itemIndex}`} className="flex items-start gap-2">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-muted-foreground">{item}</span>
+                      <span className="text-foreground/90 dark:text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
