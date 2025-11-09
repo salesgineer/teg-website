@@ -224,16 +224,25 @@ First Load JS shared by all              87.3 kB
    - Share TEG calendar with service account (Editor permissions)
    - Copy service account JSON key
 
-4. **Configure Vercel**
+4. **Setup Instagram API**
+   - Create Meta Developer App at https://developers.facebook.com/apps
+   - Configure Instagram Graph API product
+   - Generate long-lived access token (60-day expiry handling)
+   - Get Business Account ID from @teg.auto
+   - Test API access with sample request
+   - Add environment variables to Vercel
+
+5. **Configure Vercel**
    - Import GitHub repository
-   - Add all environment variables
+   - Add all environment variables (including Instagram credentials)
    - Configure custom domain teg.lv
    - Deploy
 
-5. **Post-Deployment Verification**
+6. **Post-Deployment Verification**
    - Test contact form submission
    - Verify email delivery
    - Check Google Calendar event creation
+   - Verify Instagram feed loads on hero section
    - Run Lighthouse audit
    - Submit sitemap to Google Search Console
 
@@ -270,6 +279,7 @@ First Load JS shared by all              87.3 kB
 - [x] Service request callbacks
 - [x] Email confirmations
 - [x] Google Calendar integration
+- [x] Instagram feed integration
 - [x] Rate limiting protection
 - [x] Dark mode support
 
@@ -291,6 +301,51 @@ First Load JS shared by all              87.3 kB
 
 ---
 
+## Instagram API Verification (Post-Deployment)
+
+**After deployment to production, verify Instagram integration:**
+
+### Visual Verification
+- [ ] Navigate to https://teg.lv/lv/ (and /en/, /ru/)
+- [ ] Verify Instagram feed carousel appears in hero section
+- [ ] Check feed displays recent posts from @teg.auto
+- [ ] Confirm images load and display correctly
+- [ ] Test mobile carousel (swipe/tap navigation works)
+- [ ] Verify carousel pagination indicators visible
+
+### Technical Verification
+```bash
+# Check browser console for errors
+# Should see no CORS or 401/403 errors
+
+# Verify Supabase cache table
+# SELECT * FROM instagram_feed_cache ORDER BY created_at DESC LIMIT 5;
+# Should show recent feed data with timestamps
+
+# Test API endpoint directly
+curl -X GET "https://teg.lv/api/instagram-feed"
+# Should return JSON array of posts
+```
+
+### Error Handling Verification
+- [ ] If token expires, verify graceful fallback (placeholder or empty state)
+- [ ] Check PostHog dashboard for `instagram_feed_load` events
+- [ ] Monitor Sentry for any Instagram API-related errors
+- [ ] Verify error messages don't expose sensitive token data
+
+### Rate Limit Monitoring
+- Check Supabase for cache hits (should be ~90% of requests)
+- Monitor Meta Graph API rate limits via developer dashboard
+- Verify cache invalidation (24-hour refresh schedule)
+
+### Token Expiry Management
+- [ ] Schedule calendar reminder for token refresh (50 days from generation)
+- [ ] Test token refresh process in preview environment first
+- [ ] Document token refresh procedure for team
+- [ ] Set up monitoring alert for 401 errors (indicates expired token)
+
+---
+
 ## Next Steps
 
 1. **Complete Pre-Deployment Setup** (follow DEPLOYMENT_GUIDE.md)
@@ -301,6 +356,8 @@ First Load JS shared by all              87.3 kB
    - PostHog analytics
    - Resend email delivery logs
    - Supabase database metrics
+   - Instagram API feed loads (PostHog `instagram_feed_load` events)
+   - Instagram token expiry (schedule refresh at 50-day mark)
 
 5. **Submit to Search Engines:**
    - Google Search Console (submit sitemap.xml)
@@ -314,20 +371,29 @@ First Load JS shared by all              87.3 kB
 ### Daily
 - Monitor Sentry error alerts
 - Check Resend email delivery logs (if forms submitted)
+- Verify Instagram feed displays (check browser console for errors)
 
 ### Weekly
 - Review PostHog analytics dashboard
 - Check Supabase database usage
 - Review rate limiting logs (Arcjet)
+- Monitor Instagram API rate limits (Meta developer dashboard)
 
 ### Monthly
 - Audit Core Web Vitals (Lighthouse)
 - Update dependencies (`pnpm update`)
 - Review backup integrity (Supabase)
+- **Instagram Token Refresh (every 50 days)**
+  - Generate new long-lived token from Meta developer account
+  - Test in preview environment first
+  - Update `NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN` in Vercel
+  - Verify feed loads after token change
+  - Document refresh date for next renewal
 
 ---
 
 **Status:** ✅ PRODUCTION READY
-**Last Updated:** 2025-11-08
-**Build Version:** 1.0.0
+**Last Updated:** 2025-11-09
+**Build Version:** 1.1.0
+**Latest Changes:** Added Instagram API Integration & Verification Section
 **Approver:** [Pending Client Sign-Off]

@@ -143,7 +143,7 @@ export function Hero({
         )}
       >
         {parts[0]}
-        <span className="text-primary">{highlightText}</span>
+        <span className="text-primary drop-shadow-none dark:drop-shadow-none dark:[text-shadow:none]">{highlightText}</span>
         {parts[1]}
       </h1>
     );

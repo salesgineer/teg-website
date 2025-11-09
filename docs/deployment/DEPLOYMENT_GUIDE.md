@@ -61,6 +61,91 @@ ARCJET_KEY=ajkey_xxxxxxxxxxxxx
    - Appointments: 3/hour per IP
    - Service requests: 5/hour per IP
 
+#### **Instagram API Configuration**
+```bash
+NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN=your-long-lived-access-token
+INSTAGRAM_BUSINESS_ACCOUNT_ID=your-business-account-id
+```
+
+**Prerequisites:**
+1. **Business Instagram Account** - Separate account linked to Facebook Page (not personal)
+2. **Facebook Page** - Required to generate Instagram API credentials
+3. **Meta Developer Account** - Create at https://developers.facebook.com
+
+**Setup Steps:**
+
+1. **Create Meta Developer App**
+   - Go to https://developers.facebook.com/apps
+   - Click "Create App" → "Business" type
+   - Name: "TEG Website"
+   - Complete business setup
+
+2. **Configure Instagram Graph API**
+   - In app dashboard, add product: "Instagram Graph API"
+   - Go to Settings > Basic > Copy App ID and App Secret
+   - Add Platform: Website (URL: `https://teg.lv`)
+
+3. **Generate Long-Lived Access Token**
+   - Go to Tools > Graph API Explorer
+   - Select app from dropdown
+   - Select "Get User Access Token" (need Instagram business account as admin)
+   - Scopes needed: `instagram_business_profile`, `instagram_business_manage_messages`
+   - Generate short-lived token
+   - Exchange for long-lived token:
+   ```bash
+   curl -X GET "https://graph.instagram.com/v18.0/oauth/access_token?grant_type=ig_refresh_token&access_token=SHORT_LIVED_TOKEN&client_secret=YOUR_APP_SECRET" \
+     -H "Content-Type: application/json"
+   ```
+   - Long-lived tokens valid for ~60 days (must refresh periodically)
+
+4. **Get Business Account ID**
+   - Go to Instagram app Settings > Basic
+   - Business Account ID visible under "Connected Instagram Accounts"
+   - Also retrievable via API:
+   ```bash
+   curl -X GET "https://graph.instagram.com/v18.0/me/instagram_business_accounts?access_token=YOUR_ACCESS_TOKEN"
+   ```
+
+5. **Add to Vercel Environment Variables**
+   - Go to Vercel project Settings > Environment Variables
+   - Add `NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN` (Production, Preview, Development)
+   - Add `INSTAGRAM_BUSINESS_ACCOUNT_ID` (Production, Preview, Development)
+   - Deploy
+
+**Token Refresh Strategy (Critical for 60-Day Expiry):**
+
+Tokens expire after 60 days. Implement automated refresh:
+
+```bash
+# Create refresh job (add to cron or CI/CD)
+# Every 50 days, run refresh script:
+
+INSTAGRAM_API_VERSION="v18.0"
+OLD_TOKEN="your-current-token"
+APP_SECRET="your-app-secret"
+
+curl -X GET "https://graph.instagram.com/${INSTAGRAM_API_VERSION}/oauth/access_token" \
+  -G \
+  -d "grant_type=ig_refresh_token" \
+  -d "access_token=${OLD_TOKEN}" \
+  -d "client_secret=${APP_SECRET}" | jq '.access_token'
+
+# Output new token → update NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN in Vercel
+```
+
+**Testing Verification:**
+
+```bash
+# Test API access
+curl -X GET "https://graph.instagram.com/v18.0/BUSINESS_ACCOUNT_ID/media?fields=id,caption,media_type,media_url,timestamp&access_token=YOUR_ACCESS_TOKEN"
+
+# Expected response: Array of recent Instagram posts
+# If 401: Token expired or invalid
+# If 403: Insufficient permissions (check scopes)
+```
+
+---
+
 #### **Sentry Error Tracking**
 ```bash
 SENTRY_DSN=https://xxx@xxx.ingest.sentry.io/xxx
@@ -385,6 +470,8 @@ pnpm check:types --noEmit
 - [ ] Supabase database schema deployed
 - [ ] Resend domain verified (DNS records added)
 - [ ] Google Calendar shared with service account
+- [ ] Instagram API access token generated and verified
+- [ ] Instagram Business Account ID configured
 - [ ] Sentry project created and DSN configured
 - [ ] PostHog project created and key added
 - [ ] Arcjet rate limiting enabled
@@ -402,6 +489,7 @@ pnpm check:types --noEmit
 - [ ] Appointment booking tested
 - [ ] Email confirmation received
 - [ ] Google Calendar event created
+- [ ] Instagram feed loads on hero section
 - [ ] Sentry error logging verified
 - [ ] PostHog analytics tracking verified
 - [ ] Core Web Vitals meet targets (LCP <2.5s, FID <100ms, CLS <0.1)
@@ -417,5 +505,5 @@ pnpm check:types --noEmit
 
 ---
 
-**Last Updated:** 2025-11-08
-**Deployment Version:** 1.0.0
+**Last Updated:** 2025-11-09
+**Deployment Version:** 1.1.0 (Instagram API Integration)
