@@ -143,7 +143,7 @@ export function Hero({
         )}
       >
         {parts[0]}
-        <span className="text-primary drop-shadow-[0_2px_12px_rgba(var(--primary),0.4)] dark:[text-shadow:0_0_20px_rgba(var(--primary),0.5)]">{highlightText}</span>
+        <span className="text-primary">{highlightText}</span>
         {parts[1]}
       </h1>
     );
