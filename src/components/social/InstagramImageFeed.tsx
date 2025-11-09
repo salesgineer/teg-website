@@ -54,7 +54,7 @@ export function InstagramImageFeed({ posts }: InstagramImageFeedProps) {
               </div>
               {post.caption && (
                 <div className="p-4">
-                  <p className="line-clamp-2 text-sm text-foreground/80 dark:text-gray-300">
+                  <p className="line-clamp-2 text-sm" style={{ color: 'oklch(0.85 0 0)' }}>
                     {post.caption}
                   </p>
                 </div>

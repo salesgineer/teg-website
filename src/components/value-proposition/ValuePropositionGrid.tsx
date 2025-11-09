@@ -62,7 +62,12 @@ export function ValuePropositionGrid({
                       </div>
                     )}
                     <h3 className="mb-3 text-xl font-semibold">{item.title}</h3>
-                    <p className="text-sm leading-relaxed text-foreground/80 dark:text-gray-300">{item.description}</p>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: 'oklch(0.85 0 0)' }}
+                    >
+                      {item.description}
+                    </p>
                   </CardContent>
                 </Card>
               </div>

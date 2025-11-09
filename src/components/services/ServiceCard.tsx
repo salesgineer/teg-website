@@ -108,7 +108,12 @@ export function ServiceCard({
             {features.map(feature => (
               <li key={feature} className="flex items-start gap-2">
                 <CheckCircleIcon className={`mt-0.5 h-5 w-5 shrink-0 ${hasBackgroundImage ? 'text-primary [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.8))_brightness(1.2)]' : 'text-primary [filter:brightness(1.2)]'}`} style={hasBackgroundImage ? { filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8)) brightness(1.2)' } : { filter: 'brightness(1.2)' }} strokeWidth={2.5} />
-                <span className={hasBackgroundImage ? 'text-gray-200 [text-shadow:0_2px_6px_rgba(0,0,0,0.8),0_1px_3px_rgba(0,0,0,0.6)]' : 'text-foreground/90 dark:text-gray-300'}>{feature}</span>
+                <span
+                  className={hasBackgroundImage ? 'text-gray-200 [text-shadow:0_2px_6px_rgba(0,0,0,0.8),0_1px_3px_rgba(0,0,0,0.6)]' : ''}
+                  style={!hasBackgroundImage ? { color: 'oklch(0.85 0 0)' } : undefined}
+                >
+                  {feature}
+                </span>
               </li>
             ))}
           </ul>

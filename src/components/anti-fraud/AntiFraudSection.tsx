@@ -61,10 +61,10 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
             <h2 className="mb-4 text-3xl font-bold text-destructive md:text-4xl">
               {headline}
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-foreground/80 dark:text-gray-300">
+            <p className="mx-auto max-w-2xl text-lg" style={{ color: 'oklch(0.85 0 0)' }}>
               Šie ir visbiežāk sastopamie krāpnieku paņēmieni, ar kuriem jūs varat saskarties, pērkot lietotu auto.
               {' '}
-              <span className="font-semibold text-foreground">
+              <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
                 Mūsu eksperti palīdz jums tos atklāt pirms pirkuma.
               </span>
             </p>
@@ -114,7 +114,7 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
               </CardHeader>
               <CardContent>
                 <div className="relative min-h-[100px]">
-                  <p className="relative z-10 pr-16 text-sm leading-relaxed text-foreground/80 dark:text-gray-300">
+                  <p className="relative z-10 pr-16 text-sm leading-relaxed" style={{ color: 'oklch(0.85 0 0)' }}>
                     {tactic.description}
                   </p>
                   {/* Unique icon positioned diagonally opposite to AlertTriangle - behind text */}
