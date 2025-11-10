@@ -45,13 +45,13 @@ export function HeroStatsGrid({ stats, className = '' }: HeroStatsGridProps) {
             className={cn(
               'group relative flex flex-col items-start rounded-xl',
               'px-4 py-4 backdrop-blur-md border-2',
-              'bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5',
-              'border-primary/40 shadow-lg transition-all duration-300',
-              'hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/30',
-              'hover:border-primary/60 hover:from-primary/10 hover:via-primary/15 hover:to-primary/10',
-              'dark:from-primary/20 dark:via-primary/15 dark:to-primary/20',
-              'dark:border-primary/50 dark:hover:border-primary/70',
-              'ring-2 ring-primary/10 dark:ring-primary/20',
+              'bg-gradient-to-br from-primary/3 via-primary/6 to-primary/3',
+              'border-primary/30 shadow-lg transition-all duration-300',
+              'hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/20',
+              'hover:border-primary/50 hover:from-primary/6 hover:via-primary/10 hover:to-primary/6',
+              'dark:from-primary/12 dark:via-primary/10 dark:to-primary/12',
+              'dark:border-primary/40 dark:hover:border-primary/60',
+              'ring-2 ring-primary/6 dark:ring-primary/12',
               'w-[200px] min-h-[160px]',
             )}
           >
@@ -59,12 +59,12 @@ export function HeroStatsGrid({ stats, className = '' }: HeroStatsGridProps) {
             {Icon && (
               <div className={cn(
                 'mb-3 flex h-10 w-10 items-center justify-center rounded-lg',
-                'bg-primary/20 ring-2 ring-primary/30',
+                'bg-primary/12 ring-2 ring-primary/20',
                 'transition-all duration-300',
-                'group-hover:bg-primary/30 group-hover:ring-primary/50',
+                'group-hover:bg-primary/20 group-hover:ring-primary/35',
                 'group-hover:scale-105',
-                'dark:bg-primary/30 dark:ring-primary/40',
-                'dark:group-hover:bg-primary/40 dark:group-hover:ring-primary/60',
+                'dark:bg-primary/20 dark:ring-primary/30',
+                'dark:group-hover:bg-primary/30 dark:group-hover:ring-primary/45',
               )}
               >
                 <Icon className={cn(

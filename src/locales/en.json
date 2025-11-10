@@ -9,7 +9,7 @@
     "sign_up_link": "Sign up"
   },
   "BaseTemplate": {
-    "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
+    "description": "TEG - Transport Experts Group",
     "made_with": "Made with <author></author>."
   },
   "Index": {
@@ -25,7 +25,253 @@
     "service_mobile": "Mobile Roadside Service",
     "service_mobile_desc": "(from €50) - On-location diagnostics, battery testing, and repairs",
     "contact_us": "Contact Us",
-    "sponsors_title": "Sponsors"
+    "sponsors_title": "Sponsors",
+    "hero": {
+      "title": "Check Before You Buy!",
+      "subtitle": "Detailed vehicle technical inspection before purchase across all of Europe",
+      "ctaText": "Book Inspection",
+      "eyebrow": "Independent Auto Experts",
+      "stats": {
+        "independent": {
+          "value": "Independent from Dealers",
+          "label": "Objective Truth"
+        },
+        "reports": {
+          "value": "Detailed Reports",
+          "label": "100+ Photos"
+        },
+        "europe": {
+          "value": "Across Europe",
+          "label": "No Travel Required"
+        }
+      },
+      "mediaCardAlt": "Red BMW E30 car inspection in garage - automotive inspection service"
+    },
+    "testimonials": {
+      "headline": "TESTIMONIALS",
+      "subheadline": "See what our clients say about us:",
+      "items": [
+        {
+          "quote": "Professional and detailed inspection. Helped avoid a bad purchase. Highly recommend!",
+          "author": "John Smith",
+          "location": "Riga, Latvia"
+        },
+        {
+          "quote": "Fast response and detailed report with photos. Helped make the right decision.",
+          "author": "Jane Doe",
+          "location": "Liepaja, Latvia"
+        },
+        {
+          "quote": "Experts discovered several hidden problems that the seller had not mentioned. Thank you very much!",
+          "author": "Peter Johnson",
+          "location": "Daugavpils, Latvia"
+        },
+        {
+          "quote": "Mobile service arrived very quickly and solved the problem on the spot. Very satisfied with the service.",
+          "author": "Michael Brown",
+          "location": "Jurmala, Latvia"
+        },
+        {
+          "quote": "Helped find the perfect car according to my requirements. Organized the entire process professionally.",
+          "author": "Sarah Williams",
+          "location": "Valmiera, Latvia"
+        }
+      ]
+    },
+    "services": {
+      "subheadline": "Independent experts helping you avoid bad purchases. Professional automotive expert services across Europe.",
+      "carSearch": {
+        "title": "Car Search & Delivery",
+        "description": "Full service - vehicle sourcing, technical inspection, delivery to your door and documentation assistance.",
+        "price": "FROM €350",
+        "ctaText": "Start Search",
+        "features": [
+          "Vehicle sourcing according to your requirements and budget across Europe",
+          "Full technical inspection with professional equipment",
+          "Engine diagnostics and VIN history check in multiple databases",
+          "Body, paint, and interior element inspection",
+          "Detailed report with photos and expert opinion",
+          "Delivery to your door at your specified address",
+          "Documentation assistance and verification",
+          "Negotiation process with seller and price discussions",
+          "Service history stored in dealer and manufacturer databases",
+          "Accident and repair history verification",
+          "Completeness verification against VIN number",
+          "Everything while you can stay home - full service from A to Z"
+        ],
+        "disclaimer": "* Service available in all European countries. More detailed information upon request."
+      },
+      "prePurchase": {
+        "title": "Pre-Purchase Car Inspection",
+        "description": "Detailed vehicle technical inspection before purchase across all of Europe. Engine diagnostics, VIN history check, body and paint inspection.",
+        "price": "FROM €100",
+        "ctaText": "Order Inspection",
+        "features": [
+          "Engine diagnostics with professional equipment",
+          "VIN history check in multiple databases",
+          "Body and paint inspection",
+          "Electronic unit scanning and error code reading",
+          "Paint thickness measurement and repair trace identification",
+          "Interior elements and safety belt inspection",
+          "Technical fluid quality and level assessment",
+          "Tire tread and wear inspection",
+          "Suspension and brake system assessment",
+          "Battery and electrical system inspection",
+          "Test drive and functionality verification",
+          "Detailed report with photos and expert opinion"
+        ]
+      },
+      "mobile": {
+        "title": "Mobile Roadside Service",
+        "description": "Roadside assistance - error diagnostics, battery testing, engine start, ECU programming and key repairs.",
+        "price": "FROM €50",
+        "ctaText": "Call Specialist",
+        "features": [
+          "Flat tire / No spare wheel / Tire puncture assistance",
+          "Need a jump start (battery charge)",
+          "Empty fuel tank",
+          "Door unlocking / Key making and duplicate key production",
+          "Handbrake release",
+          "Error diagnostics and clearing / Electrical fault reading",
+          "Battery testing, check with printed report and replacement",
+          "ECU and electronic unit programming / coding",
+          "Bulb replacement and programming",
+          "Switch replacement / Window mechanism replacement and repair",
+          "Brake, engine and interior repairs on location",
+          "General repairs as needed"
+        ]
+      }
+    },
+    "valueProposition": {
+      "headline": "HOW IT WORKS?",
+      "items": [
+        {
+          "title": "You Find the Desired Car",
+          "description": "You choose a vehicle that interests you and simply contact us. No need to travel anywhere."
+        },
+        {
+          "title": "We Inspect and Document",
+          "description": "Our expert comes to the vehicle location and performs a detailed technical inspection with professional equipment. You can stay home."
+        },
+        {
+          "title": "You Receive Full Information",
+          "description": "You receive a detailed report with photos and expert opinion on the vehicle condition. Now you can make an informed decision."
+        }
+      ]
+    },
+    "inspectionCategories": {
+      "headline": "WHAT DO WE INSPECT?",
+      "ctaText": "Order Inspection",
+      "categories": [
+        {
+          "title": "Engine",
+          "description": "Visual inspection and computer diagnostics of the engine to identify oil leaks, noises, sensor and injector operation deficiencies.",
+          "items": [
+            "Computer diagnostics with professional equipment for comprehensive engine parameter assessment",
+            "Scanning of all electronic units to identify error codes and system status",
+            "Injector operation and efficiency check in the fuel injection system",
+            "Sensor operation and response check in all engine systems",
+            "Hybrid electric motor and battery inspection for electrical component status assessment"
+          ]
+        },
+        {
+          "title": "VIN Number",
+          "description": "VIN number check in multiple international and local databases to identify vehicle history.",
+          "items": [
+            "CarVertical/AutoDNA international database check for accidents, mileage and owner history",
+            "Service history and warranty information stored in dealer and manufacturer databases",
+            "LTAB insurance claims and accident history check",
+            "CSDD official registration and technical inspection history",
+            "Auction records to identify possible accident or repair history"
+          ]
+        },
+        {
+          "title": "Body and Interior",
+          "description": "Comprehensive inspection of body and interior elements to assess vehicle condition and identify possible damage or repairs.",
+          "items": [
+            "Paint thickness measurement, body and interior element inspection to reveal repair or accident traces and assess vehicle condition",
+            "Interior elements, equipment and safety belt condition and functionality check",
+            "Glass and exterior optics compliance check against regulatory standards",
+            "Completeness compliance check against VIN number to identify possible modifications"
+          ]
+        },
+        {
+          "title": "Technical Fluids",
+          "description": "Technical fluid quality and level check to assess vehicle maintenance status and safety.",
+          "items": [
+            "Brake fluid quality and level check for brake system safety",
+            "Engine oil quality and level assessment for engine protection",
+            "Coolant quality and level check for optimal cooling",
+            "Transmission fluid quality and level check for gearbox operation",
+            "Power steering fluid level check for steering system functionality"
+          ]
+        },
+        {
+          "title": "Suspension",
+          "description": "Suspension, brake system and tire condition assessment with test drive and visual inspection.",
+          "items": [
+            "Tire tread remaining measurement and wear uniformity assessment",
+            "Brake disc and pad condition check to assess wear and efficiency",
+            "Steering and suspension system condition assessment with test drive",
+            "Suspension component and connection check for safety and comfort"
+          ]
+        },
+        {
+          "title": "Electrical System",
+          "description": "Electrical system, battery and charging mechanism check to ensure safe and reliable operation.",
+          "items": [
+            "Battery condition and charge level assessment",
+            "Charging system and alternator operation efficiency check",
+            "Starter system and electrical installation condition check"
+          ]
+        }
+      ]
+    },
+    "antiFraud": {
+      "headline": "FRAUD TACTICS:",
+      "subheadline": "These are the most common fraud tactics you may encounter when buying a used car. Our experts help you detect them before purchase.",
+      "expertDetects": "Our experts detect it",
+      "ctaText": "Order our inspection and avoid these fraudsters",
+      "tactics": [
+        {
+          "title": "Mileage Tampering",
+          "description": "By altering odometer readings, sellers dishonestly increase vehicle value but reduce component lifespan."
+        },
+        {
+          "title": "Hidden Accident Damage",
+          "description": "Most repairs are done poorly, making such vehicles unsafe and potentially causing major problems."
+        },
+        {
+          "title": "Damaged Safety Systems",
+          "description": "Safety system repairs are very expensive. Rarely after accidents are these systems restored, instead they are programmed and 'skillfully' hidden, making the vehicle unsafe."
+        },
+        {
+          "title": "Hidden Engine Defects",
+          "description": "Most hidden defects can only be detected with appropriate diagnostic equipment."
+        },
+        {
+          "title": "True Year and Equipment",
+          "description": "By indicating false vehicle production year and equipment, a great way to attract unsuspecting buyers."
+        },
+        {
+          "title": "Service Book and Documents",
+          "description": "Fictitiously filled service book, mismatched sales and import documents."
+        }
+      ]
+    },
+    "instagram": {
+      "post": "Instagram post",
+      "reel": "Instagram reel"
+    },
+    "darkFooterForm": {
+      "headline": "We would be happy to receive your message.",
+      "introText": "Thank you for your interest, we will respond as soon as possible."
+    },
+    "badges": {
+      "popular": "MOST POPULAR",
+      "europe": "Available across Europe",
+      "latvia": "Available across Latvia"
+    }
   },
   "Counter": {
     "meta_title": "Counter",
@@ -43,14 +289,14 @@
   },
   "About": {
     "meta_title": "About",
-    "meta_description": "About page description",
-    "about_paragraph": "Welcome to our About page! We are a team of passionate individuals dedicated to creating amazing software.",
+    "meta_description": "Information about us",
+    "about_paragraph": "Welcome to our About section! We are a team of passionate people dedicated to creating excellent software products.",
     "translation_powered_by": "Translation powered by"
   },
   "Portfolio": {
     "meta_title": "Portfolio",
     "meta_description": "Welcome to my portfolio page!",
-    "presentation": "Welcome to my portfolio page! Here you will find a carefully curated collection of my work and accomplishments. Through this portfolio, I'm to showcase my expertise, creativity, and the value I can bring to your projects.",
+    "presentation": "Welcome to my portfolio page! Here you will find a carefully curated collection of my work and accomplishments. Through this portfolio, I strive to demonstrate my expertise, creativity, and the value I can bring to your projects.",
     "portfolio_name": "Portfolio {name}",
     "error_reporting_powered_by": "Error reporting powered by",
     "coverage_powered_by": "Code coverage powered by"
@@ -59,7 +305,7 @@
     "meta_title": "Portfolio {slug}",
     "meta_description": "Portfolio {slug} description",
     "header": "Portfolio {slug}",
-    "content": "Created a set of promotional materials and branding elements for a corporate event. Crafted a visually unified theme, encompassing a logo, posters, banners, and digital assets. Integrated the client's brand identity while infusing it with a contemporary and innovative approach.",
+    "content": "Created a set of promotional materials and branding elements for a corporate event. Developed a visually unified theme, including a logo, posters, banners, and digital assets. Integrated the client's brand identity while complementing it with a modern and innovative approach.",
     "code_review_powered_by": "Code review powered by"
   },
   "SignIn": {

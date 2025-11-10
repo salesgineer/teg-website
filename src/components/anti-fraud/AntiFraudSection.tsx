@@ -21,9 +21,12 @@ type FraudTactic = {
 type AntiFraudSectionProps = {
   tactics: readonly FraudTactic[];
   headline?: string;
+  subheadline?: string;
+  expertDetectsText?: string;
+  ctaText?: string;
 };
 
-export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
+export function AntiFraudSection({ tactics, headline, subheadline, expertDetectsText, ctaText }: AntiFraudSectionProps) {
   // Icon mapping for each fraud tactic - defined inside component to avoid module-level JSX
   const getTacticIcon = (index: number) => {
     const iconProps = {
@@ -49,25 +52,23 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
     }
   };
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-destructive/5 via-background to-destructive/5 py-16 md:py-24">
+    <section className="relative overflow-hidden bg-gradient-to-b from-destructive/3 via-background to-destructive/3 py-16 md:py-24">
       {/* Animated background warning pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 animate-pulse bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.3),transparent_50%)]" />
+      <div className="absolute inset-0 opacity-15">
+        <div className="absolute inset-0 animate-pulse bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.6),transparent_70%)]" />
       </div>
 
       <div className="relative container mx-auto px-4">
         {headline && (
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-destructive md:text-4xl">
+            <h2 className="mb-4 text-3xl font-bold text-red-500 md:text-4xl">
               {headline}
             </h2>
-            <p className="mx-auto max-w-2xl text-lg" style={{ color: 'oklch(0.85 0 0)' }}>
-              Šie ir visbiežāk sastopamie krāpnieku paņēmieni, ar kuriem jūs varat saskarties, pērkot lietotu auto.
-              {' '}
-              <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
-                Mūsu eksperti palīdz jums tos atklāt pirms pirkuma.
-              </span>
-            </p>
+            {subheadline && (
+              <p className="mx-auto max-w-2xl text-lg text-red-400">
+                {subheadline}
+              </p>
+            )}
           </div>
         )}
 
@@ -108,13 +109,13 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
                     </div>
                   </div>
                 </div>
-                <CardTitle className="text-lg font-bold text-destructive group-hover:text-destructive/90">
+                <CardTitle className="text-lg font-bold text-red-500 group-hover:text-red-400">
                   {tactic.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="relative min-h-[100px]">
-                  <p className="relative z-10 pr-16 text-sm leading-relaxed" style={{ color: 'oklch(0.85 0 0)' }}>
+                  <p className="relative z-10 pr-16 text-sm leading-relaxed text-red-400">
                     {tactic.description}
                   </p>
                   {/* Unique icon positioned diagonally opposite to AlertTriangle - behind text */}
@@ -124,12 +125,14 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
                 </div>
 
                 {/* TEG protection indicator */}
-                <div className="mt-4 flex items-center gap-2 rounded-md bg-primary/10 p-2 text-xs">
-                  <ShieldCheck className="h-4 w-4 text-primary" />
-                  <span className="font-medium text-primary">
-                    Mūsu eksperti to atklāj
-                  </span>
-                </div>
+                {expertDetectsText && (
+                  <div className="mt-4 flex items-center gap-2 rounded-md bg-primary/10 p-2 text-xs">
+                    <ShieldCheck className="h-4 w-4 text-primary" />
+                    <span className="font-medium text-primary">
+                      {expertDetectsText}
+                    </span>
+                  </div>
+                )}
               </CardContent>
 
               {/* Hover effect overlay */}
@@ -139,14 +142,16 @@ export function AntiFraudSection({ tactics, headline }: AntiFraudSectionProps) {
         </div>
 
         {/* Call to action */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-2 rounded-lg border-2 border-destructive/30 bg-destructive/10 px-6 py-4 backdrop-blur-sm">
-            <ShieldCheck className="h-6 w-6 animate-pulse text-destructive" />
-            <p className="text-lg font-semibold text-foreground">
-              Pasūtiet mūsu pārbaudi un izvairieties no šiem krāpniekiem
-            </p>
+        {ctaText && (
+          <div className="mt-12 text-center">
+            <div className="group relative inline-flex items-center gap-3 rounded-xl border-2 border-primary bg-primary px-8 py-4 shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/30">
+              <ShieldCheck className="h-6 w-6 text-primary-foreground transition-transform duration-300 group-hover:scale-110" />
+              <p className="text-xl font-bold text-primary-foreground transition-colors duration-300">
+                {ctaText}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

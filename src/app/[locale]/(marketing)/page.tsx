@@ -52,21 +52,15 @@ export default async function Homepage(props: IIndexProps) {
   // Hero content - use HOMEPAGE_COPY for Latvian, translations for others
   const heroTitle = locale === 'lv'
     ? HOMEPAGE_COPY.hero.headline
-    : locale === 'ru'
-      ? 'Проверь перед покупкой!'
-      : 'Check Before You Buy!';
+    : t('hero.title');
 
   const heroSubtitle = locale === 'lv'
     ? HOMEPAGE_COPY.hero.subheadline
-    : locale === 'ru'
-      ? 'Детальная проверка технического состояния транспортного средства перед покупкой по всей Европе'
-      : 'Detailed vehicle technical inspection before purchase across all of Europe';
+    : t('hero.subtitle');
 
   const heroCtaText = locale === 'lv'
     ? HOMEPAGE_COPY.hero.ctaText
-    : locale === 'ru'
-      ? 'Заказать проверку'
-      : 'Book Inspection';
+    : t('hero.ctaText');
 
   const heroCtaHref = locale === 'lv'
     ? HOMEPAGE_COPY.hero.ctaHref
@@ -111,39 +105,13 @@ export default async function Homepage(props: IIndexProps) {
           location: 'Valmiera, Latvija',
         },
       ]
-    : locale === 'ru'
-      ? [
-          {
-            id: '1',
-            quote: 'Профессиональная и детальная проверка. Помогла избежать плохой покупки. Очень рекомендую!',
-            author: 'Иван Петров',
-            rating: 5,
-            location: 'Рига, Латвия',
-          },
-          {
-            id: '2',
-            quote: 'Быстрая реакция и детальный отчет с фотографиями. Помог принять правильное решение.',
-            author: 'Анна Смирнова',
-            rating: 5,
-            location: 'Лиепая, Латвия',
-          },
-        ]
-      : [
-          {
-            id: '1',
-            quote: 'Professional and detailed inspection. Helped avoid a bad purchase. Highly recommend!',
-            author: 'John Smith',
-            rating: 5,
-            location: 'Riga, Latvia',
-          },
-          {
-            id: '2',
-            quote: 'Fast response and detailed report with photos. Helped make the right decision.',
-            author: 'Jane Doe',
-            rating: 5,
-            location: 'Liepaja, Latvia',
-          },
-        ];
+    : t.raw('testimonials.items').map((item: any, index: number) => ({
+        id: String(index + 1),
+        quote: item.quote,
+        author: item.author,
+        rating: 5,
+        location: item.location,
+      }));
 
   return (
     <main className="min-h-screen">
@@ -157,30 +125,30 @@ export default async function Homepage(props: IIndexProps) {
         subtitle={heroSubtitle}
         highlightText={locale === 'lv' ? 'pirms pērc' : undefined}
         eyebrow={{
-          text: locale === 'lv' ? 'Neatkarīgi auto eksperti' : locale === 'ru' ? 'Независимые автоэксперты' : 'Independent Auto Experts',
+          text: locale === 'lv' ? 'Neatkarīgi auto eksperti' : t('hero.eyebrow'),
           showStar: true,
         }}
         stats={[
           {
-            value: locale === 'lv' ? 'Neatkarīgi no dīleriem' : locale === 'ru' ? 'Независимо от дилеров' : 'Independent from Dealers',
-            label: locale === 'lv' ? 'Objektīva patiesība' : locale === 'ru' ? 'Объективная правда' : 'Objective Truth',
+            value: locale === 'lv' ? 'Neatkarīgi no dīleriem' : t('hero.stats.independent.value'),
+            label: locale === 'lv' ? 'Objektīva patiesība' : t('hero.stats.independent.label'),
             icon: CheckCircleIcon,
           },
           {
-            value: locale === 'lv' ? 'Detalizēti pārskati' : locale === 'ru' ? 'Детальные отчеты' : 'Detailed Reports',
-            label: locale === 'lv' ? '100+ fotogrāfijas' : locale === 'ru' ? '100+ фотографий' : '100+ Photos',
+            value: locale === 'lv' ? 'Detalizēti pārskati' : t('hero.stats.reports.value'),
+            label: locale === 'lv' ? '100+ fotogrāfijas' : t('hero.stats.reports.label'),
             icon: DocumentTextIcon,
           },
           {
-            value: locale === 'lv' ? 'Visā Eiropā' : locale === 'ru' ? 'По всей Европе' : 'Across Europe',
-            label: locale === 'lv' ? 'Nav nepieciešams ceļot' : locale === 'ru' ? 'Не нужно ехать' : 'No Travel Required',
+            value: locale === 'lv' ? 'Visā Eiropā' : t('hero.stats.europe.value'),
+            label: locale === 'lv' ? 'Nav nepieciešams ceļot' : t('hero.stats.europe.label'),
             icon: GlobeAltIcon,
           },
         ]}
         mediaCard={{
           image: {
             src: 'https://images.unsplash.com/photo-1585062168782-0459bfd34a0c?w=800&h=600&fit=crop&q=80',
-            alt: locale === 'lv' ? 'Sarkans BMW E30 auto pārbaude garāžā - automobiļu pārbaudes serviss' : locale === 'ru' ? 'Красный BMW E30 проверка в гараже - автосервис' : 'Red BMW E30 car inspection in garage - automotive inspection service',
+            alt: locale === 'lv' ? 'Sarkans BMW E30 auto pārbaude garāžā - automobiļu pārbaudes serviss' : t('hero.mediaCardAlt'),
           },
         }}
         primaryCta={{
@@ -218,10 +186,10 @@ export default async function Homepage(props: IIndexProps) {
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="mb-3 text-center text-2xl font-bold text-foreground md:text-3xl">
-            {locale === 'lv' ? HOMEPAGE_COPY.testimonials.headline : locale === 'ru' ? 'ОТЗЫВЫ' : 'TESTIMONIALS'}
+            {locale === 'lv' ? HOMEPAGE_COPY.testimonials.headline : t('testimonials.headline')}
           </h2>
           <p className="mb-8 text-center md:text-lg" style={{ color: 'oklch(0.85 0 0)' }}>
-            {locale === 'lv' ? HOMEPAGE_COPY.testimonials.subheadline : locale === 'ru' ? 'Посмотрите, что говорят наши клиенты:' : 'See what our clients say about us:'}
+            {locale === 'lv' ? HOMEPAGE_COPY.testimonials.subheadline : t('testimonials.subheadline')}
           </p>
           <ScrollableTestimonials testimonials={testimonials} />
         </div>
@@ -253,10 +221,10 @@ export default async function Homepage(props: IIndexProps) {
           {/* Section Headline and Subheadline */}
           <div className="mb-12 text-center">
             <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl">
-              {locale === 'lv' ? HOMEPAGE_COPY.services.headline : locale === 'ru' ? 'НАШИ УСЛУГИ' : t('services_title')}
+              {locale === 'lv' ? HOMEPAGE_COPY.services.headline : t('services_title')}
             </h2>
             <p className="mx-auto max-w-2xl text-lg md:text-xl" style={{ color: 'oklch(0.85 0 0)' }}>
-              {locale === 'lv' ? HOMEPAGE_COPY.services.subheadline : locale === 'ru' ? 'Независимые эксперты, помогающие избежать плохой покупки. Профессиональные услуги автоэкспертов по всей Европе.' : 'Independent experts helping you avoid bad purchases. Professional automotive expert services across Europe.'}
+              {locale === 'lv' ? HOMEPAGE_COPY.services.subheadline : t('services.subheadline')}
             </p>
           </div>
 
@@ -265,10 +233,13 @@ export default async function Homepage(props: IIndexProps) {
             <div className="relative flex flex-col">
               <ServiceCard
                 icon={MagnifyingGlassIcon}
-                title={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[1].title : locale === 'ru' ? 'Поиск и доставка авто' : t('service_car_search')}
-                description={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[1].description : locale === 'ru' ? 'Полный сервис - поиск автомобиля, техническая проверка, доставка до дверей и помощь с документацией.' : t('service_car_search_desc')}
-                price={locale === 'lv' ? 'No €350' : locale === 'ru' ? 'ОТ €350' : 'FROM €350'}
+                title={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[1].title : t('services.carSearch.title')}
+                description={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[1].description : t('services.carSearch.description')}
+                price={locale === 'lv' ? 'No €350' : t('services.carSearch.price')}
                 showEuropeBadge={true}
+                badgeTexts={{
+                  europe: locale === 'lv' ? undefined : t('badges.europe'),
+                }}
                 features={
                   locale === 'lv'
                     ? [
@@ -285,51 +256,26 @@ export default async function Homepage(props: IIndexProps) {
                         'Komplektācijas atbilstības VIN numuram pārbaude',
                         'Viss, kamēr tu vari palikt mājās - pilns serviss no A līdz Z',
                       ]
-                    : locale === 'ru'
-                      ? [
-                          'Поиск автомобиля по вашим требованиям и бюджету по всей Европе',
-                          'Полная техническая проверка профессиональным оборудованием',
-                          'Диагностика двигателя и проверка истории VIN в нескольких базах данных',
-                          'Проверка кузова, краски и элементов салона',
-                          'Детальный отчет с фотографиями и экспертным заключением',
-                          'Доставка до дверей по указанному адресу',
-                          'Помощь с оформлением и проверкой документов',
-                          'Процесс переговоров с продавцом и торг',
-                          'История обслуживания в базах данных дилерских центров и производителей',
-                          'Проверка истории аварий и ремонтов',
-                          'Проверка соответствия комплектации VIN номеру',
-                          'Все, пока вы можете оставаться дома - полный сервис от А до Я',
-                        ]
-                      : [
-                          'Vehicle sourcing according to your requirements and budget across Europe',
-                          'Full technical inspection with professional equipment',
-                          'Engine diagnostics and VIN history check in multiple databases',
-                          'Body, paint, and interior element inspection',
-                          'Detailed report with photos and expert opinion',
-                          'Delivery to your door at your specified address',
-                          'Documentation assistance and verification',
-                          'Negotiation process with seller and price discussions',
-                          'Service history stored in dealer and manufacturer databases',
-                          'Accident and repair history verification',
-                          'Completeness verification against VIN number',
-                          'Everything while you can stay home - full service from A to Z',
-                        ]
+                    : t.raw('services.carSearch.features')
                 }
-                ctaText={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[1].ctaText : locale === 'ru' ? 'Начать поиск' : 'Start Search'}
+                ctaText={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[1].ctaText : t('services.carSearch.ctaText')}
                 ctaHref={`/${locale}/services`}
                 backgroundImage="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop&q=80"
               />
               <p className="absolute right-0 -bottom-6 left-0 mt-2 text-center text-xs text-muted-foreground">
-                {locale === 'lv' ? '* Serviss pieejams visās Eiropas valstīs. Detalizētāka informācija pēc pieprasījuma.' : locale === 'ru' ? '* Сервис доступен во всех странах Европы. Более подробная информация по запросу.' : '* Service available in all European countries. More detailed information upon request.'}
+                {locale === 'lv' ? '* Serviss pieejams visās Eiropas valstīs. Detalizētāka informācija pēc pieprasījuma.' : t('services.carSearch.disclaimer')}
               </p>
             </div>
             {/* Middle: Pamatpārbaude (Most Popular) */}
             <ServiceCard
               icon={Car}
-              title={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[0].title : locale === 'ru' ? 'Базовая проверка' : t('service_pre_purchase')}
-              description={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[0].description : locale === 'ru' ? 'Детальная техническая проверка транспортного средства перед покупкой по всей Европе. Диагностика двигателя, проверка истории VIN, проверка кузова и краски.' : t('service_pre_purchase_desc')}
-              price={locale === 'lv' ? 'No €100' : locale === 'ru' ? 'ОТ €100' : 'FROM €100'}
+              title={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[0].title : t('services.prePurchase.title')}
+              description={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[0].description : t('services.prePurchase.description')}
+              price={locale === 'lv' ? 'No €100' : t('services.prePurchase.price')}
               variant="featured"
+              badgeTexts={{
+                popular: locale === 'lv' ? undefined : t('badges.popular'),
+              }}
               features={
                 locale === 'lv'
                   ? [
@@ -346,65 +292,28 @@ export default async function Homepage(props: IIndexProps) {
                       'Testa brauciens un funkcionalitātes verifikācija',
                       'Detalizēts pārskats ar fotogrāfijām un ekspertu atzinumu',
                     ]
-                  : locale === 'ru'
-                    ? [
-                        'Диагностика двигателя профессиональным оборудованием',
-                        'Проверка истории VIN в нескольких базах данных',
-                        'Проверка кузова и краски',
-                        'Сканирование электронных блоков и чтение кодов ошибок',
-                        'Измерение толщины краски и выявление следов ремонта',
-                        'Проверка элементов салона и ремней безопасности',
-                        'Оценка качества и уровня технических жидкостей',
-                        'Проверка протектора шин и износа',
-                        'Оценка подвески и тормозной системы',
-                        'Проверка аккумулятора и системы электроснабжения',
-                        'Тест-драйв и проверка функциональности',
-                        'Детальный отчет с фотографиями и экспертным заключением',
-                      ]
-                    : [
-                        'Engine diagnostics with professional equipment',
-                        'VIN history check in multiple databases',
-                        'Body and paint inspection',
-                        'Electronic unit scanning and error code reading',
-                        'Paint thickness measurement and repair trace identification',
-                        'Interior elements and safety belt inspection',
-                        'Technical fluid quality and level assessment',
-                        'Tire tread and wear inspection',
-                        'Suspension and brake system assessment',
-                        'Battery and electrical system inspection',
-                        'Test drive and functionality verification',
-                        'Detailed report with photos and expert opinion',
-                      ]
+                  : t.raw('services.prePurchase.features')
               }
-              ctaText={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[0].ctaText : locale === 'ru' ? 'Заказать проверку' : 'Order Inspection'}
+              ctaText={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[0].ctaText : t('services.prePurchase.ctaText')}
               ctaHref={`/${locale}/services`}
               backgroundImage="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&h=600&fit=crop&q=80"
             />
             {/* Right: Mobilais serviss */}
             <ServiceCard
               icon={WrenchScrewdriverIcon}
-              title={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[2].title : locale === 'ru' ? 'Мобильный сервис' : t('service_mobile')}
-              description={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[2].description : locale === 'ru' ? 'Помощь на дороге - диагностика ошибок, проверка аккумулятора, запуск двигателя, программирование ECU и ремонт ключей.' : t('service_mobile_desc')}
-              price={locale === 'lv' ? 'No €50' : locale === 'ru' ? 'ОТ €50' : 'FROM €50'}
+              title={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[2].title : t('services.mobile.title')}
+              description={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[2].description : t('services.mobile.description')}
+              price={locale === 'lv' ? 'No €50' : t('services.mobile.price')}
               showLatviaBadge={true}
+              badgeTexts={{
+                latvia: locale === 'lv' ? undefined : t('badges.latvia'),
+              }}
               features={
                 locale === 'lv'
                   ? [...(HOMEPAGE_COPY.serviceDetails[2].benefits || [])]
-                  : locale === 'ru'
-                    ? [
-                        'Диагностика на месте',
-                        'Тест батареи',
-                        'Ремонт',
-                        'Быстрая реакция',
-                      ]
-                    : [
-                        'On-location diagnostics',
-                        'Battery testing',
-                        'Repairs',
-                        'Fast response',
-                      ]
+                  : t.raw('services.mobile.features')
               }
-              ctaText={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[2].ctaText : locale === 'ru' ? 'Вызвать специалиста' : 'Call Specialist'}
+              ctaText={locale === 'lv' ? HOMEPAGE_COPY.serviceCards[2].ctaText : t('services.mobile.ctaText')}
               ctaHref={`/${locale}/services`}
               backgroundImage="https://images.unsplash.com/photo-1493238792000-8113da705763?w=800&h=600&fit=crop&q=80"
             />
@@ -414,29 +323,25 @@ export default async function Homepage(props: IIndexProps) {
 
       {/* Section 4: Value Proposition Grid (How it works) */}
       <ValuePropositionGrid
-        headline={locale === 'lv' ? HOMEPAGE_COPY.valueProposition.headline : locale === 'ru' ? 'КАК ЭТО РАБОТАЕТ?' : 'HOW IT WORKS?'}
-        items={[
-          {
-            icon: <MagnifyingGlassIcon className="h-12 w-12 text-primary" />,
-            title: locale === 'lv' ? HOMEPAGE_COPY.valueProposition.items[0].title : locale === 'ru' ? 'Вы находите желаемый автомобиль' : 'You Find the Desired Car',
-            description: locale === 'lv' ? HOMEPAGE_COPY.valueProposition.items[0].description : locale === 'ru' ? 'Вы выбираете транспортное средство, которое вас интересует, и просто связываетесь с нами. Не нужно никуда ехать.' : 'You choose a vehicle that interests you and simply contact us. No need to travel anywhere.',
-          },
-          {
-            icon: <ClipboardDocumentCheckIcon className="h-12 w-12 text-primary" />,
-            title: locale === 'lv' ? HOMEPAGE_COPY.valueProposition.items[1].title : locale === 'ru' ? 'Мы проверяем и документируем' : 'We Inspect and Document',
-            description: locale === 'lv' ? HOMEPAGE_COPY.valueProposition.items[1].description : locale === 'ru' ? 'Наш эксперт приезжает на место нахождения автомобиля и проводит детальную техническую проверку профессиональным оборудованием. Вы можете остаться дома.' : 'Our expert comes to the vehicle location and performs a detailed technical inspection with professional equipment. You can stay home.',
-          },
-          {
-            icon: <DocumentTextIcon className="h-12 w-12 text-primary" />,
-            title: locale === 'lv' ? HOMEPAGE_COPY.valueProposition.items[2].title : locale === 'ru' ? 'Вы получаете полную информацию' : 'You Receive Full Information',
-            description: locale === 'lv' ? HOMEPAGE_COPY.valueProposition.items[2].description : locale === 'ru' ? 'Вы получаете детальный отчет с фотографиями и экспертным заключением о состоянии автомобиля. Теперь вы можете принять информированное решение.' : 'You receive a detailed report with photos and expert opinion on the vehicle condition. Now you can make an informed decision.',
-          },
-        ]}
+        headline={locale === 'lv' ? HOMEPAGE_COPY.valueProposition.headline : t('valueProposition.headline')}
+        items={
+          locale === 'lv'
+            ? HOMEPAGE_COPY.valueProposition.items.map((item, index) => ({
+                icon: index === 0 ? <MagnifyingGlassIcon className="h-12 w-12 text-primary" /> : index === 1 ? <ClipboardDocumentCheckIcon className="h-12 w-12 text-primary" /> : <DocumentTextIcon className="h-12 w-12 text-primary" />,
+                title: item.title,
+                description: item.description,
+              }))
+            : t.raw('valueProposition.items').map((item: any, index: number) => ({
+                icon: index === 0 ? <MagnifyingGlassIcon className="h-12 w-12 text-primary" /> : index === 1 ? <ClipboardDocumentCheckIcon className="h-12 w-12 text-primary" /> : <DocumentTextIcon className="h-12 w-12 text-primary" />,
+                title: item.title,
+                description: item.description,
+              }))
+        }
       />
 
       {/* Section 5: Inspection Categories Grid (6 boxes + CTA) */}
       <InspectionCategoriesGrid
-        headline={locale === 'lv' ? HOMEPAGE_COPY.inspectionCategories.headline : locale === 'ru' ? 'ЧТО МЫ ПРОВЕРЯЕМ?' : 'WHAT DO WE INSPECT?'}
+        headline={locale === 'lv' ? HOMEPAGE_COPY.inspectionCategories.headline : t('inspectionCategories.headline')}
         categories={
           locale === 'lv'
             ? HOMEPAGE_COPY.inspectionCategories.categories.map((category, index) => {
@@ -456,53 +361,37 @@ export default async function Homepage(props: IIndexProps) {
                   items: [...category.items],
                 };
               })
-            : [
-                // English/Russian placeholders - can be expanded later
-                {
-                  icon: <Cog6ToothIcon className="h-10 w-10 text-primary" />,
-                  title: locale === 'ru' ? 'Двигатель' : 'Engine',
-                  description: locale === 'ru' ? 'Визуальный осмотр и компьютерная диагностика двигателя' : 'Visual inspection and computer diagnostics of the engine',
-                  items: [],
-                },
-                {
-                  icon: <HashtagIcon className="h-10 w-10 text-primary" />,
-                  title: locale === 'ru' ? 'VIN номер' : 'VIN Number',
-                  description: locale === 'ru' ? 'Проверка VIN номера в международных базах данных' : 'VIN number check in international databases',
-                  items: [],
-                },
-              ]
+            : t.raw('inspectionCategories.categories').map((category: any, index: number) => {
+                const iconMap = [
+                  <Cog6ToothIcon className="h-10 w-10 text-primary" key="engine" />,
+                  <HashtagIcon className="h-10 w-10 text-primary" key="vin" />,
+                  <RectangleStackIcon className="h-10 w-10 text-primary" key="body" />,
+                  <BeakerIcon className="h-10 w-10 text-primary" key="fluids" />,
+                  <Car className="h-10 w-10 text-primary" key="suspension" />,
+                  <BoltIcon className="h-10 w-10 text-primary" key="electrical" />,
+                ];
+                return {
+                  icon: iconMap[index],
+                  title: category.title,
+                  description: category.description,
+                  items: category.items || [],
+                };
+              })
         }
-        ctaText={locale === 'lv' ? HOMEPAGE_COPY.inspectionCategories.ctaText : locale === 'ru' ? 'Заказать проверку' : 'Order Inspection'}
+        ctaText={locale === 'lv' ? HOMEPAGE_COPY.inspectionCategories.ctaText : t('inspectionCategories.ctaText')}
         ctaHref={`/${locale}/services`}
       />
 
       {/* Section 6: Anti-Fraud Educational Section (6 tactics, alternating bg) */}
       <AntiFraudSection
-        headline={locale === 'lv' ? HOMEPAGE_COPY.antiFraud.headline : locale === 'ru' ? 'МОШЕННИЧЕСКИЕ СХЕМЫ:' : 'FRAUD TACTICS:'}
+        headline={locale === 'lv' ? HOMEPAGE_COPY.antiFraud.headline : t('antiFraud.headline')}
+        subheadline={locale === 'lv' ? 'Šie ir visbiežāk sastopamie krāpnieku paņēmieni, ar kuriem jūs varat saskarties, pērkot lietotu auto. Mūsu eksperti palīdz jums tos atklāt pirms pirkuma.' : t('antiFraud.subheadline')}
+        expertDetectsText={locale === 'lv' ? 'Mūsu eksperti to atklāj' : t('antiFraud.expertDetects')}
+        ctaText={locale === 'lv' ? 'Pasūtiet mūsu pārbaudi un izvairieties no šiem krāpniekiem' : t('antiFraud.ctaText')}
         tactics={
           locale === 'lv'
             ? HOMEPAGE_COPY.antiFraud.tactics
-            : locale === 'ru'
-              ? [
-                  {
-                    title: 'Корректировка реального пробега',
-                    description: 'Изменяя показания одометра, продавец нечестно увеличивает стоимость автомобиля, но сокращает срок службы его узлов.',
-                  },
-                  {
-                    title: 'Скрытые следы аварий',
-                    description: 'В большинстве случаев ремонт выполнен некачественно, такие автомобили небезопасны и могут вызвать большие проблемы в эксплуатации.',
-                  },
-                ]
-              : [
-                  {
-                    title: 'Mileage Tampering',
-                    description: 'By altering odometer readings, sellers dishonestly increase vehicle value but reduce component lifespan.',
-                  },
-                  {
-                    title: 'Hidden Accident Damage',
-                    description: 'Most repairs are done poorly, making such vehicles unsafe and potentially causing major problems.',
-                  },
-                ]
+            : t.raw('antiFraud.tactics')
         }
       />
 
@@ -513,19 +402,19 @@ export default async function Homepage(props: IIndexProps) {
         posts={[
           {
             imageUrl: 'https://picsum.photos/seed/instagram-post-1/400/400',
-            caption: locale === 'lv' ? 'Instagram ziņa' : locale === 'ru' ? 'Пост в Instagram' : 'Instagram post',
+            caption: locale === 'lv' ? 'Instagram ziņa' : t('instagram.post'),
             postUrl: 'https://www.instagram.com/teg.auto/p/DO6TgerCB28/',
             authorName: 'teg.auto',
           },
           {
             imageUrl: 'https://picsum.photos/seed/instagram-post-2/400/400',
-            caption: locale === 'lv' ? 'Instagram ziņa' : locale === 'ru' ? 'Пост в Instagram' : 'Instagram post',
+            caption: locale === 'lv' ? 'Instagram ziņa' : t('instagram.post'),
             postUrl: 'https://www.instagram.com/teg.auto/p/DM-FjY4CKw3/',
             authorName: 'teg.auto',
           },
           {
             imageUrl: 'https://picsum.photos/seed/instagram-reel/400/400',
-            caption: locale === 'lv' ? 'Instagram reel' : locale === 'ru' ? 'Reel в Instagram' : 'Instagram reel',
+            caption: locale === 'lv' ? 'Instagram reel' : t('instagram.reel'),
             postUrl: 'https://www.instagram.com/teg.auto/reel/CuMFIhkuLDT/',
             authorName: 'teg.auto',
           },
@@ -534,8 +423,8 @@ export default async function Homepage(props: IIndexProps) {
 
       {/* Section 8: Dark Footer with Form */}
       <DarkFooterWithForm
-        headline={locale === 'lv' ? HOMEPAGE_COPY.darkFooterForm.headline : locale === 'ru' ? 'Мы будем рады получить ваше сообщение.' : 'We would be happy to receive your message.'}
-        introText={locale === 'lv' ? HOMEPAGE_COPY.darkFooterForm.introText : locale === 'ru' ? 'Спасибо за проявленный интерес, мы ответим как можно скорее.' : 'Thank you for your interest, we will respond as soon as possible.'}
+        headline={locale === 'lv' ? HOMEPAGE_COPY.darkFooterForm.headline : t('darkFooterForm.headline')}
+        introText={locale === 'lv' ? HOMEPAGE_COPY.darkFooterForm.introText : t('darkFooterForm.introText')}
         contactInfo={{
           phone: '+371 25 201 710',
           email: 'info@teg.lv',

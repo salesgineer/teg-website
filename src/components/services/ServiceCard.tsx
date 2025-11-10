@@ -23,6 +23,11 @@ type ServiceCardProps = {
   backgroundImage?: string;
   showEuropeBadge?: boolean;
   showLatviaBadge?: boolean;
+  badgeTexts?: {
+    popular?: string;
+    europe?: string;
+    latvia?: string;
+  };
 };
 
 export function ServiceCard({
@@ -37,6 +42,7 @@ export function ServiceCard({
   backgroundImage,
   showEuropeBadge = false,
   showLatviaBadge = false,
+  badgeTexts,
 }: ServiceCardProps) {
   const hasBackgroundImage = !!backgroundImage;
 
@@ -61,7 +67,7 @@ export function ServiceCard({
         <div className="absolute top-3 right-3 z-20">
           <Badge className="flex h-7 items-center gap-1.5 bg-primary px-3 text-primary-foreground shadow-lg">
             <StarIcon className="h-3.5 w-3.5 shrink-0 text-yellow-400" />
-            <span className="text-xs leading-none font-semibold">POPULĀRĀKAIS</span>
+            <span className="text-xs leading-none font-semibold">{badgeTexts?.popular || 'POPULĀRĀKAIS'}</span>
           </Badge>
         </div>
       )}
@@ -73,7 +79,7 @@ export function ServiceCard({
             <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center text-sm leading-none" role="img" aria-label="European Union flag">
               🇪🇺
             </span>
-            <span className="text-xs leading-none font-semibold whitespace-nowrap">Pieejams visā Eiropā</span>
+            <span className="text-xs leading-none font-semibold whitespace-nowrap">{badgeTexts?.europe || 'Pieejams visā Eiropā'}</span>
           </Badge>
         </div>
       )}
@@ -85,7 +91,7 @@ export function ServiceCard({
             <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center text-sm leading-none" role="img" aria-label="Latvian flag">
               🇱🇻
             </span>
-            <span className="text-xs leading-none font-semibold whitespace-nowrap">Pieejams visā Latvijā</span>
+            <span className="text-xs leading-none font-semibold whitespace-nowrap">{badgeTexts?.latvia || 'Pieejams visā Latvijā'}</span>
           </Badge>
         </div>
       )}
